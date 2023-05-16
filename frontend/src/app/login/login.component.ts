@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Contact } from '../model/contact';
+import { ContactService } from '../services/contact.service';
 
 
 
@@ -10,12 +12,17 @@ import { Component } from '@angular/core';
 export class LoginComponent {
   email: string;
   password: string;
+  contacts : Contact[];
 
-  constructor() {}
+  constructor(private contactservice : ContactService) {}
 
   login() {
     console.log(this.email);
     console.log(this.password);
+  }
+
+  ngOnInit() {
+   this.contactservice.getContactos().subscribe( contactslist => this.contacts= contactslist);
   }
 }
 
