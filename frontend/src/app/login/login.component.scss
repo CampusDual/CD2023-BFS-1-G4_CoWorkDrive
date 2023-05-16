@@ -1,0 +1,43 @@
+.custom-form {
+  min-width: 300px;
+  max-width: 60%;
+  margin: 0px auto;
+  padding: 2rem 3rem;
+  margin: auto;
+  border-radius: 2.5rem;
+  margin-top: 10rem;
+}
+.custom-form input {
+  display: block;
+  margin: 2rem 0;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: none;
+  border: 0 none;
+
+}
+.custom-form button {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  border: none;
+  font-size: 0.875rem;
+
+  font-weight: bold;
+
+  width: 100%;
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: 1.5rem;
+
+  cursor: pointer;
+}
+
+.custom-form button:hover {
+  background-color: purple;
+  color: white;
+}
+
+h1{
+  text-align: center;
+}
