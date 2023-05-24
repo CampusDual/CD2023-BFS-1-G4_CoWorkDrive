@@ -21,7 +21,10 @@ public class Trip {
     private Date date;
     
     @Column
-    private Time hour;
+    private String time;
+    
+    @Column
+    private Integer id_contact;
     
     public Integer getId_trip() {
         return id_trip;
@@ -55,11 +58,19 @@ public class Trip {
         this.date = date;
     }
     
-    public Time getHour() {
-        return hour;
+    public String getTime() {
+        return time;
     }
     
-    public void setHour(Time hour) {
-        this.hour = hour;
+    public void setTime(String time) {
+        this.time = time;
+    }
+    
+    public Integer getId_contact() {
+        return id_contact;
+    }
+    
+    public void setId_contact(Integer id_contact) {
+        this.id_contact = id_contact;
     }
 }

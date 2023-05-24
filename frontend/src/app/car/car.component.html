@@ -1,0 +1,27 @@
+<div class="container">
+<h2>Registro de Coche</h2>
+
+<form (ngSubmit)="registerCar()">
+  <div>
+    <label>Marca:</label>
+    <input type="text" [(ngModel)]="car.car_brand" [ngClass]="{'field-error': !car.car_brand}" name="brand" required>
+  </div>
+
+  <div>
+    <label>Modelo:</label>
+    <input type="text" [(ngModel)]="car.model" [ngClass]="{'field-error': !car.model}" name="model" required>
+  </div>
+
+  <div>
+    <label>Número de Asientos:</label>
+    <input type="number" [(ngModel)]="car.seats" [ngClass]="{'field-error': !car.seats}" name="seats" required>
+  </div>
+
+  <div>
+    <label>Matrícula:</label>
+    <input type="text" [(ngModel)]="car.car_registration" [ngClass]="{'field-error': !car.car_registration}" name="car_registration" required>
+  </div>
+
+  <button type="submit" >Registrar Coche</button>
+</form>
+</div>

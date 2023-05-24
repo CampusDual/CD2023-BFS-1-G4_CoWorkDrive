@@ -16,23 +16,13 @@ public class CarService implements ICarService {
     private CarDao carDao;
     
     @Override
-    public String insertCar(CarDTO carDTO) {
+    public CarDTO insertCar(CarDTO carDTO) {
         Car car = CarMapper.INSTANCE.toEntity(carDTO);
         if(car != null){
-            if ( car.getCar_brand() == null ){
-                return "Tienes que rellenar todos los campos";
-            }
-            if ( car.getCar_registration() == null ){
-                return "Tienes que rellenar todos los campos";
-            }
-            if ( car.getModel() == null ){
-                return "Tienes que rellenar todos los campos";
-            }
-            if ( car.getSeats() == null ){
-                return "Tienes que rellenar todos los campos";
-            }
             carDao.saveAndFlush(car);
+            return carDTO;
         }
-        return "Coche registrado con éxito";
+       
+        return null;
     }
 }

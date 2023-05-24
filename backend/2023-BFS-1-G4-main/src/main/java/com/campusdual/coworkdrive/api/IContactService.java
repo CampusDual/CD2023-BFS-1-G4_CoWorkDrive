@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IContactService {
     
-    String queryContact(String email);
+    ContactDTO queryContact(String email);
     
     List<ContactDTO> queryAllContacts();
 }

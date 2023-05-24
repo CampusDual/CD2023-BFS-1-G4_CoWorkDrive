@@ -18,10 +18,13 @@ public class Car {
     
     
     @Column
-    private String seats;
+    private Integer seats;
     
     @Column
     private String car_registration;
+    
+    @Column
+    private Integer id_contact;
     
     public Integer getId_car() {
         return id_car;
@@ -39,11 +42,11 @@ public class Car {
         this.car_brand = car_brand;
     }
     
-    public String getSeats() {
+    public Integer getSeats() {
         return seats;
     }
     
-    public void setSeats(String seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
     
@@ -63,5 +66,12 @@ public class Car {
     public void setModel(String model) {
         this.model = model;
     }
-  
+    
+    public Integer getId_contact() {
+        return id_contact;
+    }
+    
+    public void setId_contact(Integer id_contact) {
+        this.id_contact = id_contact;
+    }
 }

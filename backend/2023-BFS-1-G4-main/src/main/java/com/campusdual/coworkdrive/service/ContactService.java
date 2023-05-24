@@ -18,15 +18,15 @@ public class ContactService implements IContactService {
     @Autowired
     private ContactDao contactDao;
     @Override
-    public String queryContact(String email ) {
+    public ContactDTO queryContact(String email) {
         List<ContactDTO> contacts = queryAllContacts();
         String pass= Arrays.toString(email.split(",",1));
         for (ContactDTO contacto : contacts) {
             if (pass.contains(contacto.getEmail()) && pass.contains(contacto.getPassword())) {
-                return "Logeado";
+                return ContactMapper.INSTANCE.toDTO(contactDao.getReferenceById(contacto.getId_contact()));
             }
         }
-        return "El email o contraseña incorrectos";
+        return null;
     }
     
     @Override

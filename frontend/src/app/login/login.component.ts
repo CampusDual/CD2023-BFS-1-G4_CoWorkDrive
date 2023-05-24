@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Contact } from '../model/contact';
 import { ContactService } from '../services/contact.service';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { SharedService } from '../services/shared.service';
 
 
 
@@ -12,18 +15,49 @@ import { ContactService } from '../services/contact.service';
 export class LoginComponent {
   email: string;
   password: string;
-  contacts : Contact[];
+  contact : Contact = new Contact;
 
-  constructor(private contactservice : ContactService) {}
+  constructor(private contactservice : ContactService, private route: Router, private sharedService: SharedService) {}
 
-  login() {
-    console.log(this.email);
-    console.log(this.password);
+  login(){
+    let auth = this.email + "," + this.password;
+    this.contactservice.getContactos(auth).subscribe(response => {
+      if(response){
+        this.contact= response;
+        this.message();
+        sessionStorage.setItem("id_contact",this.contact.id_contact.toString())
+        this.sharedService.isButtonDisabled = false;
+        this.route.navigate(['/home']);
+      } else {
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuario o contraseña erróneos',
+          showConfirmButton: true
+        })
+      }
+    });
   }
 
   ngOnInit() {
-   this.contactservice.getContactos().subscribe( contactslist => this.contacts= contactslist);
+    if(sessionStorage.getItem("id_contact") != null){
+      this.sharedService.isButtonDisabled = false;
+      this.route.navigate(['/home']);
+    }
   }
+
+  getLoggedUser(): number {
+    return this.contact.id_contact;
+  }
+
+  message(){
+    Swal.fire({
+      icon: 'success',
+      title: 'Has iniciado sesión',
+      showConfirmButton: false,
+      timer: 3000
+    })
+  }
+
 }
 
 

@@ -9,11 +9,13 @@ public class CarDTO {
     private String car_brand;
     
     
-    private String seats;
+    private Integer seats;
     
     private String model;
     
     private String car_registration;
+    
+    private Integer id_contact;
     
     public Integer getId_car() {
         return id_car;
@@ -31,11 +33,11 @@ public class CarDTO {
         this.car_brand = car_brand;
     }
     
-    public String getSeats() {
+    public Integer getSeats() {
         return seats;
     }
     
-    public void setSeats(String seats) {
+    public void setSeats(Integer seats) {
         this.seats = seats;
     }
     
@@ -53,5 +55,13 @@ public class CarDTO {
     
     public void setModel(String model) {
         this.model = model;
+    }
+    
+    public Integer getId_contact() {
+        return id_contact;
+    }
+    
+    public void setId_contact(Integer id_contact) {
+        this.id_contact = id_contact;
     }
 }
