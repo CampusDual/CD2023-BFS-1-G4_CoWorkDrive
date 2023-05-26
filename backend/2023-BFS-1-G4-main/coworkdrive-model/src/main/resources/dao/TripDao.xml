@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="TRIPS"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>ID_TRIP</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>ID_TRIP</Column>
+    </UpdateKeys>
+    <GeneratedKey>ID_TRIP</GeneratedKey>
+</JdbcEntitySetup>
+
+
