@@ -20,7 +20,7 @@ ontimize:
             - OPTIONS
             - DELETE
    jdbc:
-      name-convention: lower
+      name-convention: upper
       sqlhandler: postgresql
       sql-condition-processor:
          uppper-string: true
@@ -42,12 +42,13 @@ ontimize:
          query-id: login
          other-data:
             - NAME
-            - SURNAME
+            - SURNAME1
             - EMAIL
             - NIF
             - USERBLOCKED
             - LASTPASSWORDUPDATE
             - FIRSTLOGIN
+            - SURNAME2
       user-role-information-service:
          user-role-repository: UserRoleDao
          query-id: userRole

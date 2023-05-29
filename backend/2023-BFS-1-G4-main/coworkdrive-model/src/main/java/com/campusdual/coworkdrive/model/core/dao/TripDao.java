@@ -17,5 +17,5 @@ public class TripDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_DESTINATION = "DESTINATION";
     public static final String ATTR_DATE = "DATE";
     public static final String ATTR_TIME = "TIME";
-    public static final String ATTR_ID_CONTACT = "ID_CONTACT";
+    public static final String ATTR_ID_USER = "ID_USER";
 }

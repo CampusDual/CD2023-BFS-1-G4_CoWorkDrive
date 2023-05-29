@@ -19,10 +19,11 @@ public class UserDao extends OntimizeJdbcDaoSupport {
     public static final String EMAIL = "EMAIL";
     public static final String PASSWORD = "PASSWORD";
     public static final String NAME = "NAME";
-    public static final String SURNAME = "SURNAME";
+    public static final String SURNAME1 = "SURNAME1";
     public static final String NIF = "NIF";
     public static final String USERBLOCKED = "USERBLOCKED";
     public static final String LASTPASSWORDUPDATE = "LASTPASSWORDUPDATE";
     public static final String FIRSTLOGIN = "FIRSTLOGIN";
+    public static final String SURNAME2 = "SURNAME2";
 
 }
