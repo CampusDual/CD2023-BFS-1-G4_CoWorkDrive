@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { HomeComponent } from './home/home.component';
-import { CarComponent } from './car/car.component';
-import { TripComponent } from './trip/trip.component';
+import { RouterModule, Routes } from '@angular/router';
 
-
-const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  { path: '', redirectTo: '/login' , pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'car', component: CarComponent },
-  { path: 'trip', component: TripComponent }
-  
+export const routes: Routes = [
+  { path: 'main', loadChildren: () => import('./main/main.module').then(m => m.MainModule) },
+  { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
+  { path: '', redirectTo: 'main', pathMatch: 'full' }
 ];
 
+const opt = {
+  enableTracing: false
+  // true if you want to print navigation routes
+};
+
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, opt)],
+  exports: [RouterModule],
+  providers: []
 })
 export class AppRoutingModule { }

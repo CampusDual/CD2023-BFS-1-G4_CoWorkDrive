@@ -1,64 +1,81 @@
-import { Component } from '@angular/core';
-import { Contact } from '../model/contact';
-import { ContactService } from '../services/contact.service';
-import { Router } from '@angular/router';
-import Swal from 'sweetalert2';
-import { SharedService } from '../services/shared.service';
-
-
+import { Component, Inject, Injector, OnInit, ViewEncapsulation } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AuthService, LocalStorageService, NavigationService } from 'ontimize-web-ngx';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-login',
+  selector: 'login',
+  styleUrls: ['./login.component.scss'],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  encapsulation: ViewEncapsulation.None
 })
-export class LoginComponent {
-  email: string;
-  password: string;
-  contact : Contact = new Contact;
+export class LoginComponent implements OnInit {
 
-  constructor(private contactservice : ContactService, private route: Router, private sharedService: SharedService) {}
+  loginForm: FormGroup = new FormGroup({});
+  userCtrl: FormControl = new FormControl('', Validators.required);
+  pwdCtrl: FormControl = new FormControl('', Validators.required);
+  sessionExpired = false;
 
-  login(){
-    let auth = this.email + "," + this.password;
-    this.contactservice.getContactos(auth).subscribe(response => {
-      if(response){
-        this.contact= response;
-        this.message();
-        sessionStorage.setItem("id_contact",this.contact.id_contact.toString())
-        this.sharedService.isButtonDisabled = false;
-        this.route.navigate(['/home']);
-      } else {
-        Swal.fire({
-          icon: 'error',
-          title: 'Usuario o contraseña erróneos',
-          showConfirmButton: true
-        })
+  router: Router;
+
+  constructor(
+    private actRoute: ActivatedRoute,
+    router: Router,
+    @Inject(NavigationService) public navigation: NavigationService,
+    @Inject(AuthService) private authService: AuthService,
+    @Inject(LocalStorageService) private localStorageService,
+    public injector: Injector
+  ) {
+    this.router = router;
+
+    const qParamObs: Observable<any> = this.actRoute.queryParams;
+    qParamObs.subscribe(params => {
+      if (params) {
+        const isDetail = params['session-expired'];
+        if (isDetail === 'true') {
+          this.sessionExpired = true;
+        } else {
+          this.sessionExpired = false;
+        }
       }
     });
+
   }
 
-  ngOnInit() {
-    if(sessionStorage.getItem("id_contact") != null){
-      this.sharedService.isButtonDisabled = false;
-      this.route.navigate(['/home']);
+  ngOnInit(): any {
+    this.navigation.setVisible(false);
+
+    this.loginForm.addControl('username', this.userCtrl);
+    this.loginForm.addControl('password', this.pwdCtrl);
+
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['../'], { relativeTo: this.actRoute });
+    } else {
+      this.authService.clearSessionData();
     }
   }
 
-  getLoggedUser(): number {
-    return this.contact.id_contact;
+  login() {
+    const userName = this.loginForm.value.username;
+    const password = this.loginForm.value.password;
+    if (userName && userName.length > 0 && password && password.length > 0) {
+      const self = this;
+      this.authService.login(userName, password)
+        .subscribe(() => {
+          self.sessionExpired = false;
+          self.router.navigate(['../'], { relativeTo: this.actRoute });
+        }, this.handleError);
+    }
   }
 
-  message(){
-    Swal.fire({
-      icon: 'success',
-      title: 'Has iniciado sesión',
-      showConfirmButton: false,
-      timer: 3000
-    })
+  handleError(error) {
+    switch (error.status) {
+      case 401:
+        console.error('Email or password is wrong.');
+        break;
+      default: break;
+    }
   }
 
 }
-
-
-

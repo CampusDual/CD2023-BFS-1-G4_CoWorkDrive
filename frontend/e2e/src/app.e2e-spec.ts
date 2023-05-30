@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('coworkdrive app is running!');
+    expect(page.getTitleText()).toEqual('ontimize-web-ngx-jee-seed app is running!');
   });
 
   afterEach(async () => {

@@ -1,47 +1,34 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { APP_CONFIG, ONTIMIZE_MODULES, ONTIMIZE_PROVIDERS, OntimizeWebModule } from 'ontimize-web-ngx';
+
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { MatSlideToggleModule, MatIconModule, MatMenuModule } from '@angular/material';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
-import {MatInputModule} from '@angular/material/input';
-import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './home/home.component';
-import { CarComponent } from './car/car.component';
-import { TripComponent } from './trip/trip.component';
+import { CONFIG } from './app.config';
+
+// Standard providers...
+// Defining custom providers (if needed)...
+export const customProviders: any = [
+];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    CarComponent,
-    TripComponent
-  ],
   imports: [
-    BrowserModule,
+    ONTIMIZE_MODULES,
+    OntimizeWebModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatIconModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    FormsModule,
-    HttpClientModule
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [
+    AppComponent
+  ],
+  bootstrap: [
+    AppComponent
+  ],
+  providers: [
+    { provide: APP_CONFIG, useValue: CONFIG },
+    ONTIMIZE_PROVIDERS,
+    ...customProviders
+  ],
 })
 export class AppModule { }
