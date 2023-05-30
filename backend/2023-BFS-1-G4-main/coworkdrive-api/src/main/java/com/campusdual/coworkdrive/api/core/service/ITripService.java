@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface ITripService {
-    EntityResult tripQuery(Map<?, ?> keyMap, List<?> attrList);
+    EntityResult tripQuery(Map<String, Object> keyMap, List<String> attrList);
 
-    EntityResult tripInsert(Map<?, ?> attrMap);
+    EntityResult tripInsert(Map<String, Object> attrMap);
 
-    EntityResult tripUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    EntityResult tripUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
 
-    EntityResult tripDelete(Map<?, ?> keyMap);
+    EntityResult tripDelete(Map<String, Object> keyMap);
 }

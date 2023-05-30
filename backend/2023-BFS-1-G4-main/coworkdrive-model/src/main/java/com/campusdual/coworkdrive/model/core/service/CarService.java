@@ -21,22 +21,22 @@ public class CarService implements ICarService {
 
 
     @Override
-    public EntityResult carQuery(Map<?, ?> keyMap, List<?> attrList) {
+    public EntityResult carQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(carDao,keyMap,attrList);
     }
 
     @Override
-    public EntityResult carInsert(Map<?, ?> attrMap) {
+    public EntityResult carInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(carDao,attrMap);
     }
 
     @Override
-    public EntityResult carUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+    public EntityResult carUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         return this.daoHelper.update(carDao,attrMap,keyMap);
     }
 
     @Override
-    public EntityResult carDelete(Map<?, ?> keyMap) {
+    public EntityResult carDelete(Map<String, Object> keyMap) {
         return this.daoHelper.delete(carDao,keyMap);
     }
 }

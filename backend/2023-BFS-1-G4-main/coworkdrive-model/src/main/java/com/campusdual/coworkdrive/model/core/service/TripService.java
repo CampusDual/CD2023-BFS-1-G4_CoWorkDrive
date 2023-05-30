@@ -21,22 +21,22 @@ public class TripService implements ITripService {
     private DefaultOntimizeDaoHelper daoHelper;
 
     @Override
-    public EntityResult tripQuery(Map<?, ?> keyMap, List<?> attrList) {
+    public EntityResult tripQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(tripDao, keyMap, attrList);
     }
 
     @Override
-    public EntityResult tripInsert(Map<?, ?> attrMap) {
+    public EntityResult tripInsert(Map<String, Object> attrMap) {
         return this.daoHelper.insert(tripDao, attrMap);
     }
 
     @Override
-    public EntityResult tripUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap) {
+    public EntityResult tripUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
         return this.daoHelper.update(tripDao, attrMap, keyMap);
     }
 
     @Override
-    public EntityResult tripDelete(Map<?, ?> keyMap) {
+    public EntityResult tripDelete(Map<String, Object> keyMap) {
         return this.daoHelper.delete(this.tripDao, keyMap);
     }
 }

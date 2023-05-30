@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface ICarService {
-    EntityResult carQuery(Map<?, ?> keyMap, List<?> attrList);
+    EntityResult carQuery(Map<String, Object> keyMap, List<String> attrList);
 
-    EntityResult carInsert(Map<?, ?> attrMap);
+    EntityResult carInsert(Map<String, Object> attrMap);
 
-    EntityResult carUpdate(Map<?, ?> attrMap, Map<?, ?> keyMap);
+    EntityResult carUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
 
-    EntityResult carDelete(Map<?, ?> keyMap);
+    EntityResult carDelete(Map<String, Object> keyMap);
 }
