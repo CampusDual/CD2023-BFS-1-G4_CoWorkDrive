@@ -12,7 +12,8 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-      { path: 'customers', loadChildren: () => import('./customers/customers.module').then(m => m.CustomersModule)}
+      { path: 'car', loadChildren: () => import('./car/car.module').then(m => m.CarModule) },
+      { path: 'trip', loadChildren: () => import('./trip/trip.module').then(m => m.TripModule) }
     ]
   }
 ];

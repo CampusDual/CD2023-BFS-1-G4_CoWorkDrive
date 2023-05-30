@@ -19,7 +19,7 @@
   "FORGOT_PWD": "¿Has olvidado tu contraseña?",
   "FOOTER_CREATED_BY": "Creado por Imatia Innovation",
   "FOOTER_RIGHTS": "Todos los derechos reservados",
-  "CUSTOMERS": "Clientes",
+  "CARS": "Coches",
   "ID": "Id.",
   "NAME": "Nombre",
   "SURNAME": "Apellido",
@@ -33,5 +33,6 @@
   "ADDRESS": "Dirección",
   "LONGITUDE": "Longitud",
   "LATITUDE": "Latitud",
-  "COMMENTS": "Comentarios"
+  "COMMENTS": "Comentarios",
+  "TRIPS": "Viajes"
 }
