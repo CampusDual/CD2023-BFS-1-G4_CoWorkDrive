@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { OntimizeWebModule } from 'ontimize-web-ngx';
 
 import { CarRoutingModule } from './car-routing.module';
 import { CarHomeComponent } from './car-home/car-home.component';
@@ -9,7 +10,8 @@ import { CarHomeComponent } from './car-home/car-home.component';
   declarations: [CarHomeComponent],
   imports: [
     CommonModule,
-    CarRoutingModule
+    CarRoutingModule,
+    OntimizeWebModule
   ]
 })
 export class CarModule { }

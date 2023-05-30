@@ -5,16 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ICarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ICarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ITripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ITripService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-boot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-boot/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/CarService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +44,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "backendOntimize",
+    "git-widget-placeholder": "frontendOntimize",
     "settings.editor.selected.configurable": "preferences.keymap"
   }
 }]]></component>

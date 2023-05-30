@@ -26,7 +26,6 @@
   "STARTDATE": "Fecha inicio",
   "EMAIL": "Correo",
   "PHOTO": "Fotografía",
-  "CUSTOMER_PERSONAL_INFORMATION": "Información personal",
   "CUSTOMERID": "Id. cliente",
   "PHONE": "Teléfono",
   "CUSTOMERTYPEID": "Tipo cliente",
@@ -34,5 +33,14 @@
   "LONGITUDE": "Longitud",
   "LATITUDE": "Latitud",
   "COMMENTS": "Comentarios",
-  "TRIPS": "Viajes"
+  "TRIPS": "Viajes",
+  "TRIP_INFORMATION": "Información del viaje",
+  "ORIGIN": "Origen",
+  "DESTINATION": "Destino",
+  "DATE": "Fecha",
+  "TIME": "Hora",
+  "origin": "Origen",
+  "destination": "Destino",
+  "date": "Fecha",
+  "time": "Hora"
 }

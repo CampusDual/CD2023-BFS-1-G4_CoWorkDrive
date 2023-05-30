@@ -1,1 +1,13 @@
-<p>trip-home works!</p>
+<o-form-layout-manager
+  title="{{ 'TRIPS' | oTranslate }}"
+  separator=" "
+  mode="tab"
+  label-columns="NAME;SURNAME"
+>
+  <div fxFill>
+    <o-table fxFlex attr="tripTable" service="trips" entity="trip" keys="id_trip" 
+       columns="id_trip;origin;destination;date;time;id_user"
+       visible-columns="origin;destination;date;time" query-rows="5">
+     </o-table>
+  </div>
+</o-form-layout-manager>

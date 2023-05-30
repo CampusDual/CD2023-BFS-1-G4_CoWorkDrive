@@ -26,7 +26,6 @@
   "STARTDATE": "Start date",
   "EMAIL": "Email",
   "PHOTO": "Photo",
-  "CUSTOMER_PERSONAL_INFORMATION": "Personal Information",
   "CUSTOMERID": "Customer Id.",
   "PHONE": "Phone",
   "CUSTOMERTYPEID": "Customer type",
@@ -34,5 +33,10 @@
   "LONGITUDE": "Longitude",
   "LATITUDE": "Latitude",
   "COMMENTS": "Comments",
-  "TRIPS": "Trips"
+  "TRIPS": "Trips",
+  "TRIP_INFORMATION": "Trip information",
+  "ORIGIN": "Origin",
+  "DESTINATION": "Destination",
+  "DATE": "Date",
+  "TIME": "Time"
 }
