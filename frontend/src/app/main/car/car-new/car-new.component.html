@@ -1,48 +1,48 @@
 <o-form
-  service="trip"
-  entity="trip"
-  keys="id_trip"
+  service="car"
+  entity="car"
+  keys="id_car"
   header-actions="R;I;U;D"
   show-header-navigation="no"
 >
   <o-row>
-    <o-column title-label="TRIP_PERSONAL_INFORMATION" fxFlex>
+    <o-column title-label="CAR_INFORMATION" fxFlex>
       <o-row>
         <o-text-input
           class="input-padding"
-          attr="id_user"
+          attr="CAR_BRAND"
           fxFlex="40"
           required="yes"
-          id="id_user"
-          [data]="getValue()"
-          read-only="yes"
-        ></o-text-input>
-      </o-row>
-      <o-row>
-        <o-text-input
-          class="input-padding"
-          attr="origin"
-          fxFlex="40"
-          required="yes"
-          id="origin"
         ></o-text-input>
       </o-row>
 
       <o-row>
         <o-text-input
           class="input-padding"
-          attr="destination"
+          attr="MODEL"
           fxFlex="40"
           required="yes"
-          id="destination"
         ></o-text-input>
       </o-row>
 
       <o-row>
-        <o-date-input attr="date" fxFlex="20" required="yes" id="date"></o-date-input>
-
-        <o-text-input attr="time" fxFlex="20" required="yes" id="time" value-type="string"></o-text-input>
+        <o-text-input
+          class="input-padding"
+          attr="SEATS"
+          fxFlex="20"
+          required="yes"
+        ></o-text-input>
       </o-row>
+      
+      <o-row>
+        <o-text-input
+          class="input-padding"
+          attr="CAR_REGISTRATION"
+          fxFlex="40"
+          required="yes"
+        ></o-text-input>
+      </o-row>
+
     </o-column>
   </o-row>
 </o-form>

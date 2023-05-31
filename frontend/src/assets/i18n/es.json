@@ -42,5 +42,13 @@
   "origin": "Origen",
   "destination": "Destino",
   "date": "Fecha",
-  "time": "Hora"
+  "time": "Hora",
+  "CAR_BRAND": "Marca",
+  "MODEL": "Modelo",
+  "SEATS": "Asientos",
+  "CAR_REGISTRATION": "Matrícula",
+  "car_brand": "Marca",
+  "model": "Modelo",
+  "seats": "Asientos",
+  "car_registration": "Matrícula"
 }

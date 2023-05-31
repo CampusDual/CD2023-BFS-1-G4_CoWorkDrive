@@ -5,9 +5,38 @@
   label-columns="NAME;SURNAME"
 >
   <div fxFill>
-    <o-table fxFlex attr="tripTable" service="trips" entity="trip" keys="id_trip" 
-       columns="id_trip;origin;destination;date;time;id_user"
-       visible-columns="origin;destination;date;time" query-rows="5">
-     </o-table>
+    <o-list
+      #list
+      keys="id_trip"
+      columns="id_trip;origin;destination;date;time;id_user"
+      title="{{ 'TRIPS LIST' | oTranslate }}"
+      quick-filter="true"
+      quick-filter-columns="date;hour"
+      refresh-button="true"
+      insert-button="true"
+      delete-button="true"
+      selectable="true"
+      dense="false"
+      detail-button-in-row="true"
+      detail-button-in-row-icon="chevron_right"
+      edit-button-in-row="false"
+      edit-button-in-row-icon="edit"
+      detail-mode="none"
+      pagination-controls="false"
+      page-size-options="5;10"
+      insert-button-position="top"
+      show-buttons-text="false"
+    >
+      <o-list-item *ngFor="let row of list.dataArray">
+      </o-list-item>
+      <o-list-item-text
+        #item
+        title="David Gonzalez Dieguez"
+        primary-text="Ourense-A Coruña"
+        secondary-text="12-06-2023, hora 10:00"
+        (icon-action)="addToFavorites(row, item)"
+      >
+      </o-list-item-text>
+    </o-list>
   </div>
 </o-form-layout-manager>

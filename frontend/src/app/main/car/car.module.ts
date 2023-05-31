@@ -4,10 +4,11 @@ import { OntimizeWebModule } from 'ontimize-web-ngx';
 
 import { CarRoutingModule } from './car-routing.module';
 import { CarHomeComponent } from './car-home/car-home.component';
+import { CarNewComponent } from './car-new/car-new.component';
 
 
 @NgModule({
-  declarations: [CarHomeComponent],
+  declarations: [CarHomeComponent, CarNewComponent],
   imports: [
     CommonModule,
     CarRoutingModule,

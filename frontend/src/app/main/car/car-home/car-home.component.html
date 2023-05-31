@@ -1,1 +1,13 @@
-<p>car-home works!</p>
+<o-form-layout-manager
+  title="{{ 'CARS' | oTranslate }}"
+  separator=" "
+  mode="tab"
+  label-columns="CAR_BRAND;MODEL;SEATS;CAR_REGISTRATION"
+>
+  <div fxFill>
+    <o-table fxFlex attr="carTable" service="cars" entity="car" keys="id_car" 
+       columns="id_car;car_brand;model;seats;car_registration;id_user"
+       visible-columns="car_brand;model;seats;car_registration" query-rows="5">
+     </o-table>
+  </div>
+</o-form-layout-manager>

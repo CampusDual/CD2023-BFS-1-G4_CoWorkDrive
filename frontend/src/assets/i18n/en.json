@@ -38,5 +38,13 @@
   "ORIGIN": "Origin",
   "DESTINATION": "Destination",
   "DATE": "Date",
-  "TIME": "Time"
+  "TIME": "Time",
+  "CAR_BRAND": "Car brand",
+  "MODEL": "Model",
+  "SEATS": "Seats",
+  "CAR_REGISTRATION": "Carg registration",
+  "car_brand": "Car brand",
+  "model": "Model",
+  "seats": "Seats",
+  "car_registration": "Carg registration"
 }

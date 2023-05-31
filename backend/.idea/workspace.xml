@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-routing.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/app.services.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/app.services.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" afterDir="false" />
     </list>
@@ -49,7 +49,7 @@
   }
 }]]></component>
   <component name="RunManager">
-    <configuration name="ServerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="ServerApplication" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.campusdual.coworkdrive.ServerApplication" />
       <module name="coworkdrive-boot" />
       <extension name="coverage">
@@ -62,11 +62,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.ServerApplication" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
