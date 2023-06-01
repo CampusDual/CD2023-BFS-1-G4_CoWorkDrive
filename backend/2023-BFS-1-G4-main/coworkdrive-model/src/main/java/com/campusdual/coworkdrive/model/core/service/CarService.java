@@ -6,6 +6,8 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Map;
@@ -22,11 +24,15 @@ public class CarService implements ICarService {
 
     @Override
     public EntityResult carQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put("id_user", auth.getName());
         return this.daoHelper.query(carDao,keyMap,attrList);
     }
 
     @Override
     public EntityResult carInsert(Map<String, Object> attrMap) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        attrMap.put("id_user", auth.getName());
         return this.daoHelper.insert(carDao,attrMap);
     }
 

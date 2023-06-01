@@ -6,11 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/CarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/app.services.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/app.services.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" afterDir="false" />
     </list>
@@ -73,43 +73,5 @@
       <updated>1685087370616</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.2.5/postgresql-42.2.5.jar!/org/postgresql/core/v3/QueryExecutorImpl.class</url>
-          <line>307</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.3.7/spring-jdbc-5.3.7.jar!/org/springframework/jdbc/core/JdbcTemplate.class</url>
-          <line>666</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.3.7/spring-jdbc-5.3.7.jar!/org/springframework/jdbc/core/JdbcTemplate.class</url>
-          <line>423</line>
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>jar://$MAVEN_REPOSITORY$/org/postgresql/postgresql/42.2.5/postgresql-42.2.5.jar!/org/postgresql/core/v3/QueryExecutorImpl.class</url>
-          <line>278</line>
-          <properties class="org.postgresql.core.v3.QueryExecutorImpl" method="execute">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>jar://$MAVEN_REPOSITORY$/com/ontimize/jee/ontimize-jee-server-jdbc/5.7.0/ontimize-jee-server-jdbc-5.7.0.jar!/com/ontimize/jee/server/dao/jdbc/OntimizeJdbcDaoSupport.class</url>
-          <line>1211</line>
-          <properties class="com.ontimize.jee.server.dao.jdbc.OntimizeJdbcDaoSupport" method="executeInsertAndReturnKeyInternal">
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

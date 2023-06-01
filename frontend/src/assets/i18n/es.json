@@ -34,6 +34,7 @@
   "LATITUDE": "Latitud",
   "COMMENTS": "Comentarios",
   "TRIPS": "Viajes",
+  "TRIPS LIST": "Listado de viajes",
   "TRIP_INFORMATION": "Información del viaje",
   "ORIGIN": "Origen",
   "DESTINATION": "Destino",
@@ -50,5 +51,6 @@
   "car_brand": "Marca",
   "model": "Modelo",
   "seats": "Asientos",
-  "car_registration": "Matrícula"
+  "car_registration": "Matrícula",
+  "YOUR CAR": "Tu coche"
 }

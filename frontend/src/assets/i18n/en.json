@@ -34,6 +34,7 @@
   "LATITUDE": "Latitude",
   "COMMENTS": "Comments",
   "TRIPS": "Trips",
+  "TRIPS LIST": "Trips list",
   "TRIP_INFORMATION": "Trip information",
   "ORIGIN": "Origin",
   "DESTINATION": "Destination",
@@ -42,9 +43,10 @@
   "CAR_BRAND": "Car brand",
   "MODEL": "Model",
   "SEATS": "Seats",
-  "CAR_REGISTRATION": "Carg registration",
+  "CAR_REGISTRATION": "Car registration",
   "car_brand": "Car brand",
   "model": "Model",
   "seats": "Seats",
-  "car_registration": "Carg registration"
+  "car_registration": "Car registration",
+  "YOUR CAR": "Your car"
 }
