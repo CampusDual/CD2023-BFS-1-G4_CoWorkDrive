@@ -12,4 +12,17 @@
         <Column>id_trip</Column>
     </UpdateKeys>
     <GeneratedKey>id_trip</GeneratedKey>
+    <Queries>
+        <Query id="all_trips">
+            <Sentence>
+                <![CDATA[
+                     SELECT
+                      #COLUMNS#
+                    FROM trip
+                    #WHERE#
+                        AND date >= cast(now() as date)
+                   ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

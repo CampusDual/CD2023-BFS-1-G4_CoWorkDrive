@@ -2,6 +2,10 @@ package com.campusdual.coworkdrive.model.core.service;
 
 import com.campusdual.coworkdrive.api.core.service.ITripService;
 import com.campusdual.coworkdrive.model.core.dao.TripDao;
+import com.ontimize.jee.common.db.SQLStatementBuilder;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
+import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.common.security.PermissionsProviderSecured;
@@ -35,6 +39,14 @@ public class TripService implements ITripService {
     }
 
     @Override
+    public EntityResult tripGetAllQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY,
+                getExpression("id_user", auth.getName()));
+        return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
+    }
+
+    @Override
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult tripInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -50,5 +62,12 @@ public class TripService implements ITripService {
     @Override
     public EntityResult tripDelete(Map<String, Object> keyMap) {
         return this.daoHelper.delete(this.tripDao, keyMap);
+    }
+
+    private BasicExpression getExpression(String param, String value) {
+
+        BasicField field = new BasicField(param);
+        // BasicExpression bexp2 = new BasicExpression(field,BasicOperator.NOT_EQUAL,);
+        //return bexp2;
     }
 }

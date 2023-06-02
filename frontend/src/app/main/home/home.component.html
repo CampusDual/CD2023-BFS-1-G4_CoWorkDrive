@@ -1,5 +1,38 @@
-<div fxLayout="row" layout-padding fxLayoutAlign="center center">
-  <p>
-    Ontimize web seed application home component
-  </p>
-</div>
+<o-form-layout-manager
+  title="{{ 'TRIPS' | oTranslate }}"
+  separator=" "
+  mode="tab"
+  label-columns="NAME;SURNAME"
+>
+  <div fxFill>
+    <o-list
+      #list
+      attr="tripslist"
+      title="TRIPS"
+      service="trip"
+      entity="tripGetAll"
+      keys="id_trip"
+      columns="id_trip;origin;destination;date;time;id_user"
+      selectable="true"
+      refresh-button="true"
+      insert-button="true"
+      insert-button-position="top"
+      delete-button="true"
+      detail-button-in-row="true"
+      detail-button-in-row-icon="chevron_right"
+      edit-button-in-row="false"
+      edit-button-in-row-icon="edit"
+      detail-mode="none"
+    >
+      <o-list-item *ngFor="let row of list.dataArray">
+        <o-list-item-card
+          #item
+          title="{{ row.origin }}"
+          subtitle="{{ row.destination }}"
+          image="./assets/images/ontimize.png"
+        >
+        </o-list-item-card>
+      </o-list-item>
+    </o-list>
+  </div>
+</o-form-layout-manager>
