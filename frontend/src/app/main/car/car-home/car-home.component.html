@@ -1,5 +1,5 @@
 <o-form-layout-manager
-  title="{{ 'CARS' | oTranslate }}"
+  title="{{ 'CAR' | oTranslate }}"
   separator=" "
   mode="tab"
   label-columns="NAME;SURNAME"
@@ -8,7 +8,7 @@
     <o-list
       #list
       attr="carslist"
-      title="CARS"
+      title="MY CAR"
       service="car"
       entity="car"
       keys="id_car"
@@ -29,7 +29,7 @@
           #item
           title="{{ row.car_brand }}"
           subtitle="{{ row.model }}"
-          image="./assets/images/ontimize.png"
+          image="./assets/images/carIcon.png"
         >
         </o-list-item-card>
       </o-list-item>

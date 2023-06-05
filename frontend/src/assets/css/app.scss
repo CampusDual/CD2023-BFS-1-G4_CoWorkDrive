@@ -6,8 +6,9 @@
 // @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-indigo-pink.scss';
 // @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-deeppurple-amber.scss';
 // @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-pink-bluegrey.scss';
- @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-purple-green.scss';
-//@import 'node_modules/ontimize-web-ngx-theming/src/themes/ontimize.scss';
+// @import 'node_modules/ontimize-web-ngx-theming/src/themes/mat-purple-green.scss';
+// @import 'node_modules/ontimize-web-ngx-theming/src/themes/ontimize.scss';
+@import 'customColors.scss';
 
 // Include ontimize theme
 @include ontimize-theme-styles($theme);
