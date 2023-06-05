@@ -67,7 +67,7 @@ public class TripService implements ITripService {
     private BasicExpression getExpression(String param, String value) {
 
         BasicField field = new BasicField(param);
-        // BasicExpression bexp2 = new BasicExpression(field,BasicOperator.NOT_EQUAL,);
-        //return bexp2;
+        BasicExpression bexp2 = new BasicExpression(field,BasicOperator.NOT_EQUAL_OP,value);
+        return bexp2;
     }
 }

@@ -15,11 +15,14 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    // nothing to do
   }
 
   navigate() {
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
 
+  convertDate(date: Date){
+    const newDate = new Date(date);
+    return (newDate.toLocaleDateString());
+  }
 }

@@ -12,4 +12,9 @@ export class TripHomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  convertDate(date: Date){
+    const newDate = new Date(date);
+    return (newDate.toLocaleDateString());
+  }
+
 }

@@ -23,13 +23,14 @@
       edit-button-in-row="false"
       edit-button-in-row-icon="edit"
       detail-mode="none"
+      pagination-controls="yes"
     >
       <o-list-item *ngFor="let row of list.dataArray">
         <o-list-item-card
           #item
-          title="{{ row.origin }}"
-          subtitle="{{ row.destination }}"
-          image="./assets/images/ontimize.png"
+          title="{{ row.origin }} - {{ row.destination }}"
+          subtitle="{{ convertDate(row.date) }} - {{ row.time }}"
+          image="./assets/images/mapIcon.png"
         >
         </o-list-item-card>
       </o-list-item>
