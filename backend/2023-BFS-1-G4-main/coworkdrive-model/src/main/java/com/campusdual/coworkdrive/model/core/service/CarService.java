@@ -15,6 +15,7 @@ import java.util.Map;
 @Lazy
 @Service("CarService")
 public class CarService implements ICarService {
+    private static final String PRIMARYUSERKEY = "id_user";
     @Autowired
     private CarDao carDao;
 
@@ -25,14 +26,14 @@ public class CarService implements ICarService {
     @Override
     public EntityResult carQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        keyMap.put("id_user", auth.getName());
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
         return this.daoHelper.query(carDao,keyMap,attrList);
     }
 
     @Override
     public EntityResult carInsert(Map<String, Object> attrMap) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        attrMap.put("id_user", auth.getName());
+        attrMap.put(PRIMARYUSERKEY, auth.getName());
         return this.daoHelper.insert(carDao,attrMap);
     }
 

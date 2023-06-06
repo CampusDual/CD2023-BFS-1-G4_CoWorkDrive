@@ -8,23 +8,20 @@ import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
-import com.ontimize.jee.common.security.PermissionsProviderSecured;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @Lazy
 @Service("TripService")
 public class TripService implements ITripService {
+    private static final String PRIMARYUSERKEY = "id_user";
     @Autowired
     private TripDao tripDao;
 
@@ -34,15 +31,15 @@ public class TripService implements ITripService {
     @Override
     public EntityResult tripQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        keyMap.put("id_user", auth.getName());
-        return this.daoHelper.query(tripDao, keyMap, attrList);
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
     }
 
     @Override
     public EntityResult tripGetAllQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY,
-                getExpression("id_user", auth.getName()));
+                getExpression(PRIMARYUSERKEY, auth.getName()));
         return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
     }
 
@@ -50,7 +47,7 @@ public class TripService implements ITripService {
     //@Secured({ PermissionsProviderSecured.SECURED })
     public EntityResult tripInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        attrMap.put("id_user", auth.getName());
+        attrMap.put(PRIMARYUSERKEY, auth.getName());
         return this.daoHelper.insert(this.tripDao, attrMap);
     }
 
@@ -67,7 +64,6 @@ public class TripService implements ITripService {
     private BasicExpression getExpression(String param, String value) {
 
         BasicField field = new BasicField(param);
-        BasicExpression bexp2 = new BasicExpression(field,BasicOperator.NOT_EQUAL_OP,value);
-        return bexp2;
+        return new BasicExpression(field,BasicOperator.NOT_EQUAL_OP,value);
     }
 }

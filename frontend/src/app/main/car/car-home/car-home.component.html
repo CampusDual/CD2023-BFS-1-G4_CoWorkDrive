@@ -15,7 +15,7 @@
       columns="id_car;car_brand;model;seats;car_registration;id_user"
       selectable="true"
       refresh-button="true"
-      insert-button="true"
+      [insert-button]="list.dataArray.length>0 ? false : true"
       insert-button-position="top"
       delete-button="true"
       detail-button-in-row="true"

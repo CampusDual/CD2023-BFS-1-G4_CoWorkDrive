@@ -1,9 +1,5 @@
 package com.campusdual.coworkdrive.model.core.service;
 
-
-import java.sql.Timestamp;
-import java.util.Calendar;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +24,7 @@ public class UserService implements IUserService {
 	private DefaultOntimizeDaoHelper daoHelper;
 
 	public void loginQuery(Map<?, ?> key, List<?> attr) {
+		// Esto no se usa o puede ser que sí
 	}
 
 	//Sample to permission
