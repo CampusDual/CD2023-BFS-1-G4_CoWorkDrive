@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="booking"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+<DeleteKeys>
+<Column>id_booking</Column>
+</DeleteKeys>
+<UpdateKeys>
+<Column>id_booking</Column>
+</UpdateKeys>
+<GeneratedKey>id_booking</GeneratedKey>
+    <Queries>
+        <Query id="booking_info">
+            <Sentence>
+                <![CDATA[
+                     SELECT
+                      #COLUMNS#
+                    FROM trip
+                    #WHERE#
+                   ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>
