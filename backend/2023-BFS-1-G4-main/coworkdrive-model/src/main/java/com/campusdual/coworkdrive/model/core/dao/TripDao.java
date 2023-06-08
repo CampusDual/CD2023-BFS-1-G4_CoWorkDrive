@@ -12,11 +12,11 @@ import org.springframework.stereotype.Repository;
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class TripDao extends OntimizeJdbcDaoSupport {
 
-    public static final String ATTR_ID_TRIP = "ID_TRIP";
-    public static final String ATTR_ORIGIN = "ORIGIN";
-    public static final String ATTR_DESTINATION = "DESTINATION";
-    public static final String ATTR_DATE = "DATE";
-    public static final String ATTR_TIME = "TIME";
-    public static final String ATTR_ID_USER = "ID_USER";
+    public static final String ATTR_ID_TRIP = "id_trip";
+    public static final String ATTR_ORIGIN = "origin";
+    public static final String ATTR_DESTINATION = "destination";
+    public static final String ATTR_DATE = "date";
+    public static final String ATTR_TIME = "time";
+    public static final String ATTR_ID_USER = "id_user";
     public static final String QUERY_ALL_TRIPS = "all_trips";
 }

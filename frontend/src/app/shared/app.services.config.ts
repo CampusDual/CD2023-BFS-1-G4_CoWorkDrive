@@ -1,8 +1,8 @@
 export const SERVICE_CONFIG: Object = {
-  'car': {
+  'cars': {
     'path': '/cars'
   },
-  'trip': {
+  'trips': {
     'path': '/trips'
   }
 };

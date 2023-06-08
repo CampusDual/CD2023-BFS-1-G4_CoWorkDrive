@@ -17,7 +17,7 @@
   "ERROR_USER_PASS_INCORRECT": "Invalid username or password",
   "REMEMBER_ME": "Remember me",
   "FORGOT_PWD": "Forgot your password?",
-  "FOOTER_CREATED_BY": "Created by Imatia Innovation",
+  "FOOTER_CREATED_BY": "Created by CoWorkDrive",
   "FOOTER_RIGHTS": "All rights reserved",
   "CARS": "Cars",
   "ID": "Id.",
@@ -51,5 +51,6 @@
   "model": "Model",
   "seats": "Seats",
   "car_registration": "Car registration",
-  "YOUR CAR": "Your car"
+  "YOUR CAR": "Your car",
+  "BOOKINGS": "Bookings"
 }

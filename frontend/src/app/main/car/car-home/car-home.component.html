@@ -9,7 +9,7 @@
       #list
       attr="carslist"
       title="MY CAR"
-      service="car"
+      service="cars"
       entity="car"
       keys="id_car"
       columns="id_car;car_brand;model;seats;car_registration;id_user"
@@ -23,6 +23,7 @@
       edit-button-in-row="false"
       edit-button-in-row-icon="edit"
       detail-mode="none"
+      keys-sql-types="INT"
     >
       <o-list-item *ngFor="let row of list.dataArray">
         <o-list-item-card

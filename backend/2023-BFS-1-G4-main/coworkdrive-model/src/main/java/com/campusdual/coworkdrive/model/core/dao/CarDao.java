@@ -11,10 +11,11 @@ import org.springframework.stereotype.Repository;
         configurationFilePlaceholder = "dao/placeholders.properties")
 public class CarDao extends OntimizeJdbcDaoSupport {
 
-    public static final String ATTR_ID_CAR = "ID_CAR";
-    public static final String ATTR_CAR_BRAND = "CAR_BRAND";
-    public static final String ATTR_MODEL = "MODEL";
-    public static final String ATTR_SEATS = "SEATS";
-    public static final String ATTR_CAR_REGISTRATION = "CAR_REGISTRATION";
-    public static final String ATTR_ID_USER = "ID_USER";
+    public static final String ATTR_ID_CAR = "id_car";
+    public static final String ATTR_CAR_BRAND = "car_brand";
+    public static final String ATTR_MODEL = "model";
+    public static final String ATTR_SEATS = "seats";
+    public static final String ATTR_CAR_REGISTRATION = "car_registration";
+    public static final String ATTR_ID_USER = "id_user";
+    public static final String QUERY_CAR_DETAIL = "car_detail";
 }

@@ -27,6 +27,9 @@ public class CarService implements ICarService {
     public EntityResult carQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(PRIMARYUSERKEY, auth.getName());
+        if(keyMap.get(CarDao.ATTR_ID_CAR) instanceof String){
+            keyMap.put(CarDao.ATTR_ID_CAR,Integer.parseInt((String) keyMap.get(CarDao.ATTR_ID_CAR)));
+        }
         return this.daoHelper.query(carDao,keyMap,attrList);
     }
 

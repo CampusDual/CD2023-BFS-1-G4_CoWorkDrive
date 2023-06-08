@@ -3,7 +3,7 @@
         xmlns="http://www.ontimize.com/schema/jdbc"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
-        catalog="" schema="${mainschema}" table="CAR"
+        catalog="" schema="${mainschema}" table="car"
         datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
 <DeleteKeys>
 <Column>id_car</Column>
@@ -12,4 +12,4 @@
 <Column>id_car</Column>
 </UpdateKeys>
 <GeneratedKey>id_car</GeneratedKey>
-        </JdbcEntitySetup>
+</JdbcEntitySetup>

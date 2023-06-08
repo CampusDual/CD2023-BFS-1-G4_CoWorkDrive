@@ -17,7 +17,7 @@
   "ERROR_USER_PASS_INCORRECT": "Usuario o contraseña incorrecta",
   "REMEMBER_ME": "Recuérdame",
   "FORGOT_PWD": "¿Has olvidado tu contraseña?",
-  "FOOTER_CREATED_BY": "Creado por Imatia Innovation",
+  "FOOTER_CREATED_BY": "Creado por CoWorkDrive",
   "FOOTER_RIGHTS": "Todos los derechos reservados",
   "CARS": "Coches",
   "ID": "Id.",
@@ -55,5 +55,6 @@
   "model": "Modelo",
   "seats": "Asientos",
   "car_registration": "Matrícula",
-  "YOUR CAR": "Tu coche"
+  "YOUR CAR": "Tu coche",
+  "BOOKINGS": "Reservas"
 }

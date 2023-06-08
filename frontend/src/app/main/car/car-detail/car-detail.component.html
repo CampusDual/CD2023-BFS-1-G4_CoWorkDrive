@@ -1,0 +1,48 @@
+<o-form
+  service="cars"
+  entity="car"
+  keys="id_car"
+  header-actions="R;U"
+  show-header-navigation="no"
+>
+  <o-row>
+    <o-column title-label="CAR_INFORMATION" fxFlex>
+      <div class="center-form">
+        <o-row>
+          <o-text-input
+            class="input-padding large-input"
+            attr="car_brand"
+            fxFlex="40"
+            required="yes"
+          ></o-text-input>
+        </o-row>
+
+        <o-row>
+          <o-text-input
+            class="input-padding large-input"
+            attr="model"
+            fxFlex="40"
+            required="yes"
+          ></o-text-input>
+        </o-row>
+
+        <o-row>
+          <o-integer-input
+            class="seats-input large-input"
+            attr="seats"
+            fxFlex="20"
+            required="yes"
+            min="1"
+            max="9"
+          ></o-integer-input>
+          <o-text-input
+            class="input-padding large-input"
+            attr="car_registration"
+            fxFlex="20"
+            required="yes"
+          ></o-text-input>
+        </o-row>
+      </div>
+    </o-column>
+  </o-row>
+</o-form>

@@ -32,7 +32,18 @@ public class TripService implements ITripService {
     public EntityResult tripQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(PRIMARYUSERKEY, auth.getName());
-        return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
+        if(keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String){
+            keyMap.put(TripDao.ATTR_ID_TRIP,Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList);
+    }
+
+    @Override
+    public EntityResult bookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if(keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String){
+            keyMap.put(TripDao.ATTR_ID_TRIP,Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList);
     }
 
     @Override
@@ -62,7 +73,6 @@ public class TripService implements ITripService {
     }
 
     private BasicExpression getExpression(String param, String value) {
-
         BasicField field = new BasicField(param);
         return new BasicExpression(field,BasicOperator.NOT_EQUAL_OP,value);
     }
