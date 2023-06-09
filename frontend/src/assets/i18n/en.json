@@ -52,5 +52,9 @@
   "seats": "Seats",
   "car_registration": "Car registration",
   "YOUR CAR": "Your car",
-  "BOOKINGS": "Bookings"
+  "BOOKINGS": "Bookings",
+  "name": "Name",
+  "surname1": "First surname",
+  "surname2": "Second surname",
+  "free_seats": "Free seats"
 }

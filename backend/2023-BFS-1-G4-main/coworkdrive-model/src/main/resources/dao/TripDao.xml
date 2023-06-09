@@ -24,5 +24,41 @@
                    ]]>
             </Sentence>
         </Query>
+        <Query id="get_user">
+            <Sentence>
+                <![CDATA[
+                     SELECT
+                      id_user
+                    FROM trip
+                    #WHERE#
+                   ]]>
+            </Sentence>
+        </Query>
+        <Query id="booking_info">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="t" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>origin</Column>
+                <Column>destination</Column>
+                <Column>date</Column>
+                <Column>time</Column>
+                <Column>name</Column>
+                <Column>surname1</Column>
+                <Column>surname2</Column>
+                <Column>free_seats</Column>
+                <Column>id_trip</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2, (c.seats - count(b.*)) as free_seats, t.id_trip
+                    FROM trip t JOIN tuser u ON t.id_user = u.user_
+                    JOIN car c ON u.user_ = c.id_user
+                    LEFT JOIN booking b ON b.id_trip = t.id_trip
+                    #WHERE#
+                    GROUP BY t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2, c.seats, t.id_trip
+                   ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

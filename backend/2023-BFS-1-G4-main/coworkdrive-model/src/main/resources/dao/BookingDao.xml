@@ -12,16 +12,4 @@
 <Column>id_booking</Column>
 </UpdateKeys>
 <GeneratedKey>id_booking</GeneratedKey>
-    <Queries>
-        <Query id="booking_info">
-            <Sentence>
-                <![CDATA[
-                     SELECT
-                      #COLUMNS#
-                    FROM trip
-                    #WHERE#
-                   ]]>
-            </Sentence>
-        </Query>
-    </Queries>
 </JdbcEntitySetup>

@@ -56,5 +56,9 @@
   "seats": "Asientos",
   "car_registration": "Matrícula",
   "YOUR CAR": "Tu coche",
-  "BOOKINGS": "Reservas"
+  "BOOKINGS": "Reservas",
+  "name": "Nombre",
+  "surname1": "Primer apellido",
+  "surname2": "Segundo apellido",
+  "free_seats": "Asientos libres"
 }

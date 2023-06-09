@@ -1,6 +1,7 @@
 package com.campusdual.coworkdrive.model.core.service;
 
 import com.campusdual.coworkdrive.api.core.service.ITripService;
+import com.campusdual.coworkdrive.model.core.dao.BookingDao;
 import com.campusdual.coworkdrive.model.core.dao.TripDao;
 import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
@@ -43,7 +44,7 @@ public class TripService implements ITripService {
         if(keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String){
             keyMap.put(TripDao.ATTR_ID_TRIP,Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
         }
-        return this.daoHelper.query(tripDao, keyMap, attrList);
+        return this.daoHelper.query(tripDao,keyMap,attrList, TripDao.QUERY_BOOKING_INFO);
     }
 
     @Override

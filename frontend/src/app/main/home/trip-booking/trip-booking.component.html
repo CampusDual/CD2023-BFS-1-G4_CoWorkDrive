@@ -2,19 +2,17 @@
   service="trips"
   entity="booking"
   keys="id_trip"
-  header-actions="R"
-  show-header-navigation="no"
 >
   <o-row>
-    <o-column title-label="TRIP_PERSONAL_INFORMATION" fxFlex>
+    <o-column title-label="TRIP_INFORMATION" fxFlex>
       <div class="center-form">
         <o-row>
           <o-text-input
             class="input-padding large-input"
             attr="origin"
             fxFlex="40"
-            required="yes"
             id="origin"
+            read-only="true"
           ></o-text-input>
         </o-row>
 
@@ -23,8 +21,8 @@
             class="input-padding large-input"
             attr="destination"
             fxFlex="40"
-            required="yes"
             id="destination"
+            read-only="true"
           ></o-text-input>
         </o-row>
 
@@ -33,19 +31,53 @@
             class="date-input"
             attr="date"
             fxFlex="20"
-            required="yes"
             id="date"
+            read-only="true"
           ></o-date-input>
 
           <o-text-input
             class="input-padding time-input"
             attr="time"
             fxFlex="20"
-            required="yes"
             id="time"
+            read-only="true"
+          ></o-text-input>
+
+          <o-text-input
+            class="input-padding time-input"
+            attr="free_seats"
+            fxFlex="20"
+            id="free_seats"
+            read-only="true"
+          ></o-text-input>
+        </o-row>
+        <o-row>
+          <o-text-input
+            class="input-padding time-input"
+            attr="name"
+            fxFlex="20"
+            id="name"
+            read-only="true"
+          ></o-text-input>
+
+          <o-text-input
+            class="input-padding time-input"
+            attr="surname1"
+            fxFlex="20"
+            id="surname1"
+            read-only="true"
+          ></o-text-input>
+
+          <o-text-input
+            class="input-padding time-input"
+            attr="surname2"
+            fxFlex="20"
+            id="surname2"
+            read-only="true"
           ></o-text-input>
         </o-row>
       </div>
     </o-column>
   </o-row>
+  <button id="signUp" [disabled]="disabledState">Sign Up</button>
 </o-form>

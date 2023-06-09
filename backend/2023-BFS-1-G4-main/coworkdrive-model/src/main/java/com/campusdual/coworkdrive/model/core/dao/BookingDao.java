@@ -13,9 +13,7 @@ import org.springframework.stereotype.Repository;
 public class BookingDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_ID_BOOKING = "id_booking";
-    public static final String ATTR_FREE_SEATS = "free_seats";
     public static final String ATTR_ID_TRIP = "id_trip";
     public static final String ATTR_ID_USER = "id_user";
-    public static final String QUERY_BOOKING_INFO = "booking_info";
 
 }
