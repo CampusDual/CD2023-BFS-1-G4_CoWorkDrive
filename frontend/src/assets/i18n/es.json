@@ -60,5 +60,7 @@
   "name": "Nombre",
   "surname1": "Primer apellido",
   "surname2": "Segundo apellido",
-  "free_seats": "Asientos libres"
+  "free_seats": "Asientos libres",
+  "MY BOOKINGS": "Mis reservas",
+  "CAR REGISTRATION INVALID FORMAT": "Formato de matrícula inválido"
 }

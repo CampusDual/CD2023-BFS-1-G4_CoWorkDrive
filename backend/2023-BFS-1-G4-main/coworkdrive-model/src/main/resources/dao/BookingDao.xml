@@ -12,4 +12,53 @@
 <Column>id_booking</Column>
 </UpdateKeys>
 <GeneratedKey>id_booking</GeneratedKey>
+    <Queries>
+        <Query id="seats_info">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="t" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>free_seats</Column>
+                <Column>id_trip</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT (c.seats - count(b.*)) as free_seats, t.id_trip
+                    FROM trip t JOIN tuser u ON t.id_user = u.user_
+                    JOIN car c ON u.user_ = c.id_user
+                    LEFT JOIN booking b ON b.id_trip = t.id_trip
+                    #WHERE#
+                    GROUP BY c.seats, t.id_trip
+                   ]]>
+            </Sentence>
+        </Query>
+        <Query id="my_bookings">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_user" prefix="b" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>origin</Column>
+                <Column>destination</Column>
+                <Column>date</Column>
+                <Column>time</Column>
+                <Column>driver</Column>
+                <Column>car_brand</Column>
+                <Column>model</Column>
+                <Column>car_registration</Column>
+                <Column>id_user</Column>
+                <Column>id_booking</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT b.id_booking, t.origin, t.destination, t."date", t."time", u."name" as driver, c.car_brand, c.model, c.car_registration, b.id_user
+                    FROM booking b
+                    JOIN trip t ON b.id_trip = t.id_trip
+                    JOIN tuser u ON u.user_ = t.id_user
+                    JOIN car c ON c.id_user = u.user_
+                    #WHERE#
+                        AND t.date >= CAST(now() as date)
+                   ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

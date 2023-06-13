@@ -8,7 +8,13 @@ import java.util.Map;
 public interface IBookingService {
     EntityResult bookingQuery(Map<String, Object> keyMap, List<String> attrList);
 
+    EntityResult myBookingsQuery(Map<String, Object> keyMap, List<String> attrList);
+
     EntityResult bookingInsert(Map<String, Object> attrMap);
 
     EntityResult bookingDelete(Map<String, Object> keyMap);
+
+    EntityResult myBookingsDelete(Map<String, Object> keyMap);
+
+    EntityResult getSeatsQuery(Map<String, Object> keyMap, List<String> attrList);
 }

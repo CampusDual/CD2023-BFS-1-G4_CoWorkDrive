@@ -1,0 +1,34 @@
+<o-form-layout-manager
+  title="{{ 'BOOKINGS' | oTranslate }}"
+  separator=" "
+  mode="tab"
+  label-columns="ORIGIN;DESTINATION"
+>
+  <div fxFill>
+    <o-list
+      #list
+      attr="bookingslist"
+      title="MY BOOKINGS"
+      service="bookings"
+      entity="myBookings"
+      keys="id_booking"
+      columns="origin;destination;date;time;driver;car_brand;model;car_registration;id_user"
+      selectable="true"
+      refresh-button="true"
+      delete-button="true"
+      detail-mode="none"
+      keys-sql-types="STRING"
+      pagination-controls="yes"
+    >
+      <o-list-item *ngFor="let row of list.dataArray">
+        <o-list-item-text
+        #item 
+        title="{{ row.origin }} - {{ row.destination }}" 
+        primary-text="{{ convertDate(row.date) }} - {{ row.time }}"
+        secondary-text="{{ row.driver }} - {{ row.car_brand }} - {{ row.model }} - {{ row.car_registration }}"
+        >
+        </o-list-item-text>
+      </o-list-item>
+    </o-list>
+  </div>
+</o-form-layout-manager>

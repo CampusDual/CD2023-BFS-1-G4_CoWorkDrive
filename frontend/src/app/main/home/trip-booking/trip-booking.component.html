@@ -1,7 +1,9 @@
-<o-form
+<o-form #formTrip
   service="trips"
   entity="booking"
   keys="id_trip"
+  id="idForm"
+  show-header="no"
 >
   <o-row>
     <o-column title-label="TRIP_INFORMATION" fxFlex>
@@ -75,9 +77,30 @@
             id="surname2"
             read-only="true"
           ></o-text-input>
+
+          <o-text-input
+            #idTrip
+            class="input-padding time-input"
+            attr="id_trip"
+            fxFlex="20"
+            id="id_trip"
+            read-only="true"
+            oHidden
+          ></o-text-input>
         </o-row>
       </div>
     </o-column>
   </o-row>
-  <button id="signUp" [disabled]="disabledState">Sign Up</button>
+  <o-form #formBooking
+  service="bookings"
+  entity="booking"
+  id="idFormBooking"
+  header-actions="I"
+  show-header="no">
+    <o-text-input
+        attr="id_trip"
+        oHidden
+    ></o-text-input>
+  <button id="signUp" [disabled]="disabledState" (click)="signUp()">Sign Up</button>
+  </o-form>
 </o-form>

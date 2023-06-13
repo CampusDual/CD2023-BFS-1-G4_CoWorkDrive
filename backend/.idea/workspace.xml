@@ -8,11 +8,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/IBookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/IBookingService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/BookingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/BookingDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/trip-booking/trip-booking.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/trip-booking/trip-booking.component.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -98,17 +95,15 @@
           <line>138</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="((HashMap)parameters[0]).entrySet().toArray()[0]" custom="java.util.HashMap" />
         <watch expression="sqlQuery" />
+        <watch expression="vValues" />
+        <watch expression="sqlQuery" />
+        <watch expression="((java.util.ArrayList)((HashMap.Node)((HashMap)keyMap).entrySet().toArray()[0]).getValue()).get(0)" custom="java.util.HashMap.Node,java.util.HashMap,java.util.ArrayList" />
       </configuration>
     </watches-manager>
   </component>

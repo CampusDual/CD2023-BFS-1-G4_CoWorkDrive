@@ -44,7 +44,8 @@
             fxFlex="20"
             required="yes"
             placeholder="1111ZZZ"
-          ></o-text-input>
+            [validators]="validatorCarRegistration"
+          ><o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT"></o-validator></o-text-input>
         </o-row>
       </div>
     </o-column>

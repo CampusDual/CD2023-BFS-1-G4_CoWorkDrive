@@ -13,7 +13,8 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
       { path: 'car', loadChildren: () => import('./car/car.module').then(m => m.CarModule) },
-      { path: 'trip', loadChildren: () => import('./trip/trip.module').then(m => m.TripModule) }
+      { path: 'trip', loadChildren: () => import('./trip/trip.module').then(m => m.TripModule) },
+      { path: 'booking', loadChildren: () => import('./booking/booking.module').then(m => m.BookingModule) }
     ]
   }
 ];
