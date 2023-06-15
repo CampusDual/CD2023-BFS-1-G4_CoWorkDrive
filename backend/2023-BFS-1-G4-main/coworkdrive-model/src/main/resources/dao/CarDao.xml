@@ -12,4 +12,15 @@
 <Column>id_car</Column>
 </UpdateKeys>
 <GeneratedKey>id_car</GeneratedKey>
+    <Queries>
+        <Query id="number_cars">
+            <Sentence>
+                <![CDATA[
+                    SELECT count(c.*) as number_cars
+                    FROM car c
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
 </JdbcEntitySetup>

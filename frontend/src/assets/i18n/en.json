@@ -58,5 +58,11 @@
   "surname2": "Second surname",
   "free_seats": "Free seats",
   "MY BOOKINGS": "My bookings",
-  "CAR REGISTRATION INVALID FORMAT": "Car registration invalid format"
+  "CAR REGISTRATION INVALID FORMAT": "Car registration invalid format",
+  "OUT OF SEATS RANGE": "Out of seats range",
+  "¡Add a car!": "¡Add a car!",
+  "You cannot insert trips without any car": "You cannot insert trips without any car",
+  "Booking confirm": "Booking confirm",
+  "Do you really want to confirm?": "Do you really want to confirm?",
+  "Sign Up": "Sign Up"
 }

@@ -60,5 +60,29 @@
                    ]]>
             </Sentence>
         </Query>
+        <Query id="trip_detail">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="t" />
+                <AmbiguousColumn name="id_user" prefix="c" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>origin</Column>
+                <Column>destination</Column>
+                <Column>date</Column>
+                <Column>time</Column>
+                <Column>number_cars</Column>
+                <Column>id_trip</Column>
+                <Column>id_user</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT count(c.*) as number_cars, t.origin, t.destination, t.date, t.time, t.id_trip, c.id_user
+                    FROM trip t
+                    RIGHT JOIN car c ON t.id_user = c.id_user
+                    #WHERE#
+                    GROUP BY t.id_trip, c.id_user
+                   ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

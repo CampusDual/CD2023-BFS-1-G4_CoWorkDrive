@@ -2,13 +2,13 @@
   service="trips"
   entity="trip"
   keys="id_trip"
-  header-actions="R;I;U;D"
+  header-actions="I"
   show-header-navigation="no"
 >
-  <o-row>
+  <o-row style="display: flex; justify-content: center;">
     <o-column title-label="TRIP_PERSONAL_INFORMATION" fxFlex>
       <div class="center-form">
-        <o-row>
+        <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
             class="input-padding large-input"
             attr="origin"
@@ -19,7 +19,7 @@
           ></o-text-input>
         </o-row>
 
-        <o-row>
+        <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
             class="input-padding large-input"
             attr="destination"
@@ -30,7 +30,7 @@
           ></o-text-input>
         </o-row>
 
-        <o-row>
+        <o-row style="display: flex; justify-content: center;">
           <o-date-input
             class="date-input"
             attr="date"
@@ -40,14 +40,14 @@
             placeholder="01/01/2000"
           ></o-date-input>
 
-          <o-text-input
+          <o-hour-input
             class="input-padding time-input"
             attr="time"
             fxFlex="20"
             required="yes"
             id="time"
             placeholder="12:00"
-          ></o-text-input>
+          ></o-hour-input>
         </o-row>
       </div>
     </o-column>

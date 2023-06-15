@@ -49,4 +49,11 @@ public class CarService implements ICarService {
     public EntityResult carDelete(Map<String, Object> keyMap) {
         return this.daoHelper.delete(carDao,keyMap);
     }
+
+    @Override
+    public EntityResult numberCarsQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        return this.daoHelper.query(carDao,keyMap,attrList,CarDao.QUERY_NUMBER_CARS);
+    }
 }

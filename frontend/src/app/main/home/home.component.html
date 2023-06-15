@@ -1,4 +1,4 @@
-<o-form-layout-manager
+<!-- <o-form-layout-manager
   title="{{ 'TRIPS' | oTranslate }}"
   separator=" "
   mode="tab"
@@ -6,6 +6,7 @@
 >
   <div fxFill>
     <o-list
+      class="listCardStyle"
       #list
       attr="tripslist"
       title="TRIPS"
@@ -27,13 +28,55 @@
     >
       <o-list-item *ngFor="let row of list.dataArray">
         <o-list-item-card
+          class="cardStyle"
           #item
           title="{{ row.origin }} - {{ row.destination }}"
-          subtitle="{{ convertDate(row.date) }} - {{ row.time }}"
+          subtitle="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
           image="./assets/images/mapIcon.png"
         >
         </o-list-item-card>
       </o-list-item>
     </o-list>
   </div>
-</o-form-layout-manager>
+</o-form-layout-manager> -->
+<o-grid 
+  #grid 
+  id="grid"
+  attr="tripslist"
+  title="TRIPS"
+  service="trips"
+  entity="tripGetAll"
+  keys="id_trip"
+  columns="origin;destination;date;time"
+  fixed-header="true" 
+  style="height:'400px'" 
+  pagination-controls="no" 
+  query-rows="8"
+  refresh-button="true"
+  detail-mode="click"
+  gutter-size="60px"
+  cols="3"
+  quick-filter="yes" 
+  quick-filter-columns="origin;destination"
+  orderable="true"
+  sortable-columns="date;origin;destination"
+  sort-column="date"
+  >
+    <o-grid-item *ngFor="let list of grid.dataArray">
+      <o-column layout-padding class="container-item">
+        <!-- <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11689.996976913753!2d-8.539144799999999!3d42.90451085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1686738186890!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
+        <img class="map" src="../../../assets/images/login_bg.png"/>
+        <div class="origin">
+          <mat-icon>my_location</mat-icon><b>{{ list.origin }}</b>
+        </div>
+        <div class="nexusDiv"><mat-icon class="nexus">linear_scale</mat-icon></div>
+        <div class="destination">
+          <mat-icon>place</mat-icon> <b> {{ list.destination }} </b>
+        </div>
+        <div class="datetime">
+          <mat-icon>date_range</mat-icon> <span>{{ convertDate(list.date) }} </span>
+          <mat-icon style="padding-left: 10px;">timelapse</mat-icon> <span> {{ convertTime(list.time) }} </span>
+        </div>
+      </o-column>
+    </o-grid-item>
+</o-grid>

@@ -37,7 +37,8 @@
             min="1"
             max="9"
             placeholder="5"
-          ></o-integer-input>
+            [validators]="validatorNumberSeats"
+          ><o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator></o-integer-input>
           <o-text-input
             class="input-padding large-input"
             attr="car_registration"

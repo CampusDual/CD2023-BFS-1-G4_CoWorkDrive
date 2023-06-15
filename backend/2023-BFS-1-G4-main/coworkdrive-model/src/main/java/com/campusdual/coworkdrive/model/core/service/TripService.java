@@ -1,7 +1,7 @@
 package com.campusdual.coworkdrive.model.core.service;
 
 import com.campusdual.coworkdrive.api.core.service.ITripService;
-import com.campusdual.coworkdrive.model.core.dao.BookingDao;
+import com.campusdual.coworkdrive.model.core.dao.CarDao;
 import com.campusdual.coworkdrive.model.core.dao.TripDao;
 import com.ontimize.jee.common.db.SQLStatementBuilder;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
@@ -16,6 +16,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +26,8 @@ public class TripService implements ITripService {
     private static final String PRIMARYUSERKEY = "id_user";
     @Autowired
     private TripDao tripDao;
+    @Autowired
+    private CarDao carDao;
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -37,6 +40,15 @@ public class TripService implements ITripService {
             keyMap.put(TripDao.ATTR_ID_TRIP,Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
         }
         return this.daoHelper.query(tripDao, keyMap, attrList);
+    }
+    @Override
+    public EntityResult tripDetailQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        if (keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String) {
+            keyMap.put(TripDao.ATTR_ID_TRIP, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_TRIP_DETAIL);
     }
 
     @Override

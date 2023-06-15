@@ -1,4 +1,5 @@
 <o-form #formTrip
+  title="{{ 'BOOKING_INFO' | oTranslate }}"
   service="trips"
   entity="booking"
   keys="id_trip"
@@ -8,7 +9,7 @@
   <o-row>
     <o-column title-label="TRIP_INFORMATION" fxFlex>
       <div class="center-form">
-        <o-row>
+        <o-row class="rowStyle">
           <o-text-input
             class="input-padding large-input"
             attr="origin"
@@ -37,14 +38,15 @@
             read-only="true"
           ></o-date-input>
 
-          <o-text-input
+          <o-hour-input
             class="input-padding time-input"
             attr="time"
             fxFlex="20"
             id="time"
             read-only="true"
-          ></o-text-input>
-
+          ></o-hour-input>
+        </o-row>
+        <o-row>
           <o-text-input
             class="input-padding time-input"
             attr="free_seats"
@@ -52,8 +54,7 @@
             id="free_seats"
             read-only="true"
           ></o-text-input>
-        </o-row>
-        <o-row>
+
           <o-text-input
             class="input-padding time-input"
             attr="name"
@@ -101,6 +102,10 @@
         attr="id_trip"
         oHidden
     ></o-text-input>
-  <button id="signUp" [disabled]="disabledState" (click)="signUp()">Sign Up</button>
+  <button 
+    id="signUp"
+    [disabled]="free_seats==0 ? true : false" 
+    (click)="signUp()"
+    >{{ 'Sign Up' | oTranslate }}</button>
   </o-form>
 </o-form>

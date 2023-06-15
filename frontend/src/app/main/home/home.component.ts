@@ -25,4 +25,9 @@ export class HomeComponent implements OnInit {
     const newDate = new Date(date);
     return (newDate.toLocaleDateString());
   }
+
+  convertTime(hour: Date){
+    const newTime = new Date(hour);
+    return (newTime.toLocaleTimeString());
+  }
 }

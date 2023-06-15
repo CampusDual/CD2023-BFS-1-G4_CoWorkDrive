@@ -10,6 +10,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -40,19 +42,21 @@ public class BookingService implements IBookingService {
 
     @Override
     public EntityResult bookingInsert(Map<String, Object> attrMap) {
-        /*Map<String, Object> keyMap = new HashMap<>();
         List<String> listValue = new ArrayList<>();
         listValue.add("free_seats");
-        keyMap.put("free_seats",getSeatsQuery(attrMap,listValue).get("free_seats"));
-        List<String> valueSeats = (ArrayList<String>) keyMap.get("free_seats");
-        valueSeats.add((String) keyMap.get("free_seats"));
-        if(Integer.parseInt(valueSeats.get(1)) == 0){
+        EntityResult queryResult = getSeatsQuery(attrMap, listValue);
+        if (queryResult.isWrong()) {
+            return queryResult;
+        }
+        Number freeSeats = (Number) queryResult.getRecordValues(0).get("free_seats");
+        if (freeSeats.intValue() == 0) {
             return null;
-        } else {*/
+        } else {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             attrMap.put(PRIMARYUSERKEY, auth.getName());
             return this.daoHelper.insert(bookingDao, attrMap);
-        //}
+            //
+        }
     }
 
     @Override

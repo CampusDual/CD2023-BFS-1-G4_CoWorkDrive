@@ -15,8 +15,9 @@
       columns="id_trip;origin;destination;date;time;id_user"
       selectable="true"
       refresh-button="true"
-      insert-button="true"
-      insert-button-position="top"
+      [insert-button]="carsNumber>0? true : false"
+      insert-method="insertDetail()"
+      insert-button-floatable="false"
       delete-button="true"
       detail-button-in-row="true"
       detail-button-in-row-icon="chevron_right"
@@ -29,11 +30,13 @@
         <o-list-item-card
           #item
           title="{{ row.origin }} - {{ row.destination }}"
-          subtitle="{{ convertDate(row.date) }} - {{ row.time }}"
+          subtitle="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
           image="./assets/images/mapIcon.png"
         >
         </o-list-item-card>
       </o-list-item>
     </o-list>
+    <div><p *ngIf="carsNumber>0? false : true">Pisha, tienes que añadir un carro</p></div>
+    <button (click)="insertDetail()">Prueba</button>
   </div>
 </o-form-layout-manager>

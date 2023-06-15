@@ -62,5 +62,11 @@
   "surname2": "Segundo apellido",
   "free_seats": "Asientos libres",
   "MY BOOKINGS": "Mis reservas",
-  "CAR REGISTRATION INVALID FORMAT": "Formato de matrícula inválido"
+  "CAR REGISTRATION INVALID FORMAT": "Formato de matrícula inválido",
+  "OUT OF SEATS RANGE": "Fuera de rango de asientos",
+  "¡Add a car!": "¡Añade un coche!",
+  "You cannot insert trips without any car": "No puedes añadir viajes sin tener un coche",
+  "Booking confirm": "Confirmar reserva",
+  "Do you really want to confirm?": "¿Estás segur@ de que quieres confirmar?",
+  "Sign Up": "Hacer reserva"
 }

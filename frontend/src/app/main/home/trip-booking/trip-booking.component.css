@@ -1,11 +1,16 @@
 .large-input {
-    font-size: 1.2rem; /* Ajusta el tamaño de fuente según tus preferencias */
-  }
+  font-size: 1.2rem; /* Ajusta el tamaño de fuente según tus preferencias */
+}
   
 .date-input {
-padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
+  padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
 }
 
 .center-form{
-width: 100%;
+  align-items: center;
+  width: 100%;
+}
+
+.rowStyle{
+  justify-content: center !important;
 }

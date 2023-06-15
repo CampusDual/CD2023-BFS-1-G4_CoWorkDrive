@@ -24,7 +24,7 @@
         <o-list-item-text
         #item 
         title="{{ row.origin }} - {{ row.destination }}" 
-        primary-text="{{ convertDate(row.date) }} - {{ row.time }}"
+        primary-text="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
         secondary-text="{{ row.driver }} - {{ row.car_brand }} - {{ row.model }} - {{ row.car_registration }}"
         >
         </o-list-item-text>

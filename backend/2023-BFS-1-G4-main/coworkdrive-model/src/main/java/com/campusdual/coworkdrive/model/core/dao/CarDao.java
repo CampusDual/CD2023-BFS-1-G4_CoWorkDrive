@@ -18,4 +18,5 @@ public class CarDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_CAR_REGISTRATION = "car_registration";
     public static final String ATTR_ID_USER = "id_user";
     public static final String QUERY_CAR_DETAIL = "car_detail";
+    public static final String QUERY_NUMBER_CARS = "number_cars";
 }
