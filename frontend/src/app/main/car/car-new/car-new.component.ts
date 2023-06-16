@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { ValidatorFn, ValidationErrors, FormControl } from '@angular/forms'
+import { ValidatorFn } from '@angular/forms'
 import { DialogService, OFormComponent, OValidators, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 
 @Component({

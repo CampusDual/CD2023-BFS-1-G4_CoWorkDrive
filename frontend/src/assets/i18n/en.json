@@ -37,6 +37,7 @@
   "MY TRIPS": "My Trips",
   "TRIPS LIST": "Trips list",
   "TRIP_INFORMATION": "Trip information",
+  "TRIP_REGISTRATION": "Trip registration",
   "ORIGIN": "Origin",
   "DESTINATION": "Destination",
   "DATE": "Date",
@@ -70,5 +71,7 @@
   "Save": "Save",
   "Register": "Register",
   "Car register": "Car register",
-  "Car update": "Car update"
+  "Car update": "Car update",
+  "Trip register": "Trip register",
+  "Trip update": "Trip update"
 }

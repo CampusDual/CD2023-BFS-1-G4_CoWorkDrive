@@ -1,51 +1,60 @@
 <o-form
+  title="{{ 'TRIP_INFORMATION' | oTranslate }}"
+  #formTrip
   service="trips"
   entity="trip"
   keys="id_trip"
-  header-actions="R;U"
-  show-header-navigation="no"
+  id="formCar"
+  show-header="no"
+  class="formTripDetail"
 >
   <o-row>
-    <o-column title-label="TRIP_PERSONAL_INFORMATION" fxFlex>
-      <div class="center-form">
+    <o-column class="columnTripDetail">
         <o-row>
           <o-text-input
             class="input-padding large-input"
             attr="origin"
-            fxFlex="40"
             required="yes"
             id="origin"
+            width="300px"
+            placeholder="Santiago de Compostela"
           ></o-text-input>
         </o-row>
 
-        <o-row>
+        <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
             class="input-padding large-input"
             attr="destination"
-            fxFlex="40"
             required="yes"
             id="destination"
+            width="300px"
+            placeholder="A Coruña"
           ></o-text-input>
         </o-row>
 
-        <o-row>
+        <o-row style="display: flex; justify-content: center;">
           <o-date-input
             class="date-input"
             attr="date"
-            fxFlex="20"
             required="yes"
             id="date"
+            width="145px"
+            placeholder="01/01/2000"
           ></o-date-input>
 
           <o-hour-input
             class="input-padding time-input"
             attr="time"
-            fxFlex="20"
             required="yes"
             id="time"
+            width="145px"
+            placeholder="12:00"
           ></o-hour-input>
         </o-row>
-      </div>
+        <div class="ontimize-buttons">
+          <button id="clearTrip" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button id="saveTrip" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+        </div>
     </o-column>
   </o-row>
 </o-form>

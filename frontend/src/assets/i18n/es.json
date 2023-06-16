@@ -37,6 +37,7 @@
   "MY TRIPS": "Mis viajes",
   "TRIPS LIST": "Listado de viajes",
   "TRIP_INFORMATION": "Información del viaje",
+  "TRIP_REGISTRATION": "Registro de viaje",
   "ORIGIN": "Origen",
   "DESTINATION": "Destino",
   "DATE": "Fecha",
@@ -74,5 +75,7 @@
   "Save": "Guardar",
   "Register": "Registrar",
   "Car register": "Registro de coche",
-  "Car update": "Actualización de coche"
+  "Car update": "Actualización de coche",
+  "Trip register": "Registro de viaje",
+  "Trip update": "Actualización de viaje"
 }

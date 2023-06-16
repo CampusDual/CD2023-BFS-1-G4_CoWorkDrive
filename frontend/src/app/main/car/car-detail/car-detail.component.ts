@@ -1,6 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { ValidatorFn } from '@angular/forms';
-import { DialogService, OFormComponent, OntimizeService, SnackBarService, OValidators } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OntimizeService, SnackBarService, OValidators, OSnackBarConfig  } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-car-detail',
@@ -16,7 +16,7 @@ export class CarDetailComponent implements OnInit {
 
   constructor(public injector: Injector,    
     protected dialogService: DialogService,
-    private snackBarService: SnackBarService) { 
+    ) { 
       this.validatorCarRegistration.push(OValidators.patternValidator(/(([A-Z]{1}[A-Z]{0,1})(\d{4})([A-Z]{1}[A-Z]{0,1}))|((\d{4})([BCDFGHJKLMNPRSTVWXYZ]{3}))/, 'hasValidCarRegisitration'));
       this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/,'hasValidNumber'))}
 
