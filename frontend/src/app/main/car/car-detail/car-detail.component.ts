@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { ValidatorFn } from '@angular/forms';
+import { DialogService, OFormComponent, OntimizeService, SnackBarService, OValidators } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-car-detail',
@@ -6,10 +8,42 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./car-detail.component.css']
 })
 export class CarDetailComponent implements OnInit {
+  @ViewChild('formCar', { static: false }) formCar: OFormComponent;
+  private carService: OntimizeService;
+  
+  validatorCarRegistration: ValidatorFn[] = [];
+  validatorNumberSeats: ValidatorFn[] = [];
 
-  constructor() { }
+  constructor(public injector: Injector,    
+    protected dialogService: DialogService,
+    private snackBarService: SnackBarService) { 
+      this.validatorCarRegistration.push(OValidators.patternValidator(/(([A-Z]{1}[A-Z]{0,1})(\d{4})([A-Z]{1}[A-Z]{0,1}))|((\d{4})([BCDFGHJKLMNPRSTVWXYZ]{3}))/, 'hasValidCarRegisitration'));
+      this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/,'hasValidNumber'))}
 
   ngOnInit() {
+    this.configureService();
   }
 
+  updateCar(): void{
+      this.dialogService.confirm('Car update', 'Do you really want to confirm?');
+      this.dialogService.dialogRef.afterClosed().subscribe( result => {
+        if(result) {
+          this.formCar.setFieldValue("id_car", this.formCar.getFieldValue("id_car"));
+          this.formCar.setFieldValue("car_brand",this.formCar.getFieldValue("car_brand"));
+          this.formCar.setFieldValue("model",this.formCar.getFieldValue("model"));
+          this.formCar.setFieldValue("seats",this.formCar.getFieldValue("seats"));
+          this.formCar.setFieldValue("car_registration",this.formCar.getFieldValue("car_registration"));
+          this.formCar.update();
+        }
+      });
+  }
+
+  clearCar(): void{
+    this.formCar.clearData();
+  }
+
+  configureService(){
+    const conf = this.carService.getDefaultServiceConfiguration('cars');
+    this.carService.configureService(conf);
+  }
 }

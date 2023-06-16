@@ -1,7 +1,7 @@
 <o-form-layout-manager
   title="{{ 'TRIPS' | oTranslate }}"
   separator=" "
-  mode="tab"
+  mode="dialog"
   label-columns="NAME;SURNAME"
 >
   <div fxFill>
@@ -36,7 +36,5 @@
         </o-list-item-card>
       </o-list-item>
     </o-list>
-    <div><p *ngIf="carsNumber>0? false : true">Pisha, tienes que añadir un carro</p></div>
-    <button (click)="insertDetail()">Prueba</button>
   </div>
 </o-form-layout-manager>

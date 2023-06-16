@@ -49,12 +49,4 @@ export class TripHomeComponent implements OnInit {
     const conf = this.carService.getDefaultServiceConfiguration('cars');
     this.carService.configureService(conf);
   }
-
-  insertDetail(){
-    this.dialog.open(TripNewComponent, {
-      disableClose: false, 
-      height: '350px',
-      width: '800px'
-  });
-  }
 }

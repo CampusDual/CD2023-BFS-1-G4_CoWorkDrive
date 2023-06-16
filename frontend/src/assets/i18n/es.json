@@ -50,6 +50,7 @@
   "CAR_BRAND": "Marca",
   "MODEL": "Modelo",
   "SEATS": "Asientos",
+  "CAR_INFORMATION": "Información del coche",
   "CAR_REGISTRATION": "Matrícula",
   "car_brand": "Marca",
   "model": "Modelo",
@@ -68,5 +69,10 @@
   "You cannot insert trips without any car": "No puedes añadir viajes sin tener un coche",
   "Booking confirm": "Confirmar reserva",
   "Do you really want to confirm?": "¿Estás segur@ de que quieres confirmar?",
-  "Sign Up": "Hacer reserva"
+  "Sign Up": "Hacer reserva",
+  "Clear": "Limpiar",
+  "Save": "Guardar",
+  "Register": "Registrar",
+  "Car register": "Registro de coche",
+  "Car update": "Actualización de coche"
 }

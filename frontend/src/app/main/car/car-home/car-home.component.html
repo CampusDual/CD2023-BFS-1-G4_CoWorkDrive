@@ -1,9 +1,11 @@
 <o-form-layout-manager
-  title="{{ 'CAR' | oTranslate }}"
+  title="{{ 'CAR_INFORMATION' | oTranslate }}"
   separator=" "
-  mode="tab"
+  mode="dialog"
   label-columns="NAME;SURNAME"
 >
+<o-form-layout-dialog-options width="450px" height="420px"
+  disable-close="false" ></o-form-layout-dialog-options>
   <div fxFill>
     <o-list
       #list

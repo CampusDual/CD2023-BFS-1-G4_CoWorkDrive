@@ -1,19 +1,21 @@
 <o-form
+  title="{{ 'CAR_INFORMATION' | oTranslate }}"
+  #formCar
   service="cars"
   entity="car"
   keys="id_car"
-  header-actions="R;I;U;D"
-  show-header-navigation="no"
+  id="formCar"
+  show-header="no"
+  class="formCarDetail"
 >
   <o-row>
-    <o-column title-label="CAR_INFORMATION" fxFlex>
-      <div class="center-form">
+    <o-column class="columnCarDetail">
         <o-row>
           <o-text-input
             class="input-padding large-input"
             attr="car_brand"
-            fxFlex="40"
             required="yes"
+            width="250px"
             placeholder="Toyota"
           ></o-text-input>
         </o-row>
@@ -22,8 +24,8 @@
           <o-text-input
             class="input-padding large-input"
             attr="model"
-            fxFlex="40"
             required="yes"
+            width="250px"
             placeholder="Corolla"
           ></o-text-input>
         </o-row>
@@ -32,23 +34,26 @@
           <o-integer-input
             class="seats-input large-input"
             attr="seats"
-            fxFlex="20"
             required="yes"
             min="1"
             max="9"
-            placeholder="5"
             [validators]="validatorNumberSeats"
+            width="120px"
+            placeholder="4"
           ><o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator></o-integer-input>
           <o-text-input
             class="input-padding large-input"
             attr="car_registration"
-            fxFlex="20"
             required="yes"
-            placeholder="1111ZZZ"
             [validators]="validatorCarRegistration"
+            width="120px"
+            placeholder="1111ZZZ"
           ><o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT"></o-validator></o-text-input>
         </o-row>
-      </div>
+        <div class="ontimize-buttons">
+          <button id="undoCar" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button id="saveCar" label="Save" (click)="insertCar()" layout-padding>{{ 'Register' | oTranslate }}</button >
+        </div>
     </o-column>
   </o-row>
 </o-form>

@@ -46,6 +46,7 @@
   "CAR_BRAND": "Car brand",
   "MODEL": "Model",
   "SEATS": "Seats",
+  "CAR_INFORMATION": "CAR INFORMATION",
   "CAR_REGISTRATION": "Car registration",
   "car_brand": "Car brand",
   "model": "Model",
@@ -64,5 +65,10 @@
   "You cannot insert trips without any car": "You cannot insert trips without any car",
   "Booking confirm": "Booking confirm",
   "Do you really want to confirm?": "Do you really want to confirm?",
-  "Sign Up": "Sign Up"
+  "Sign Up": "Sign Up",
+  "Clear": "Clear",
+  "Save": "Save",
+  "Register": "Register",
+  "Car register": "Car register",
+  "Car update": "Car update"
 }
