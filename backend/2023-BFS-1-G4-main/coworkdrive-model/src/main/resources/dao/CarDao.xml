@@ -14,6 +14,10 @@
 <GeneratedKey>id_car</GeneratedKey>
     <Queries>
         <Query id="number_cars">
+            <!--
+                The query retrieves the total number of cars in the system.
+                It counts the rows in the car table.
+            -->
             <Sentence>
                 <![CDATA[
                     SELECT count(c.*) as number_cars

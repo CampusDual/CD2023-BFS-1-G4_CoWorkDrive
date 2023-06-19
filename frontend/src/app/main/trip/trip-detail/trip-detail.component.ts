@@ -10,31 +10,36 @@ export class TripDetailComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
   private tripService: OntimizeService;
 
-  constructor(public injector: Injector,    
-    protected dialogService: DialogService,) { 
-  }
-  ngOnInit() {
+  constructor(public injector: Injector,
+    protected dialogService: DialogService,) {
   }
   
-  clearTrip(): void{
+  ngOnInit() {
+  }
+
+  clearTrip(): void {
+    // Clear the data of the trip form
     this.formTrip.clearData();
   }
 
-  updateTrip(): void{
+  updateTrip(): void {
+    // Display a confirmation dialog when attempting to update a trip
     this.dialogService.confirm('Trip update', 'Do you really want to confirm?');
-    this.dialogService.dialogRef.afterClosed().subscribe( result => {
-      if(result) {
+    this.dialogService.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // If the update is confirmed, set the form field values and perform the update
         this.formTrip.setFieldValue("id_trip", this.formTrip.getFieldValue("id_trip"));
-        this.formTrip.setFieldValue("origin",this.formTrip.getFieldValue("origin"));
-        this.formTrip.setFieldValue("destination",this.formTrip.getFieldValue("destination"));
-        this.formTrip.setFieldValue("date",this.formTrip.getFieldValue("date"));
-        this.formTrip.setFieldValue("time",this.formTrip.getFieldValue("time"));
+        this.formTrip.setFieldValue("origin", this.formTrip.getFieldValue("origin"));
+        this.formTrip.setFieldValue("destination", this.formTrip.getFieldValue("destination"));
+        this.formTrip.setFieldValue("date", this.formTrip.getFieldValue("date"));
+        this.formTrip.setFieldValue("time", this.formTrip.getFieldValue("time"));
         this.formTrip.update();
       }
     });
   }
 
-  configureService(){
+  configureService() {
+    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
     const conf = this.tripService.getDefaultServiceConfiguration('trips');
     this.tripService.configureService(conf);
   }

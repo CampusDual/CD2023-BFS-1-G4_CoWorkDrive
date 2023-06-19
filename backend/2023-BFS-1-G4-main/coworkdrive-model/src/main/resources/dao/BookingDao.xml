@@ -14,6 +14,11 @@
 <GeneratedKey>id_booking</GeneratedKey>
     <Queries>
         <Query id="seats_info">
+            <!--
+                The query retrieves information about available seats in trips.
+                It calculates the number of free seats by subtracting the count of bookings from the total number of seats in a car.
+                The query involves the trip, tuser, car, and booking tables with appropriate joins and groupings.
+            -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_trip" prefix="t" />
             </AmbiguousColumns>
@@ -33,6 +38,11 @@
             </Sentence>
         </Query>
         <Query id="my_bookings">
+            <!--
+                The query retrieves bookings of the authenticated user.
+                It joins the booking, trip, tuser, and car tables to gather relevant information.
+                The WHERE clause includes a condition to filter bookings with dates greater than or equal to the current date.
+            -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_user" prefix="b" />
             </AmbiguousColumns>

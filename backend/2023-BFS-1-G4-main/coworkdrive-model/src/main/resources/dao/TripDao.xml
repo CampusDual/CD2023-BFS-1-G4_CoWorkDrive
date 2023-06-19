@@ -14,27 +14,45 @@
     <GeneratedKey>id_trip</GeneratedKey>
     <Queries>
         <Query id="all_trips">
+            <!--
+                The query retrieves all trips that meet the specified conditions.
+                It selects columns based on the provided #COLUMNS# placeholder from the trip table.
+                The WHERE clause filters trips based on the date being greater than or equal to the current date.
+            -->
             <Sentence>
                 <![CDATA[
-                     SELECT
-                      #COLUMNS#
-                    FROM trip
-                    #WHERE#
-                        AND date >= cast(now() as date)
-                   ]]>
+             SELECT
+              #COLUMNS#
+            FROM trip
+            #WHERE#
+                AND date >= cast(now() as date)
+           ]]>
             </Sentence>
         </Query>
+
         <Query id="get_user">
+            <!--
+                The query retrieves the user ID from the trip table based on the specified conditions.
+                It selects the id_user column from the trip table.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
             <Sentence>
                 <![CDATA[
-                     SELECT
-                      id_user
-                    FROM trip
-                    #WHERE#
-                   ]]>
+             SELECT
+              id_user
+            FROM trip
+            #WHERE#
+           ]]>
             </Sentence>
         </Query>
+
         <Query id="booking_info">
+            <!--
+                The query retrieves booking information for trips.
+                It selects various columns from different tables, including origin, destination, date, time, name, surname1, surname2,
+                and calculates the remaining free seats using a left join with the booking table and a group by clause.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_trip" prefix="t" />
             </AmbiguousColumns>
@@ -51,16 +69,24 @@
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2, (c.seats - count(b.*)) as free_seats, t.id_trip
-                    FROM trip t JOIN tuser u ON t.id_user = u.user_
-                    JOIN car c ON u.user_ = c.id_user
-                    LEFT JOIN booking b ON b.id_trip = t.id_trip
-                    #WHERE#
-                    GROUP BY t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2, c.seats, t.id_trip
-                   ]]>
+            SELECT t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2,
+                (c.seats - count(b.*)) as free_seats, t.id_trip
+            FROM trip t JOIN tuser u ON t.id_user = u.user_
+            JOIN car c ON u.user_ = c.id_user
+            LEFT JOIN booking b ON b.id_trip = t.id_trip
+            #WHERE#
+            GROUP BY t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2, c.seats, t.id_trip
+           ]]>
             </Sentence>
         </Query>
+
         <Query id="trip_detail">
+            <!--
+                The query retrieves trip details along with the number of cars for each trip.
+                It selects columns from the trip and car tables, calculates the number of cars using a right join,
+                and groups the results based on the trip ID and user ID.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_trip" prefix="t" />
                 <AmbiguousColumn name="id_user" prefix="c" />
@@ -76,12 +102,12 @@
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT count(c.*) as number_cars, t.origin, t.destination, t.date, t.time, t.id_trip, c.id_user
-                    FROM trip t
-                    RIGHT JOIN car c ON t.id_user = c.id_user
-                    #WHERE#
-                    GROUP BY t.id_trip, c.id_user
-                   ]]>
+            SELECT count(c.*) as number_cars, t.origin, t.destination, t.date, t.time, t.id_trip, c.id_user
+            FROM trip t
+            RIGHT JOIN car c ON t.id_user = c.id_user
+            #WHERE#
+            GROUP BY t.id_trip, c.id_user
+           ]]>
             </Sentence>
         </Query>
     </Queries>

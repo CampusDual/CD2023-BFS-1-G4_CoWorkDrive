@@ -13,63 +13,87 @@
 	</UpdateKeys>
 	<Queries>
 		<Query id="login">
+			<!--
+                The query retrieves login information from the TUSER table.
+                It selects the specified columns from the TUSER table.
+                The WHERE clause and ORDER clause can be used to add additional conditions and sorting.
+            -->
 			<Sentence>
-                <![CDATA[
-                    SELECT
-                        #COLUMNS#
-                    FROM ${mainschema}.TUSER
-                    #WHERE#
-                    #ORDER#
-                ]]>
-            </Sentence>
+				<![CDATA[
+            SELECT
+                #COLUMNS#
+            FROM ${mainschema}.TUSER
+            #WHERE#
+            #ORDER#
+        ]]>
+			</Sentence>
 		</Query>
+
 		<Query id="userRole">
+			<!--
+                The query retrieves user roles from the TUSER, TUSER_ROLE, and TROLE tables.
+                It selects the specified columns from the tables.
+                The WHERE clause and ORDER clause can be used to add additional conditions and sorting.
+            -->
 			<AmbiguousColumns>
 				<AmbiguousColumn name="USER_" prefix="tu" />
 				<AmbiguousColumn name="ID_ROLENAME" prefix="tr" />
 			</AmbiguousColumns>
 			<Sentence>
-					<![CDATA[
-					select
-						#COLUMNS#
-					from
-						${mainschema}.TUSER tu
-						JOIN ${mainschema}.TUSER_ROLE tur ON tu.USER_ = tur.USER_
-						JOIN ${mainschema}.TROLE tr ON tur.ID_ROLENAME = tr.ID_ROLENAME
-					#WHERE#
-					#ORDER#
-					]]>
+				<![CDATA[
+            SELECT
+                #COLUMNS#
+            FROM
+                ${mainschema}.TUSER tu
+                JOIN ${mainschema}.TUSER_ROLE tur ON tu.USER_ = tur.USER_
+                JOIN ${mainschema}.TROLE tr ON tur.ID_ROLENAME = tr.ID_ROLENAME
+            #WHERE#
+            #ORDER#
+        ]]>
 			</Sentence>
 		</Query>
+
 		<Query id="serverPermissions">
+			<!--
+                The query retrieves server permissions from the TROLE, TROLE_SERVER_PERMISSION, and TSERVER_PERMISSION tables.
+                It selects the specified columns from the tables.
+                The WHERE clause and ORDER clause can be used to add additional conditions and sorting.
+            -->
 			<AmbiguousColumns>
 				<AmbiguousColumn name="ID_ROLENAME" prefix="tr" />
 				<AmbiguousColumn name="ID_SERVER_PERMISSION" prefix="tsp" />
 			</AmbiguousColumns>
 			<Sentence>
-					<![CDATA[
-					select
-						#COLUMNS#
-					from
-						${mainschema}.TROLE tr
-						JOIN ${mainschema}.TROLE_SERVER_PERMISSION trsp ON tr.ID_ROLENAME = trsp.ID_ROLENAME
-						JOIN ${mainschema}.TSERVER_PERMISSION tsp ON trsp.ID_SERVER_PERMISSION = tsp.ID_SERVER_PERMISSION
-					#WHERE#
-					#ORDER#
-					]]>
-		</Sentence>
+				<![CDATA[
+            SELECT
+                #COLUMNS#
+            FROM
+                ${mainschema}.TROLE tr
+                JOIN ${mainschema}.TROLE_SERVER_PERMISSION trsp ON tr.ID_ROLENAME = trsp.ID_ROLENAME
+                JOIN ${mainschema}.TSERVER_PERMISSION tsp ON trsp.ID_SERVER_PERMISSION = tsp.ID_SERVER_PERMISSION
+            #WHERE#
+            #ORDER#
+        ]]>
+			</Sentence>
 		</Query>
+
 		<Query id="clientPermissions">
+			<!--
+                The query retrieves client permissions from the TROLE table.
+                It selects the specified columns from the TROLE table.
+                The WHERE clause and ORDER clause can be used to add additional conditions and sorting.
+            -->
 			<Sentence>
-					<![CDATA[
-					select
-						#COLUMNS#
-					from
-						${mainschema}.TROLE tr
-					#WHERE#
-					#ORDER#
-					]]>
-		</Sentence>
+				<![CDATA[
+            SELECT
+                #COLUMNS#
+            FROM
+                ${mainschema}.TROLE tr
+            #WHERE#
+            #ORDER#
+        ]]>
+			</Sentence>
 		</Query>
+
 	</Queries>
 </JdbcEntitySetup>

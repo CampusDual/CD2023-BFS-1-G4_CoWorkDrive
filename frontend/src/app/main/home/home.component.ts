@@ -18,16 +18,21 @@ export class HomeComponent implements OnInit {
   }
 
   navigate() {
+    // Navigate to the path '../login' relative to the current path (this.actRoute)
     this.router.navigate(['../', 'login'], { relativeTo: this.actRoute });
   }
 
+
+  // Function to convert a date into a readable date format
   convertDate(date: Date){
     const newDate = new Date(date);
     return (newDate.toLocaleDateString());
   }
 
+  // Function to convert a time into a readable time format
   convertTime(hour: Date){
     const newTime = new Date(hour);
     return (newTime.toLocaleTimeString());
   }
+  
 }

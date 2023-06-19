@@ -12,13 +12,16 @@ export class BookingHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  convertDate(date: Date){
+   // Function to convert a date into a readable date format
+   convertDate(date: Date){
     const newDate = new Date(date);
     return (newDate.toLocaleDateString());
   }
 
+  // Function to convert a time into a readable time format
   convertTime(hour: Date){
     const newTime = new Date(hour);
     return (newTime.toLocaleTimeString());
   }
+
 }

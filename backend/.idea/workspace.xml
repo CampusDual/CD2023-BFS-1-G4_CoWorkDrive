@@ -5,8 +5,80 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/3/03c751121ea544f1aab9e0e32ec7851c9ed132eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/9/19c5ab21dcd2c97f2be5c7f9438e3eb450cbc02b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/6/269967bd0a136f6348fc5ddc78e9f29f4f694673" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/1/31f9a30df75f43e9fbb2b416f73f8d80182d3ae9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/0/504c653376ced7f81ab738626123c096f231fe5b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/9/69dd1ca4c7e97efe8e0c64694bf25d96701b07e0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/b/6b5143a64e7433200ba029af0fc5e722cd6d8eeb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/1/712e4a2f100d32ed44e12d490f3e722424ca1917" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/747ce1d4d64c635c00554cc1e3754ad18c6388f1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/4/74e8aab8519a462b8f79495d1e854f9f6ec42dcd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/a/7ae027c61bedddcc954d1bd76c03c60246c4210d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7d4ac37b478cad0cf2c3a9405d691cb4d399bc03" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/0/80c121ddb94ec0237159b9159f7f345c2fbbe1a3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/5/a5e3b41b8620b4810f43ad0fca789af0da483c6a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/6/a6727dfa89d76f7be9ad67643d712bda1f5b429f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/9/a9a2b4afeb340e34689e3e2958867d5fb151b65b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/1/c11697876265d3649ea06a6d7cd9644253030dca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c36c2f44f38ee64c78e2af6edd2bb86876b98a25" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/9/d9dcac97f92cbee10cb377bf17415054f0d1022b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/2/e2be527893ca2f4ff334d428a67a065ba9aaa2da" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/1/f17062b6ea648d8f23a6d3a9d4cf1bf7a354c8bd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/8/f8b4faed895555f59b3bc716bdb0c3abc002d74d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ff9e8b87bfd0ce1c3dde67b877439733130d3b4b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/0/3/03c751121ea544f1aab9e0e32ec7851c9ed132eb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/1/9/19c5ab21dcd2c97f2be5c7f9438e3eb450cbc02b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/2/6/269967bd0a136f6348fc5ddc78e9f29f4f694673" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/3/1/31f9a30df75f43e9fbb2b416f73f8d80182d3ae9" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/5/0/504c653376ced7f81ab738626123c096f231fe5b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/9/69dd1ca4c7e97efe8e0c64694bf25d96701b07e0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/6/b/6b5143a64e7433200ba029af0fc5e722cd6d8eeb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/1/712e4a2f100d32ed44e12d490f3e722424ca1917" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/4/747ce1d4d64c635c00554cc1e3754ad18c6388f1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/4/74e8aab8519a462b8f79495d1e854f9f6ec42dcd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/a/7ae027c61bedddcc954d1bd76c03c60246c4210d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/7/d/7d4ac37b478cad0cf2c3a9405d691cb4d399bc03" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/8/0/80c121ddb94ec0237159b9159f7f345c2fbbe1a3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/5/a5e3b41b8620b4810f43ad0fca789af0da483c6a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/6/a6727dfa89d76f7be9ad67643d712bda1f5b429f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/a/9/a9a2b4afeb340e34689e3e2958867d5fb151b65b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/1/c11697876265d3649ea06a6d7cd9644253030dca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/c/3/c36c2f44f38ee64c78e2af6edd2bb86876b98a25" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/d/9/d9dcac97f92cbee10cb377bf17415054f0d1022b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/e/2/e2be527893ca2f4ff334d428a67a065ba9aaa2da" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/1/f17062b6ea648d8f23a6d3a9d4cf1bf7a354c8bd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/8/f8b4faed895555f59b3bc716bdb0c3abc002d74d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/f/f/ff9e8b87bfd0ce1c3dde67b877439733130d3b4b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/IContactService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/ContactDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/CarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/ContactService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/ContactDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserRoleDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserRoleDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-ws/src/main/java/com/campusdual/coworkdrive/ws/core/rest/ContactRestController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/login/login.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/login/login.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/booking/booking-home/booking-home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/booking/booking-home/booking-home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/trip-booking/trip-booking.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/trip-booking/trip-booking.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-home/trip-home.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

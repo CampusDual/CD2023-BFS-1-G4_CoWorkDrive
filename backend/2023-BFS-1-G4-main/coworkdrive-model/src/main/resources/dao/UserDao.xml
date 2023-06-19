@@ -13,6 +13,11 @@
     </UpdateKeys>
     <Queries>
         <Query id="default">
+            <!--
+                The query retrieves default user information from the TUSER table.
+                It selects the specified columns from the TUSER table.
+                The WHERE clause can be used to add additional conditions.
+            -->
             <ValidColumns>
                 <Column>USER_</Column>
                 <Column>PASSWORD</Column>
@@ -27,36 +32,43 @@
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT
-                        #COLUMNS#
-                    FROM
-                        ${mainschema}.TUSER
-                    #WHERE#
-                ]]>
-            </Sentence>
-        </Query>    
-        <Query id="login">
-            <ValidColumns>
-                <Column>USER_</Column>
-                <Column>PASSWORD</Column>
-                <Column>NAME</Column>
-                <Column>SURNAME1</Column>
-                <Column>EMAIL</Column>
-                <Column>NIF</Column>
-                <Column>USERBLOCKED</Column>
-                <Column>LASTPASSWORDUPDATE</Column>
-                <Column>FIRSTLOGIN</Column>
-                <Column>SURNAME2</Column>
-            </ValidColumns>
-            <Sentence>
-                <![CDATA[
-                    SELECT 
-                        #COLUMNS#
-                    FROM                        
-                        ${mainschema}.TUSER
-                    #WHERE#
-                ]]>
+            SELECT
+                #COLUMNS#
+            FROM
+                ${mainschema}.TUSER
+            #WHERE#
+        ]]>
             </Sentence>
         </Query>
+
+        <Query id="login">
+            <!--
+                The query retrieves user login information from the TUSER table.
+                It selects the specified columns from the TUSER table.
+                The WHERE clause can be used to add additional conditions.
+            -->
+            <ValidColumns>
+                <Column>USER_</Column>
+                <Column>PASSWORD</Column>
+                <Column>NAME</Column>
+                <Column>SURNAME1</Column>
+                <Column>EMAIL</Column>
+                <Column>NIF</Column>
+                <Column>USERBLOCKED</Column>
+                <Column>LASTPASSWORDUPDATE</Column>
+                <Column>FIRSTLOGIN</Column>
+                <Column>SURNAME2</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+            SELECT
+                #COLUMNS#
+            FROM
+                ${mainschema}.TUSER
+            #WHERE#
+        ]]>
+            </Sentence>
+        </Query>
+
     </Queries>
 </JdbcEntitySetup>

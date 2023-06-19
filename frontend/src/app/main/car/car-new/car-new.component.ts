@@ -11,40 +11,47 @@ export class CarNewComponent implements OnInit {
   @ViewChild('formCar', { static: false }) formCar: OFormComponent;
   private carService: OntimizeService;
 
+  // Validators for the car registration
   validatorCarRegistration: ValidatorFn[] = [];
+  // Validators for the number of seats
   validatorNumberSeats: ValidatorFn[] = [];
 
 
-  constructor(public injector: Injector,    
+  constructor(public injector: Injector,
     protected dialogService: DialogService,
-    private snackBarService: SnackBarService) { 
+    private snackBarService: SnackBarService) {
+    // Custom validators are added to the validators array
     this.validatorCarRegistration.push(OValidators.patternValidator(/(([A-Z]{1}[A-Z]{0,1})(\d{4})([A-Z]{1}[A-Z]{0,1}))|((\d{4})([BCDFGHJKLMNPRSTVWXYZ]{3}))/, 'hasValidCarRegisitration'));
-    this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/,'hasValidNumber'));
+    this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/, 'hasValidNumber'));
   }
 
   ngOnInit() {
     this.configureService();
   }
 
-  clearCar(): void{
+  clearCar(): void {
+    // Clear the car form data
     this.formCar.clearData();
   }
 
-  insertCar(): void{
+  insertCar(): void {
+    // Show a confirmation dialog when attempting to insert a car
     this.dialogService.confirm('Car register', 'Do you really want to confirm?');
-    this.dialogService.dialogRef.afterClosed().subscribe( result => {
-      if(result) {
+    this.dialogService.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // If the registration is confirmed, set the form values and perform the insertion
         this.formCar.setFieldValue("id_car", this.formCar.getFieldValue("id_car"));
-        this.formCar.setFieldValue("car_brand",this.formCar.getFieldValue("car_brand"));
-        this.formCar.setFieldValue("model",this.formCar.getFieldValue("model"));
-        this.formCar.setFieldValue("seats",this.formCar.getFieldValue("seats"));
-        this.formCar.setFieldValue("car_registration",this.formCar.getFieldValue("car_registration"));
+        this.formCar.setFieldValue("car_brand", this.formCar.getFieldValue("car_brand"));
+        this.formCar.setFieldValue("model", this.formCar.getFieldValue("model"));
+        this.formCar.setFieldValue("seats", this.formCar.getFieldValue("seats"));
+        this.formCar.setFieldValue("car_registration", this.formCar.getFieldValue("car_registration"));
         this.formCar.insert();
       }
     });
   }
 
-  configureService(){
+  configureService() {
+    // Get the default configuration of the 'cars' service and configure the 'carService' accordingly
     const conf = this.carService.getDefaultServiceConfiguration('cars');
     this.carService.configureService(conf);
   }

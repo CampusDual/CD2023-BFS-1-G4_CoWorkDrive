@@ -12,9 +12,12 @@ import { Observable } from 'rxjs';
 })
 export class LoginComponent implements OnInit {
 
+  // Defines the form and its controls
   loginForm: FormGroup = new FormGroup({});
   userCtrl: FormControl = new FormControl('', Validators.required);
   pwdCtrl: FormControl = new FormControl('', Validators.required);
+
+  // Variable to control if the session has expired
   sessionExpired = false;
 
   router: Router;
@@ -29,6 +32,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.router = router;
 
+    // Subscribes to changes in the URL parameters
     const qParamObs: Observable<any> = this.actRoute.queryParams;
     qParamObs.subscribe(params => {
       if (params) {
@@ -44,11 +48,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): any {
+    // Hides the navigation
     this.navigation.setVisible(false);
 
+    // Adds the controls to the form
     this.loginForm.addControl('username', this.userCtrl);
     this.loginForm.addControl('password', this.pwdCtrl);
 
+    // Checks if the user is already logged in and performs the corresponding redirection
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['../'], { relativeTo: this.actRoute });
     } else {
@@ -56,20 +63,24 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  // Function to log in
   login() {
     const userName = this.loginForm.value.username;
     const password = this.loginForm.value.password;
     if (userName && userName.length > 0 && password && password.length > 0) {
       const self = this;
+      // Calls the authentication service to authenticate the user
       this.authService.login(userName, password)
         .subscribe(() => {
           self.sessionExpired = false;
+          // Redirects the user to the home page if the authentication is successful
           self.router.navigate(['../'], { relativeTo: this.actRoute });
-          sessionStorage.setItem('userName',userName);
+          sessionStorage.setItem('userName', userName);
         }, this.handleError);
     }
   }
 
+  // Function to handle authentication errors
   handleError(error) {
     switch (error.status) {
       case 401:
