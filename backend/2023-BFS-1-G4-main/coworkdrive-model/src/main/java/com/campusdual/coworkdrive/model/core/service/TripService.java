@@ -11,12 +11,17 @@ import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -72,6 +77,11 @@ public class TripService implements ITripService {
     public EntityResult tripInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         attrMap.put(PRIMARYUSERKEY, auth.getName());
+        Date dateReceived = (Date) attrMap.get("date");
+        Date todayDate = new Date();
+        if(dateReceived.before(todayDate)){
+            return null;
+        }
         return this.daoHelper.insert(this.tripDao, attrMap);
     }
 

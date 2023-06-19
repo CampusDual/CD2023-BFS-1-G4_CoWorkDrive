@@ -39,4 +39,27 @@ export class TripNewComponent implements OnInit {
     const conf = this.tripService.getDefaultServiceConfiguration('trips');
     this.tripService.configureService(conf);
   }
+
+  protected dateValue: Date = new Date('10/05/2018');
+
+    public getValue(type: string = 'timestamp'): any {
+      let result: any;
+      switch (type) {
+        case 'string':
+          result = '10/05/2018';
+          break;
+        case 'date':
+          result = this.dateValue;
+          break;
+        case 'ISO-8601':
+          result = this.dateValue.toISOString();
+          break;
+        case 'timestamp':
+          result = this.dateValue.getTime();
+          break;
+        default:
+          break;
+      }
+      return result;
+    }
 }
