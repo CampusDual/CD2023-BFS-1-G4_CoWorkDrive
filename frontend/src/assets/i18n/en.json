@@ -60,6 +60,7 @@
   "surname2": "Second surname",
   "free_seats": "Free seats",
   "MY BOOKINGS": "My bookings",
+  "BOOKING_INFORMATION": "Booking unformation",
   "CAR REGISTRATION INVALID FORMAT": "Car registration invalid format",
   "OUT OF SEATS RANGE": "Out of seats range",
   "¡Add a car!": "¡Add a car!",
@@ -73,5 +74,6 @@
   "Car register": "Car register",
   "Car update": "Car update",
   "Trip register": "Trip register",
-  "Trip update": "Trip update"
+  "Trip update": "Trip update",
+  "DRIVER_INFORMATION": "Driver information"
 }

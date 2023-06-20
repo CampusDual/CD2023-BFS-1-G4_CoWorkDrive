@@ -2,6 +2,7 @@ package com.campusdual.coworkdrive.api.core.service;
 
 import com.ontimize.jee.common.dto.EntityResult;
 
+import java.text.ParseException;
 import java.util.List;
 import java.util.Map;
 
@@ -14,7 +15,7 @@ public interface ITripService {
 
     EntityResult tripGetAllQuery(Map<String, Object> keyMap, List<String> attrList);
 
-    EntityResult tripInsert(Map<String, Object> attrMap);
+    EntityResult tripInsert(Map<String, Object> attrMap) throws ParseException;
 
     EntityResult tripUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
 

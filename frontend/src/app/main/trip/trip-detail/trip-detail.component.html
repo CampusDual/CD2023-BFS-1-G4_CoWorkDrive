@@ -13,6 +13,7 @@
         <o-row>
           <o-text-input
             class="input-padding large-input"
+            title="{{ 'origin' | oTranslate }}"
             attr="origin"
             required="yes"
             id="origin"
@@ -24,6 +25,7 @@
         <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
             class="input-padding large-input"
+            title="{{ 'destination' | oTranslate }}"
             attr="destination"
             required="yes"
             id="destination"
@@ -35,6 +37,7 @@
         <o-row style="display: flex; justify-content: center;">
           <o-date-input
             class="date-input"
+            title="{{ 'date' | oTranslate }}"
             attr="date"
             required="yes"
             id="date"
@@ -44,6 +47,7 @@
 
           <o-hour-input
             class="input-padding time-input"
+            title="{{ 'time' | oTranslate }}"
             attr="time"
             required="yes"
             id="time"
@@ -52,8 +56,8 @@
           ></o-hour-input>
         </o-row>
         <div class="ontimize-buttons">
-          <button id="clearTrip" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
-          <button id="saveTrip" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button id="clearTrip" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button id="saveTrip" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
         </div>
     </o-column>
   </o-row>

@@ -1,3 +1,4 @@
+import { viewClassName } from '@angular/compiler';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { DialogService, OFormComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 
@@ -11,7 +12,7 @@ export class TripBookingComponent implements OnInit {
   @ViewChild('formBooking', { static: false }) formBooking: OFormComponent;
 
   disabledState: boolean = false; // State to enable or disable a button
-  valor: string; // Value to control the button disabled state
+  valor: Number; // Value to control the button disabled state
   private bookingService: OntimizeService;
 
   constructor(public injector: Injector,
@@ -20,13 +21,6 @@ export class TripBookingComponent implements OnInit {
 
   ngOnInit() {
     this.configureService();
-  }
-
-  updateButton() {
-    // Update the button state based on the numeric value of 'valor'
-    if (parseInt(this.valor) == 0) {
-      this.disabledState = true; // Disable the button if the value is zero
-    }
   }
 
   signUp(): void {
@@ -40,6 +34,10 @@ export class TripBookingComponent implements OnInit {
         this.formBooking.insert();
       }
     });
+  }
+
+  freeSeatsValue(event){
+    this.valor = this.formTrip.getFieldValue("free_seats");
   }
  
 

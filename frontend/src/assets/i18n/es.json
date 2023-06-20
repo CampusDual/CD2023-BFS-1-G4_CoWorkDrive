@@ -64,6 +64,7 @@
   "surname2": "Segundo apellido",
   "free_seats": "Asientos libres",
   "MY BOOKINGS": "Mis reservas",
+  "BOOKING_INFORMATION": "Información de la reserva",
   "CAR REGISTRATION INVALID FORMAT": "Formato de matrícula inválido",
   "OUT OF SEATS RANGE": "Fuera de rango de asientos",
   "¡Add a car!": "¡Añade un coche!",
@@ -77,5 +78,6 @@
   "Car register": "Registro de coche",
   "Car update": "Actualización de coche",
   "Trip register": "Registro de viaje",
-  "Trip update": "Actualización de viaje"
+  "Trip update": "Actualización de viaje",
+  "DRIVER_INFORMATION": "Información del conductor"
 }

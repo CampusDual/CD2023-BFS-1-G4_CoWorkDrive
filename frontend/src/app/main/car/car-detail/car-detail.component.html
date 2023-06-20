@@ -13,6 +13,7 @@
         <o-row>
           <o-text-input
             class="input-padding large-input"
+            title="{{ 'car_brand' | oTranslate }}"
             attr="car_brand"
             required="yes"
             width="250px"
@@ -23,6 +24,7 @@
         <o-row>
           <o-text-input
             class="input-padding large-input"
+            title="{{ 'model' | oTranslate }}"
             attr="model"
             required="yes"
             width="250px"
@@ -33,6 +35,7 @@
         <o-row>
           <o-integer-input
             class="seats-input large-input"
+            title="{{ 'seats' | oTranslate }}"
             attr="seats"
             required="yes"
             min="1"
@@ -43,6 +46,7 @@
           ><o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator></o-integer-input>
           <o-text-input
             class="input-padding large-input"
+            title="{{ 'car_registration' | oTranslate }}"
             attr="car_registration"
             required="yes"
             [validators]="validatorCarRegistration"
@@ -51,8 +55,8 @@
           ><o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT"></o-validator></o-text-input>
         </o-row>
         <div class="ontimize-buttons">
-          <button id="undoCar" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
-          <button id="saveCar" label="Save" (click)="updateCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button id="undoCar" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button id="saveCar" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
         </div>
     </o-column>
   </o-row>

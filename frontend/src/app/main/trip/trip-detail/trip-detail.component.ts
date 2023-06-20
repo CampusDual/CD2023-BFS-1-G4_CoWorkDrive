@@ -11,7 +11,8 @@ export class TripDetailComponent implements OnInit {
   private tripService: OntimizeService;
 
   constructor(public injector: Injector,
-    protected dialogService: DialogService,) {
+    protected dialogService: DialogService,
+    ) {
   }
   
   ngOnInit() {

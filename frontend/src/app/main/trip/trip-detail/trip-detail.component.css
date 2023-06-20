@@ -2,33 +2,33 @@
     margin: 0 auto;
   }
   
-  .formTripDetail {
-    display: flex;
-    align-items: center;
-    font-size: large;
-  }
-  
-  .columnTripDetail {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .date-input {
-    padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
-  }
-  
-  button{
-    width: 100px;
-    padding-right: 10px;
-    margin: 5px;
-    border-radius: 5px;
-    color: black;
-    border: 0.5px solid black;
-  }
-  
-  button:hover{
-    background-color: #9C27B0;
-    color: white;
-  }
+.formTripDetail {
+  display: flex;
+  align-items: center;
+  font-size: large;
+}
+
+.columnTripDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.date-input {
+  padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
+}
+
+button{
+  width: 100px;
+  padding-right: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  border: 0.5px solid black;
+}
+
+button:hover{
+  background-color: #9C27B0;
+  color: white;
+}

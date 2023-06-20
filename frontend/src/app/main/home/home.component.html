@@ -39,6 +39,14 @@
     </o-list>
   </div>
 </o-form-layout-manager> -->
+<o-form-layout-manager
+  title="{{ 'BOOKING_INFORMATION' | oTranslate }}"
+  separator=" "
+  mode="dialog"
+  label-columns="NAME;SURNAME"
+>
+<o-form-layout-dialog-options width="700px" height="670px"
+  disable-close="false" ></o-form-layout-dialog-options>
 <o-grid 
   #grid 
   id="grid"
@@ -80,3 +88,4 @@
       </o-column>
     </o-grid-item>
 </o-grid>
+</o-form-layout-manager>

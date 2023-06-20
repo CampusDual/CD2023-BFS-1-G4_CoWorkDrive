@@ -8,7 +8,6 @@ import com.ontimize.jee.common.db.SQLStatementBuilder.BasicExpression;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicField;
 import com.ontimize.jee.common.db.SQLStatementBuilder.BasicOperator;
 import com.ontimize.jee.common.dto.EntityResult;
-import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -16,7 +15,9 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -99,7 +100,7 @@ public class TripService implements ITripService {
     public EntityResult tripGetAllQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(SQLStatementBuilder.ExtendedSQLConditionValuesProcessor.EXPRESSION_KEY,
-                getExpression(PRIMARYUSERKEY, auth.getName()));
+                getExpression(auth.getName()));
         return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
     }
     
@@ -108,12 +109,12 @@ public class TripService implements ITripService {
      *
      * @param attrMap   The attribute map containing the details of the trip.
      * @return          The resulting EntityResult containing the inserted trip.
-     * @throws OntimizeJEERuntimeException if an error occurs during the insertion process.
      */
     @Override
-    public EntityResult tripInsert(Map<String, Object> attrMap) throws OntimizeJEERuntimeException {
+    public EntityResult tripInsert(Map<String, Object> attrMap) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         attrMap.put(PRIMARYUSERKEY, auth.getName());
+        attrMap.put(TripDao.ATTR_DATE,formatDate(attrMap));
         Date dateReceived = (Date) attrMap.get("date");
         Date todayDate = new Date();
         if (dateReceived.before(todayDate)) {
@@ -148,12 +149,17 @@ public class TripService implements ITripService {
     /**
      * Creates a BasicExpression object for constructing a SQL expression.
      *
-     * @param param The parameter of the expression.
      * @param value The value of the expression.
      * @return      The constructed BasicExpression object.
      */
-    private BasicExpression getExpression(String param, String value) {
-        BasicField field = new BasicField(param);
+    private BasicExpression getExpression(String value) {
+        BasicField field = new BasicField(PRIMARYUSERKEY);
         return new BasicExpression(field, BasicOperator.NOT_EQUAL_OP, value);
+    }
+
+    private Date formatDate(Map<String, Object> attrMap){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+        LocalDate dateTime = LocalDate.parse((String) attrMap.get(TripDao.ATTR_DATE), formatter);
+        return Date.from(dateTime.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     }
 }

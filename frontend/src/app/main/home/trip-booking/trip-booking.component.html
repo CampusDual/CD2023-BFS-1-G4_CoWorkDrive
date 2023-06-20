@@ -1,98 +1,104 @@
-<o-form #formTrip
-  title="{{ 'BOOKING_INFO' | oTranslate }}"
+<o-form 
+#formTrip
+  title="{{ 'BOOKING_INFORMATION' | oTranslate }}"
   service="trips"
   entity="booking"
   keys="id_trip"
   id="idForm"
   show-header="no"
+  class="formTripDetail"
+  (onDataLoaded)="freeSeatsValue($event)"
 >
   <o-row>
-    <o-column title-label="TRIP_INFORMATION" fxFlex>
-      <div class="center-form">
-        <o-row class="rowStyle">
-          <o-text-input
-            class="input-padding large-input"
-            attr="origin"
-            fxFlex="40"
-            id="origin"
-            read-only="true"
-          ></o-text-input>
-        </o-row>
+    <o-column class="columnTripDetail">
+      <h3>{{ 'TRIP_INFORMATION' | oTranslate }}</h3>
+      <o-row class="rowTripDetail">
+        <o-text-input
+          class="large-input"
+          title="{{ 'origin' | oTranslate }}"
+          attr="origin"
+          id="origin"
+          read-only="true"
+        ></o-text-input>
+      </o-row>
 
-        <o-row>
-          <o-text-input
-            class="input-padding large-input"
-            attr="destination"
-            fxFlex="40"
-            id="destination"
-            read-only="true"
-          ></o-text-input>
-        </o-row>
+      <o-row class="rowTripDetail">
+        <o-text-input
+          class="large-input"
+          title="{{ 'destination' | oTranslate }}"
+          attr="destination"
+          id="destination"
+          read-only="true"
+        ></o-text-input>
+      </o-row>
 
-        <o-row>
-          <o-date-input
-            class="date-input"
-            attr="date"
-            fxFlex="20"
-            id="date"
-            read-only="true"
-          ></o-date-input>
+      <o-row class="rowTripDetail">
+        <o-date-input
+          class="date-input"
+          title="{{ 'date' | oTranslate }}"
+          attr="date"
+          id="date"
+          read-only="true"
+        ></o-date-input>
 
-          <o-hour-input
-            class="input-padding time-input"
-            attr="time"
-            fxFlex="20"
-            id="time"
-            read-only="true"
-          ></o-hour-input>
-        </o-row>
-        <o-row>
-          <o-text-input
-            class="input-padding time-input"
-            attr="free_seats"
-            fxFlex="20"
-            id="free_seats"
-            read-only="true"
-          ></o-text-input>
+        <o-hour-input
+          class="input-padding date-input"
+          title="{{ 'time' | oTranslate }}"
+          attr="time"
+          id="time"
+          read-only="true"
+        ></o-hour-input>
 
-          <o-text-input
-            class="input-padding time-input"
-            attr="name"
-            fxFlex="20"
-            id="name"
-            read-only="true"
-          ></o-text-input>
+        <o-text-input
+          width="190px"
+          title="{{ 'free_seats' | oTranslate }}"
+          attr="free_seats"
+          id="free_seats"
+          read-only="true"
+        ></o-text-input>
+      </o-row>
+      <h3>{{ 'DRIVER_INFORMATION' | oTranslate }}</h3>
+      <o-row class="rowTripDetail">
+        <o-text-input
+          class="input-padding date-input"
+          title="{{ 'name' | oTranslate }}"
+          attr="name"
+          id="name"
+          read-only="true"
+        ></o-text-input>
 
-          <o-text-input
-            class="input-padding time-input"
-            attr="surname1"
-            fxFlex="20"
-            id="surname1"
-            read-only="true"
-          ></o-text-input>
+        <o-text-input
+          class="input-padding date-input"
+          title="{{ 'surname1' | oTranslate }}"
+          attr="surname1"
+          id="surname1"
+          read-only="true"
+        ></o-text-input>
 
-          <o-text-input
-            class="input-padding time-input"
-            attr="surname2"
-            fxFlex="20"
-            id="surname2"
-            read-only="true"
-          ></o-text-input>
+        <o-text-input
+          class="input-padding"
+          title="{{ 'surname2' | oTranslate }}"
+          attr="surname2"
+          id="surname2"
+          read-only="true"
+        ></o-text-input>
 
-          <o-text-input
-            #idTrip
-            class="input-padding time-input"
-            attr="id_trip"
-            fxFlex="20"
-            id="id_trip"
-            read-only="true"
-            oHidden
-          ></o-text-input>
-        </o-row>
-      </div>
+        <o-text-input
+          #idTrip
+          class="input-padding time-input"
+          title="{{ 'id_trip' | oTranslate }}"
+          attr="id_trip"
+          id="id_trip"
+          read-only="true"
+          oHidden
+        ></o-text-input>
+      </o-row>
     </o-column>
   </o-row>
-  <o-form #formBooking
+  <br />
+  <o-form 
+  #formBooking
+  class="formTripDetail"
   service="bookings"
   entity="booking"
   id="idFormBooking"
@@ -104,7 +110,8 @@
     ></o-text-input>
   <button 
     id="signUp"
-    [disabled]="free_seats==0 ? true : false" 
+    title="{{ 'Sign Up' | oTranslate }}"
+    [disabled]="valor==0 ? true : false" 
     (click)="signUp()"
     >{{ 'Sign Up' | oTranslate }}</button>
   </o-form>

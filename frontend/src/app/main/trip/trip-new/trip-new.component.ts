@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx';
 
@@ -10,11 +11,22 @@ export class TripNewComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
   private tripService: OntimizeService;
 
+  public minDate: string;
+  public maxDate: string;
+
   constructor(public injector: Injector,    
     protected dialogService: DialogService) { 
   }
 
   ngOnInit() {
+    this.minDate = formatDate(Date.now(), 'MM-dd-yyyy', 'en-US');
+    this.maxDate = formatDate(this.getMaxDate(), 'MM-dd-yyyy', 'en-US');
+  }
+
+  getMaxDate(): Date{
+    let dateMonth = new Date();
+    dateMonth.setMonth(dateMonth.getMonth() + 6);
+    return dateMonth;
   }
   
   clearTrip(): void {
