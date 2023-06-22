@@ -14,19 +14,26 @@
     <GeneratedKey>id_trip</GeneratedKey>
     <Queries>
         <Query id="all_trips">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_user" prefix="t" />
+            </AmbiguousColumns>
             <!--
                 The query retrieves all trips that meet the specified conditions.
-                It selects columns based on the provided #COLUMNS# placeholder from the trip table.
+                It selects all columns from the trip table and free_seats from the difference between number of seats of a car and the bookings in this trip.
                 The WHERE clause filters trips based on the date being greater than or equal to the current date.
             -->
             <Sentence>
                 <![CDATA[
-             SELECT
-              #COLUMNS#
-            FROM trip
-            #WHERE#
-                AND date >= cast(now() as date)
-           ]]>
+                    SELECT (c.seats - count(b.*)) as free_seats, t.*, c.id_car_brand, c.id_car_model
+                    FROM trip t
+                    JOIN car c ON t.id_car = c.id_car
+                    JOIN tuser tu ON tu.user_ = t.id_user
+                    LEFT JOIN booking b ON b.id_trip = t.id_trip
+                    #WHERE#
+                        AND date >= cast(now() as date)
+                    GROUP BY c.seats, t.id_trip, c.id_car_brand, c.id_car_model
+                    HAVING (c.seats - count(b.*)) > 0
+                ]]>
             </Sentence>
         </Query>
 
@@ -66,20 +73,23 @@
                 <Column>surname2</Column>
                 <Column>free_seats</Column>
                 <Column>id_trip</Column>
+                <Column>id_car</Column>
+                <Column>id_car_brand</Column>
+                <Column>id_car_model</Column>
+                <Column>car_registration</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-            SELECT t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2,
-                (c.seats - count(b.*)) as free_seats, t.id_trip
-            FROM trip t JOIN tuser u ON t.id_user = u.user_
-            JOIN car c ON u.user_ = c.id_user
-            LEFT JOIN booking b ON b.id_trip = t.id_trip
-            #WHERE#
-            GROUP BY t.origin, t.destination, t.date, t.time, u.name, u.surname1 , u.surname2, c.seats, t.id_trip
-           ]]>
+                    SELECT t.origin, t.destination, t.date, t.time, tu.name, tu.surname1 , tu.surname2, (c.seats - count(b.*)) as free_seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration
+                    FROM trip t
+                    JOIN car c ON t.id_car = c.id_car
+                    JOIN tuser tu ON t.id_user = tu.user_
+                    LEFT JOIN booking b ON b.id_trip = t.id_trip
+                    #WHERE#
+                    GROUP BY t.origin, t.destination, t.date, t.time, tu.name, tu.surname1 , tu.surname2, c.seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration
+                ]]>
             </Sentence>
         </Query>
-
         <Query id="trip_detail">
             <!--
                 The query retrieves trip details along with the number of cars for each trip.
@@ -108,6 +118,32 @@
             #WHERE#
             GROUP BY t.id_trip, c.id_user
            ]]>
+            </Sentence>
+        </Query>
+        <Query id="trip_detail">
+            <!--
+                The query retrieves trip details along with the number of cars for each trip.
+                It selects columns from the trip and car tables, calculates the number of cars using a right join,
+                and groups the results based on the trip ID and user ID.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
+            <ValidColumns>
+                <Column>origin</Column>
+                <Column>destination</Column>
+                <Column>date</Column>
+                <Column>time</Column>
+                <Column>number_cars</Column>
+                <Column>id_trip</Column>
+                <Column>id_car</Column>
+                <Column>id_car_brand</Column>
+                <Column>id_car_model</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT t.*, c.id_car_brand, c.id_car_model
+                    FROM trip t
+                    JOIN car c ON t.id_car = c.id_car
+                ]]>
             </Sentence>
         </Query>
     </Queries>

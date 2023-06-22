@@ -55,6 +55,22 @@
             placeholder="12:00"
           ></o-hour-input>
         </o-row>
+        <o-row>
+          <o-combo 
+            service="cars" 
+            entity="car" 
+            keys="id_car"
+            sql-type="INTEGER" 
+            attr="id_car" 
+            label="Car" 
+            value-column="id_car" 
+            columns="id_car;id_car_brand;model" 
+            visible-columns="id_car_brand;model"
+            required="yes" 
+            searchable="yes"
+            width="280px">
+          </o-combo>
+        </o-row>
         <div class="ontimize-buttons">
           <button id="clearTrip" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
           <button id="saveTrip" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >

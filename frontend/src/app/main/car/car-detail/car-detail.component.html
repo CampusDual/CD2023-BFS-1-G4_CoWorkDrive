@@ -12,16 +12,13 @@
     <o-column class="columnCarDetail">
         <o-row>
           <o-text-input
-            class="input-padding large-input"
-            title="{{ 'car_brand' | oTranslate }}"
-            attr="car_brand"
+            class="seats-input large-input"
+            title="{{ 'id_car_brand' | oTranslate }}"
+            attr="id_car_brand"
             required="yes"
             width="250px"
             placeholder="Toyota"
           ></o-text-input>
-        </o-row>
-
-        <o-row>
           <o-text-input
             class="input-padding large-input"
             title="{{ 'model' | oTranslate }}"
@@ -31,7 +28,6 @@
             placeholder="Corolla"
           ></o-text-input>
         </o-row>
-
         <o-row>
           <o-integer-input
             class="seats-input large-input"
@@ -41,18 +37,38 @@
             min="1"
             max="9"
             [validators]="validatorNumberSeats"
-            width="120px"
+            width="220px"
             placeholder="4"
-          ><o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator></o-integer-input>
+          >
+            <o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator>
+          </o-integer-input>
+          <o-combo 
+            service="colors" 
+            entity="color" 
+            keys="id_color"
+            sql-type="INTEGER" 
+            attr="id_color" 
+            label="Color" 
+            value-column="id_color" 
+            columns="id_color;name" 
+            visible-columns="name"
+            required="yes" 
+            searchable="yes"
+            width="280px">
+          </o-combo>
+        </o-row>
+        <o-row>
           <o-text-input
             class="input-padding large-input"
             title="{{ 'car_registration' | oTranslate }}"
             attr="car_registration"
             required="yes"
             [validators]="validatorCarRegistration"
-            width="120px"
+            width="510px"
             placeholder="1111ZZZ"
-          ><o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT"></o-validator></o-text-input>
+          >
+            <o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT (EXAMPLE: 1111ZZZ)"></o-validator>
+          </o-text-input>
         </o-row>
         <div class="ontimize-buttons">
           <button id="undoCar" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >

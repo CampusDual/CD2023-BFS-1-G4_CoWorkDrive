@@ -38,10 +38,11 @@ export class CarDetailComponent implements OnInit {
         if(result) {
           // Set the form field values with the current values
           this.formCar.setFieldValue("id_car", this.formCar.getFieldValue("id_car"));
-          this.formCar.setFieldValue("car_brand",this.formCar.getFieldValue("car_brand"));
+          this.formCar.setFieldValue("id_car_brand",this.formCar.getFieldValue("id_car_brand"));
           this.formCar.setFieldValue("model",this.formCar.getFieldValue("model"));
           this.formCar.setFieldValue("seats",this.formCar.getFieldValue("seats"));
           this.formCar.setFieldValue("car_registration",this.formCar.getFieldValue("car_registration"));
+          this.formCar.setFieldValue("id_color",this.formCar.getFieldValue("id_color"));
           // Perform the form update
           this.formCar.update();
         }

@@ -11,27 +11,31 @@
   <o-row>
     <o-column class="columnCarDetail">
         <o-row>
-          <o-text-input
-            class="input-padding large-input"
-            title="{{ 'car_brand' | oTranslate }}"
-            attr="car_brand"
+<!--           <o-text-input
+            class="seats-input large-input"
+            title="{{ 'id_car_brand' | oTranslate }}"
+            attr="id_car_brand"
             required="yes"
             width="250px"
             placeholder="Toyota"
-          ></o-text-input>
-        </o-row>
-
-        <o-row>
-          <o-text-input
+          ></o-text-input> -->
+          <o-combo #comboCarBrands attr="id_car_brand" label="Select Brand" service-type="DummyService"
+  query-method="query" service="carbrands" entity="carBrand" value-column="id_car_brand"
+  columns="id_car_brand,brand_name" visible-columns="brand_name" keys="id_car_brand">
+  </o-combo>
+<!--           <o-text-input
             class="input-padding large-input"
             title="{{ 'model' | oTranslate }}"
-            attr="model"
+            attr="id_car_model"
             required="yes"
             width="250px"
             placeholder="Corolla"
-          ></o-text-input>
+          ></o-text-input> -->
+          <o-combo #comboCarModels attr="id_car_model" label="Select Model" service-type="DummyService"
+  query-method="query" service="carmodels" entity="carModel" value-column="id_car_model"
+  columns="id_car_model,model_name,id_car_brand" visible-columns="model_name" keys="id_car_model" [query-on-event]="comboCarBrands.onValueChange" parent-keys="comboCarBrands:carBrands[id_car_brand]">
+  </o-combo>
         </o-row>
-
         <o-row>
           <o-integer-input
             class="seats-input large-input"
@@ -41,22 +45,42 @@
             min="1"
             max="9"
             [validators]="validatorNumberSeats"
-            width="120px"
+            width="220px"
             placeholder="4"
-          ><o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator></o-integer-input>
+          >
+            <o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator>
+          </o-integer-input>
+          <o-combo 
+            service="colors" 
+            entity="color" 
+            keys="id_color"
+            sql-type="INTEGER" 
+            attr="id_color" 
+            label="Color" 
+            value-column="id_color" 
+            columns="id_color;name" 
+            visible-columns="name"
+            required="yes" 
+            searchable="yes"
+            width="280px">
+          </o-combo>
+        </o-row>
+        <o-row>
           <o-text-input
             class="input-padding large-input"
             title="{{ 'car_registration' | oTranslate }}"
             attr="car_registration"
             required="yes"
             [validators]="validatorCarRegistration"
-            width="120px"
+            width="510px"
             placeholder="1111ZZZ"
-          ><o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT"></o-validator></o-text-input>
+          >
+            <o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT (EXAMPLE: 1111ZZZ)"></o-validator>
+          </o-text-input>
         </o-row>
         <div class="ontimize-buttons">
-          <button id="undoCar" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
-          <button id="saveCar" title="{{ 'Save' | oTranslate }}" label="Save" (click)="insertCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button id="clearCar" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button id="registerCar" title="{{ 'Register' | oTranslate }}" label="Save" (click)="insertCar()" layout-padding>{{ 'Register' | oTranslate }}</button >
         </div>
     </o-column>
   </o-row>

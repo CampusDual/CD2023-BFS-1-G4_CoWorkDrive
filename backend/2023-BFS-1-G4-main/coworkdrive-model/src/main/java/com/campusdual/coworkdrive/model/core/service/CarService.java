@@ -42,7 +42,7 @@ public class CarService implements ICarService {
         if (keyMap.get(CarDao.ATTR_ID_CAR) instanceof String) {
             keyMap.put(CarDao.ATTR_ID_CAR, Integer.parseInt((String) keyMap.get(CarDao.ATTR_ID_CAR)));
         }
-        return this.daoHelper.query(carDao, keyMap, attrList);
+        return this.daoHelper.query(carDao, keyMap, attrList,CarDao.QUERY_CAR_DATA);
     }
     
     /**

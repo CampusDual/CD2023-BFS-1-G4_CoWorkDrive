@@ -51,20 +51,20 @@
                 <Column>destination</Column>
                 <Column>date</Column>
                 <Column>time</Column>
-                <Column>driver</Column>
-                <Column>car_brand</Column>
-                <Column>model</Column>
+                <Column>name</Column>
+                <Column>id_car_brand</Column>
+                <Column>id_car_model</Column>
                 <Column>car_registration</Column>
                 <Column>id_user</Column>
                 <Column>id_booking</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT b.id_booking, t.origin, t.destination, t."date", t."time", u."name" as driver, c.car_brand, c.model, c.car_registration, b.id_user
-                    FROM booking b
-                    JOIN trip t ON b.id_trip = t.id_trip
-                    JOIN tuser u ON u.user_ = t.id_user
-                    JOIN car c ON c.id_user = u.user_
+                    SELECT t.origin, t.destination, t.date, t.time, b.id_user, tu.name, tu.surname1, tu.surname2, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration
+                    FROM trip t
+                    JOIN booking b ON t.id_trip = b.id_trip
+                    JOIN car c ON c.id_car = t.id_car
+                    JOIN tuser tu ON tu.user_ = c.id_user
                     #WHERE#
                         AND t.date >= CAST(now() as date)
                    ]]>

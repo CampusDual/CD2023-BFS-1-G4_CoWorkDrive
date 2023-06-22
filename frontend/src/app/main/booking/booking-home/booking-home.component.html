@@ -12,7 +12,7 @@
       service="bookings"
       entity="myBookings"
       keys="id_booking"
-      columns="origin;destination;date;time;driver;car_brand;model;car_registration;id_user"
+      columns="origin;destination;date;time;name;id_car_brand;id_car_model;car_registration;id_user"
       selectable="true"
       refresh-button="true"
       delete-button="true"
@@ -25,7 +25,7 @@
         #item 
         title="{{ row.origin }} - {{ row.destination }}" 
         primary-text="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
-        secondary-text="{{ row.driver }} - {{ row.car_brand }} - {{ row.model }} - {{ row.car_registration }}"
+        secondary-text="{{ row.name }} - {{ row.id_car_brand }} {{ row.id_car_model }} - {{ row.car_registration }}"
         >
         </o-list-item-text>
       </o-list-item>

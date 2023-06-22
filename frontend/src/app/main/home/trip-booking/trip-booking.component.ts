@@ -1,4 +1,3 @@
-import { viewClassName } from '@angular/compiler';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { DialogService, OFormComponent, OntimizeService, SnackBarService } from 'ontimize-web-ngx';
 

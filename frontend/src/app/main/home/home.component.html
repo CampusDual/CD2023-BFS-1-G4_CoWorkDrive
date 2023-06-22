@@ -1,51 +1,10 @@
-<!-- <o-form-layout-manager
-  title="{{ 'TRIPS' | oTranslate }}"
-  separator=" "
-  mode="tab"
-  label-columns="NAME;SURNAME"
->
-  <div fxFill>
-    <o-list
-      class="listCardStyle"
-      #list
-      attr="tripslist"
-      title="TRIPS"
-      service="trips"
-      entity="tripGetAll"
-      keys="id_trip"
-      columns="origin;destination;date;time"
-      selectable="false"
-      refresh-button="true"
-      insert-button="false"
-      insert-button-position="top"
-      delete-button="false"
-      detail-button-in-row="true"
-      detail-button-in-row-icon="chevron_right"
-      edit-button-in-row="false"
-      edit-button-in-row-icon="edit"
-      detail-mode="none"
-      pagination-controls="yes"
-    >
-      <o-list-item *ngFor="let row of list.dataArray">
-        <o-list-item-card
-          class="cardStyle"
-          #item
-          title="{{ row.origin }} - {{ row.destination }}"
-          subtitle="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
-          image="./assets/images/mapIcon.png"
-        >
-        </o-list-item-card>
-      </o-list-item>
-    </o-list>
-  </div>
-</o-form-layout-manager> -->
 <o-form-layout-manager
   title="{{ 'BOOKING_INFORMATION' | oTranslate }}"
   separator=" "
   mode="dialog"
   label-columns="NAME;SURNAME"
 >
-<o-form-layout-dialog-options width="700px" height="670px"
+<o-form-layout-dialog-options width="720px" height="820px"
   disable-close="false" ></o-form-layout-dialog-options>
 <o-grid 
   #grid 
@@ -55,7 +14,7 @@
   service="trips"
   entity="tripGetAll"
   keys="id_trip"
-  columns="origin;destination;date;time"
+  columns="origin;destination;date;time;free_seats;id_car"
   fixed-header="true" 
   style="height:'400px'" 
   pagination-controls="no" 
@@ -72,7 +31,6 @@
   >
     <o-grid-item *ngFor="let list of grid.dataArray">
       <o-column layout-padding class="container-item">
-        <!-- <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11689.996976913753!2d-8.539144799999999!3d42.90451085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2ses!4v1686738186890!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> -->
         <img class="map" src="../../../assets/images/login_bg.png"/>
         <div class="origin">
           <mat-icon>my_location</mat-icon><b>{{ list.origin }}</b>

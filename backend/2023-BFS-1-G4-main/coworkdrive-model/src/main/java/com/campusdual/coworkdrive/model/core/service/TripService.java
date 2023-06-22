@@ -54,7 +54,7 @@ public class TripService implements ITripService {
         if (keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String) {
             keyMap.put(TripDao.ATTR_ID_TRIP, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
         }
-        return this.daoHelper.query(tripDao, keyMap, attrList);
+        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_TRIP_DATA);
     }
     
     /**

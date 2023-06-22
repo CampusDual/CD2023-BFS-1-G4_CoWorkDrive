@@ -4,38 +4,39 @@
   mode="dialog"
   label-columns="NAME;SURNAME"
 >
-<o-form-layout-dialog-options width="450px" height="420px"
+<o-form-layout-dialog-options width="650px" height="430px"
   disable-close="false" ></o-form-layout-dialog-options>
-  <div fxFill>
-    <o-list
-      #list
+    <o-grid
+      #grid
       attr="carslist"
       title="MY CAR"
       service="cars"
       entity="car"
       keys="id_car"
-      columns="id_car;car_brand;model;seats;car_registration;id_user"
+      columns="id_car;id_car_brand;model;seats;car_registration;id_user;id_color;name"
       selectable="true"
       refresh-button="true"
-      [insert-button]="list.dataArray.length>0 ? false : true"
-      insert-button-position="top"
+      [insert-button]="grid.dataArray.length>3 ? false : true"
+      insert-button-floatable="false"
       delete-button="true"
-      detail-button-in-row="true"
-      detail-button-in-row-icon="chevron_right"
-      edit-button-in-row="false"
-      edit-button-in-row-icon="edit"
-      detail-mode="none"
+      detail-mode="click"
       keys-sql-types="INT"
+      style="height:'400px'" 
+      pagination-controls="no" 
+      query-rows="8"
+      gutter-size="20px"
+      cols="4"
     >
-      <o-list-item *ngFor="let row of list.dataArray">
-        <o-list-item-card
-          #item
-          title="{{ row.car_brand }}"
-          subtitle="{{ row.model }}"
-          image="./assets/images/carIcon.png"
-        >
-        </o-list-item-card>
-      </o-list-item>
-    </o-list>
-  </div>
+      <o-grid-item *ngFor="let list of grid.dataArray">
+        <o-column layout-padding class="container-item">
+          <img class="map" src="../../../assets/images/carIcon.png"/>
+          <div class="origin">
+            <mat-icon>directions_car</mat-icon><b>{{ list.id_car_brand }} {{ list.model }}</b>
+          </div>
+          <div class="destination">
+            <mat-icon>dehaze</mat-icon> <b> {{ list.car_registration }} - {{ list.name | oTranslate }} </b>
+          </div>
+        </o-column>
+      </o-grid-item>
+    </o-grid>
 </o-form-layout-manager>

@@ -45,6 +45,7 @@ export class TripNewComponent implements OnInit {
         this.formTrip.setFieldValue("destination", this.formTrip.getFieldValue("destination"));
         this.formTrip.setFieldValue("date", this.formTrip.getFieldValue("date"));
         this.formTrip.setFieldValue("time", this.formTrip.getFieldValue("time"));
+        this.formTrip.setFieldValue("id_car", this.formTrip.getFieldValue("id_car"));
         this.formTrip.insert();
       }
     });

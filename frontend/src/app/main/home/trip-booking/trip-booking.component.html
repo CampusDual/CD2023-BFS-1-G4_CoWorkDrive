@@ -7,7 +7,6 @@
   id="idForm"
   show-header="no"
   class="formTripDetail"
-  (onDataLoaded)="freeSeatsValue($event)"
 >
   <o-row>
     <o-column class="columnTripDetail">
@@ -93,26 +92,52 @@
           oHidden
         ></o-text-input>
       </o-row>
+      <h3>{{ 'CAR_INFORMATION' | oTranslate }}</h3>
+      <o-row class="rowTripDetail">
+        <o-text-input
+          class="input-padding date-input"
+          title="{{ 'id_car_brand' | oTranslate }}"
+          attr="id_car_brand"
+          id="id_car_brand"
+          read-only="true"
+        ></o-text-input>
+
+        <o-text-input
+          class="input-padding date-input"
+          title="{{ 'model' | oTranslate }}"
+          attr="model"
+          id="model"
+          read-only="true"
+        ></o-text-input>
+
+        <o-text-input
+          class="input-padding"
+          title="{{ 'car_registration' | oTranslate }}"
+          attr="car_registration"
+          id="car_registration"
+          read-only="true"
+        ></o-text-input>
+      </o-row>
     </o-column>
   </o-row>
   <br />
-  <o-form 
-  #formBooking
-  class="formTripDetail"
-  service="bookings"
-  entity="booking"
-  id="idFormBooking"
-  header-actions="I"
-  show-header="no">
-    <o-text-input
-        attr="id_trip"
-        oHidden
-    ></o-text-input>
-  <button 
-    id="signUp"
-    title="{{ 'Sign Up' | oTranslate }}"
-    [disabled]="valor==0 ? true : false" 
-    (click)="signUp()"
-    >{{ 'Sign Up' | oTranslate }}</button>
-  </o-form>
+<o-form 
+#formBooking
+class="formTripDetail"
+service="bookings"
+entity="booking"
+id="idFormBooking"
+header-actions="I"
+show-header="no">
+  <o-text-input
+      attr="id_trip"
+      oHidden
+  ></o-text-input>
+<button 
+  id="signUp"
+  title="{{ 'Sign Up' | oTranslate }}"
+  [disabled]="valor==0 ? true : false" 
+  (click)="signUp()"
+  >{{ 'Sign Up' | oTranslate }}</button>
+</o-form>
 </o-form>
