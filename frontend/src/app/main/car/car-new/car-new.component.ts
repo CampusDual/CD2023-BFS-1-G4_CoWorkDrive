@@ -42,11 +42,11 @@ export class CarNewComponent implements OnInit {
       if (result) {
         // If the registration is confirmed, set the form values and perform the insertion
         this.formCar.setFieldValue("id_car", this.formCar.getFieldValue("id_car"));
-        this.formCar.setFieldValue("id_car_brand", this.formCar.getFieldValue("id_car_brand"));
-        this.formCar.setFieldValue("model", this.formCar.getFieldValue("model"));
         this.formCar.setFieldValue("seats", this.formCar.getFieldValue("seats"));
         this.formCar.setFieldValue("car_registration", this.formCar.getFieldValue("car_registration"));
         this.formCar.setFieldValue("id_color", this.formCar.getFieldValue("id_color"));
+        this.formCar.setFieldValue("id_car_brand", this.formCar.getFieldValue("id_car_brand"));
+        this.formCar.setFieldValue("id_car_model", this.formCar.getFieldValue("id_car_model"));
         this.formCar.insert();
       }
     });

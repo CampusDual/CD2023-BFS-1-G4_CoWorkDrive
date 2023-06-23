@@ -64,8 +64,10 @@
                 <AmbiguousColumn name="id_trip" prefix="t" />
             </AmbiguousColumns>
             <ValidColumns>
-                <Column>origin</Column>
-                <Column>destination</Column>
+                <Column>origin_title</Column>
+                <Column>origin_address</Column>
+                <Column>destination_titles</Column>
+                <Column>destination_address</Column>
                 <Column>date</Column>
                 <Column>time</Column>
                 <Column>name</Column>
@@ -76,17 +78,25 @@
                 <Column>id_car</Column>
                 <Column>id_car_brand</Column>
                 <Column>id_car_model</Column>
+                <Column>brand_name</Column>
+                <Column>model_name</Column>
                 <Column>car_registration</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT t.origin, t.destination, t.date, t.time, tu.name, tu.surname1 , tu.surname2, (c.seats - count(b.*)) as free_seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration
+                    SELECT t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time,
+                    tu.name, tu.surname1 , tu.surname2, (c.seats - count(b.*)) as free_seats, t.id_trip, t.id_car,
+                    c.id_car_brand, c.id_car_model, c.car_registration, cb.brand_name, cm.model_name
                     FROM trip t
                     JOIN car c ON t.id_car = c.id_car
+                    JOIN car_brand cb ON c.id_car_brand = cb.id_car_brand
+                    JOIN car_model cm ON c.id_car_model = cm.id_car_model
                     JOIN tuser tu ON t.id_user = tu.user_
                     LEFT JOIN booking b ON b.id_trip = t.id_trip
                     #WHERE#
-                    GROUP BY t.origin, t.destination, t.date, t.time, tu.name, tu.surname1 , tu.surname2, c.seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration
+                    GROUP BY t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time,
+                    tu.name, tu.surname1 , tu.surname2, c.seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration,
+                    cb.brand_name, cm.model_name
                 ]]>
             </Sentence>
         </Query>
@@ -102,8 +112,10 @@
                 <AmbiguousColumn name="id_user" prefix="c" />
             </AmbiguousColumns>
             <ValidColumns>
-                <Column>origin</Column>
-                <Column>destination</Column>
+                <Column>origin_title</Column>
+                <Column>origin_address</Column>
+                <Column>destination_titles</Column>
+                <Column>destination_address</Column>
                 <Column>date</Column>
                 <Column>time</Column>
                 <Column>number_cars</Column>
@@ -112,7 +124,7 @@
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-            SELECT count(c.*) as number_cars, t.origin, t.destination, t.date, t.time, t.id_trip, c.id_user
+            SELECT count(c.*) as number_cars, t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time, t.id_trip, c.id_user
             FROM trip t
             RIGHT JOIN car c ON t.id_user = c.id_user
             #WHERE#
@@ -128,8 +140,10 @@
                 The WHERE clause filters the rows based on the provided conditions.
             -->
             <ValidColumns>
-                <Column>origin</Column>
-                <Column>destination</Column>
+                <Column>origin_title</Column>
+                <Column>origin_address</Column>
+                <Column>destination_titles</Column>
+                <Column>destination_address</Column>
                 <Column>date</Column>
                 <Column>time</Column>
                 <Column>number_cars</Column>

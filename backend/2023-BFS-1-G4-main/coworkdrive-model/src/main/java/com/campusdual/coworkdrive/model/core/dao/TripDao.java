@@ -13,8 +13,10 @@ import org.springframework.stereotype.Repository;
 public class TripDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_ID_TRIP = "id_trip";
-    public static final String ATTR_ORIGIN = "origin";
-    public static final String ATTR_DESTINATION = "destination";
+    public static final String ATTR_ORIGIN_TITLE = "origin_title";
+    public static final String ATTR_ORIGIN_ADDRESS = "origin_address";
+    public static final String ATTR_DESTINATION_TITLE = "destination_title";
+    public static final String ATTR_DESTINATION_ADDRESS = "destination_address";
     public static final String ATTR_DATE = "date";
     public static final String ATTR_TIME = "time";
     public static final String ATTR_ID_USER = "id_user";

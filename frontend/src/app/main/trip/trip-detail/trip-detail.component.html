@@ -13,10 +13,19 @@
         <o-row>
           <o-text-input
             class="input-padding large-input"
-            title="{{ 'origin' | oTranslate }}"
-            attr="origin"
+            title="{{ 'origin_title' | oTranslate }}"
+            attr="origin_title"
             required="yes"
-            id="origin"
+            id="origin_title"
+            width="300px"
+            placeholder="Santiago de Compostela"
+          ></o-text-input>
+          <o-text-input
+            class="input-padding large-input"
+            title="{{ 'origin_address' | oTranslate }}"
+            attr="origin_address"
+            required="yes"
+            id="origin_address"
             width="300px"
             placeholder="Santiago de Compostela"
           ></o-text-input>
@@ -25,10 +34,19 @@
         <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
             class="input-padding large-input"
-            title="{{ 'destination' | oTranslate }}"
-            attr="destination"
+            title="{{ 'destination_title' | oTranslate }}"
+            attr="destination_title"
             required="yes"
-            id="destination"
+            id="destination_title"
+            width="300px"
+            placeholder="A Coruña"
+          ></o-text-input>
+          <o-text-input
+            class="input-padding large-input"
+            title="{{ 'destination_address' | oTranslate }}"
+            attr="destination_address"
+            required="yes"
+            id="destination_address"
             width="300px"
             placeholder="A Coruña"
           ></o-text-input>
@@ -64,8 +82,8 @@
             attr="id_car" 
             label="Car" 
             value-column="id_car" 
-            columns="id_car;id_car_brand;model" 
-            visible-columns="id_car_brand;model"
+            columns="id_car;brand_name;model_name" 
+            visible-columns="brand_name;model_name"
             required="yes" 
             searchable="yes"
             width="280px">

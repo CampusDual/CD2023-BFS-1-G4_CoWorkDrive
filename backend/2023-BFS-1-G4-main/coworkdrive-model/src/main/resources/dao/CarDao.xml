@@ -35,7 +35,9 @@
                 <Column>car_registration</Column>
                 <Column>id_user</Column>
                 <Column>id_color</Column>
-                <Column>name</Column>
+                <Column>color_name</Column>
+                <Column>brand_name</Column>
+                <Column>model_name</Column>
             </ValidColumns>
             <!--
                 The query retrieves the total number of cars in the system.
@@ -43,9 +45,11 @@
             -->
             <Sentence>
                 <![CDATA[
-                    SELECT c.id_car, c.id_car_brand, c.id_car_model, c.seats, c.car_registration, c.id_user, c.id_color, co.name
+                    SELECT c.id_car, c.id_car_brand, c.id_car_model, c.seats, c.car_registration, c.id_user, c.id_color, co.color_name, cb.brand_name, cm.model_name
                     FROM car c
                     JOIN color co ON c.id_color = co.id_color
+                    JOIN car_brand cb ON cb.id_car_brand = c.id_car_brand
+                    JOIN car_model cm ON cm.id_car_model = c.id_car_model
                     #WHERE#
                 ]]>
             </Sentence>

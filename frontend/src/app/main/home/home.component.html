@@ -4,7 +4,7 @@
   mode="dialog"
   label-columns="NAME;SURNAME"
 >
-<o-form-layout-dialog-options width="720px" height="820px"
+<o-form-layout-dialog-options width="1100px" height="820px"
   disable-close="false" ></o-form-layout-dialog-options>
 <o-grid 
   #grid 
@@ -14,7 +14,7 @@
   service="trips"
   entity="tripGetAll"
   keys="id_trip"
-  columns="origin;destination;date;time;free_seats;id_car"
+  columns="origin_title;destination_title;date;time;free_seats;id_car"
   fixed-header="true" 
   style="height:'400px'" 
   pagination-controls="no" 
@@ -24,20 +24,20 @@
   gutter-size="60px"
   cols="3"
   quick-filter="yes" 
-  quick-filter-columns="origin;destination"
+  quick-filter-columns="origin_title;destination_title"
   orderable="true"
-  sortable-columns="date;origin;destination"
+  sortable-columns="date;origin_title;destination_title"
   sort-column="date"
   >
     <o-grid-item *ngFor="let list of grid.dataArray">
       <o-column layout-padding class="container-item">
         <img class="map" src="../../../assets/images/login_bg.png"/>
-        <div class="origin">
-          <mat-icon>my_location</mat-icon><b>{{ list.origin }}</b>
+        <div class="origin_title">
+          <mat-icon>my_location</mat-icon><b>{{ list.origin_title }}</b>
         </div>
         <div class="nexusDiv"><mat-icon class="nexus">linear_scale</mat-icon></div>
-        <div class="destination">
-          <mat-icon>place</mat-icon> <b> {{ list.destination }} </b>
+        <div class="destination_title">
+          <mat-icon>place</mat-icon> <b> {{ list.destination_title }} </b>
         </div>
         <div class="datetime">
           <mat-icon>date_range</mat-icon> <span>{{ convertDate(list.date) }} </span>

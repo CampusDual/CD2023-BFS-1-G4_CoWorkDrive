@@ -11,30 +11,35 @@
   <o-row>
     <o-column class="columnCarDetail">
         <o-row>
-<!--           <o-text-input
-            class="seats-input large-input"
-            title="{{ 'id_car_brand' | oTranslate }}"
-            attr="id_car_brand"
-            required="yes"
-            width="250px"
-            placeholder="Toyota"
-          ></o-text-input> -->
-          <o-combo #comboCarBrands attr="id_car_brand" label="Select Brand" service-type="DummyService"
-  query-method="query" service="carbrands" entity="carBrand" value-column="id_car_brand"
-  columns="id_car_brand,brand_name" visible-columns="brand_name" keys="id_car_brand">
-  </o-combo>
-<!--           <o-text-input
-            class="input-padding large-input"
-            title="{{ 'model' | oTranslate }}"
-            attr="id_car_model"
-            required="yes"
-            width="250px"
-            placeholder="Corolla"
-          ></o-text-input> -->
-          <o-combo #comboCarModels attr="id_car_model" label="Select Model" service-type="DummyService"
-  query-method="query" service="carmodels" entity="carModel" value-column="id_car_model"
-  columns="id_car_model,model_name,id_car_brand" visible-columns="model_name" keys="id_car_model" [query-on-event]="comboCarBrands.onValueChange" parent-keys="comboCarBrands:carBrands[id_car_brand]">
-  </o-combo>
+          <o-combo 
+          #comboCarBrands 
+          class="seats-input large-input"
+          attr="id_car_brand" 
+          label="Select Brand"
+          query-method="query" 
+          service="carbrands" 
+          entity="carBrand" 
+          value-column="id_car_brand"
+          columns="id_car_brand;brand_name" 
+          visible-columns="brand_name"
+          keys="id_car_brand">
+          </o-combo>
+
+          <o-combo 
+          #comboCarModels 
+          class="seats-input large-input"
+          attr="id_car_model" 
+          label="Select Model"
+          query-method="query" 
+          service="carmodels" 
+          entity="carModel" 
+          value-column="id_car_model"
+          columns="id_car_model;model_name;id_car_brand" 
+          visible-columns="model_name" 
+          keys="id_car_model" 
+          [query-on-event]="comboCarBrands.onValueChange" 
+          parent-keys="id_car_brand">
+          </o-combo>
         </o-row>
         <o-row>
           <o-integer-input
@@ -58,8 +63,8 @@
             attr="id_color" 
             label="Color" 
             value-column="id_color" 
-            columns="id_color;name" 
-            visible-columns="name"
+            columns="id_color;color_name" 
+            visible-columns="color_name"
             required="yes" 
             searchable="yes"
             width="280px">

@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 public class ColorDao extends OntimizeJdbcDaoSupport {
 
     public static final String ATTR_ID_COLOR = "id_color";
-    public static final String ATTR_NAME = "name";
+    public static final String ATTR_COLOR_NAME = "color_name";
 }

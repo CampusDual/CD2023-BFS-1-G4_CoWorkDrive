@@ -5,7 +5,7 @@
   label-columns="NAME;SURNAME"
   show-header="no"
 >
-<o-form-layout-dialog-options width="450px" height="420px"
+<o-form-layout-dialog-options width="800px" height="600px"
   disable-close="false" ></o-form-layout-dialog-options>
   <div fxFill>
     <o-list
@@ -15,7 +15,7 @@
       service="trips"
       entity="trip"
       keys="id_trip"
-      columns="id_trip;origin;destination;date;time;id_user"
+      columns="id_trip;origin_title;destination_title;date;time;id_user"
       selectable="true"
       refresh-button="true"
       [insert-button]="carsNumber>0? true : false"
@@ -32,7 +32,7 @@
       <o-list-item *ngFor="let row of list.dataArray">
         <o-list-item-card
           #item
-          title="{{ row.origin }} - {{ row.destination }}"
+          title="{{ row.origin_title }} - {{ row.destination_title }}"
           subtitle="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
           image="./assets/images/mapIcon.png"
         >

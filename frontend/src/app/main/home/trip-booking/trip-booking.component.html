@@ -13,20 +13,34 @@
       <h3>{{ 'TRIP_INFORMATION' | oTranslate }}</h3>
       <o-row class="rowTripDetail">
         <o-text-input
+          class="info_title"
+          title="{{ 'origin_title' | oTranslate }}"
+          attr="origin_title"
+          id="origin_title"
+          read-only="true"
+        ></o-text-input>
+        <o-text-input
           class="large-input"
-          title="{{ 'origin' | oTranslate }}"
-          attr="origin"
-          id="origin"
+          title="{{ 'origin_address' | oTranslate }}"
+          attr="origin_address"
+          id="origin_address"
           read-only="true"
         ></o-text-input>
       </o-row>
 
       <o-row class="rowTripDetail">
         <o-text-input
+          class="info_title"
+          title="{{ 'destination_title' | oTranslate }}"
+          attr="destination_title"
+          id="destination_title"
+          read-only="true"
+        ></o-text-input>
+        <o-text-input
           class="large-input"
-          title="{{ 'destination' | oTranslate }}"
-          attr="destination"
-          id="destination"
+          title="{{ 'destination_address' | oTranslate }}"
+          attr="destination_address"
+          id="destination_address"
           read-only="true"
         ></o-text-input>
       </o-row>
@@ -96,17 +110,17 @@
       <o-row class="rowTripDetail">
         <o-text-input
           class="input-padding date-input"
-          title="{{ 'id_car_brand' | oTranslate }}"
-          attr="id_car_brand"
-          id="id_car_brand"
+          title="{{ 'brand_name' | oTranslate }}"
+          attr="brand_name"
+          id="brand_name"
           read-only="true"
         ></o-text-input>
 
         <o-text-input
           class="input-padding date-input"
-          title="{{ 'model' | oTranslate }}"
-          attr="model"
-          id="model"
+          title="{{ 'model_name' | oTranslate }}"
+          attr="model_name"
+          id="model_name"
           read-only="true"
         ></o-text-input>
 

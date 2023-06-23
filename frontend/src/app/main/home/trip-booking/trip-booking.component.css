@@ -15,6 +15,11 @@
   justify-content: center;
 }
 
+.info_title{
+  width: 300px;
+  padding-right: 10px;
+}
+
 .large-input{
   width: 615px;
 }

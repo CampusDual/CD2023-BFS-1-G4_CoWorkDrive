@@ -2,7 +2,7 @@
   title="{{ 'BOOKINGS' | oTranslate }}"
   separator=" "
   mode="tab"
-  label-columns="ORIGIN;DESTINATION"
+  label-columns="ORIGIN_TITLE;DESTINATION_DESTINATION"
 >
   <div fxFill>
     <o-list
@@ -12,7 +12,7 @@
       service="bookings"
       entity="myBookings"
       keys="id_booking"
-      columns="origin;destination;date;time;name;id_car_brand;id_car_model;car_registration;id_user"
+      columns="origin_title;destination_title;date;time;name;id_car_brand;id_car_model;car_registration;id_user"
       selectable="true"
       refresh-button="true"
       delete-button="true"
@@ -23,7 +23,7 @@
       <o-list-item *ngFor="let row of list.dataArray">
         <o-list-item-text
         #item 
-        title="{{ row.origin }} - {{ row.destination }}" 
+        title="{{ row.origin_title }} - {{ row.destination_title }}" 
         primary-text="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
         secondary-text="{{ row.name }} - {{ row.id_car_brand }} {{ row.id_car_model }} - {{ row.car_registration }}"
         >
