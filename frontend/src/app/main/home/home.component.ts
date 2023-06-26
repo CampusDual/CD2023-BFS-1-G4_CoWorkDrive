@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { OGridComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'home',
@@ -7,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
+  @ViewChild("grid",{static:true}) gridElement: OGridComponent;
 
   constructor(
     private router: Router,
@@ -35,4 +38,7 @@ export class HomeComponent implements OnInit {
     return (newTime.toLocaleTimeString());
   }
   
+  generateArray(free_seats: number): number[] { 
+    return Array(free_seats); 
+  }
 }

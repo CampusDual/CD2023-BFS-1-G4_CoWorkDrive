@@ -14,7 +14,7 @@
   service="trips"
   entity="tripGetAll"
   keys="id_trip"
-  columns="origin_title;destination_title;date;time;free_seats;id_car"
+  columns="origin_title;destination_title;date;time;free_seats;id_car;name"
   fixed-header="true" 
   style="height:'400px'" 
   pagination-controls="no" 
@@ -42,6 +42,11 @@
         <div class="datetime">
           <mat-icon>date_range</mat-icon> <span>{{ convertDate(list.date) }} </span>
           <mat-icon style="padding-left: 10px;">timelapse</mat-icon> <span> {{ convertTime(list.time) }} </span>
+        </div>
+        <div class="seatsDiv">
+          <div><mat-icon class="seatsIcon">account_circle</mat-icon><span>{{ list.name }}</span></div>
+          <div><mat-icon class="seatsIcon">stars</mat-icon><span>4,5</span></div>
+          <div><mat-icon #seatsIcon id="seatsIcon" class="seatsIcon" *ngFor="let icon of generateArray(list.free_seats)">event_seat</mat-icon></div>
         </div>
       </o-column>
     </o-grid-item>

@@ -1,8 +1,9 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Injector, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { DialogService, OntimizeService } from 'ontimize-web-ngx';
-import { TripNewComponent } from '../trip-new/trip-new.component';
+import { DialogService, OntimizeService, SQLTypes } from 'ontimize-web-ngx';
+import { PieChartConfiguration } from 'ontimize-web-ngx-charts';
+import { DiscreteBarChartConfiguration } from 'ontimize-web-ngx-charts';
 
 @Component({
   selector: 'app-trip-home',
@@ -11,6 +12,12 @@ import { TripNewComponent } from '../trip-new/trip-new.component';
 })
 export class TripHomeComponent implements OnInit {
   
+  accountAmount: any;
+  public movementTypesChartParams: PieChartConfiguration;
+  public chartParameters: DiscreteBarChartConfiguration;
+  protected graphData: Array<Object>;
+  protected criteriaValue = 5000;
+
   private carService: OntimizeService;
   public carsNumber: Number;
 
@@ -18,9 +25,33 @@ export class TripHomeComponent implements OnInit {
     protected dialog: MatDialog,
     public injector: Injector,
     public router: Router,
-    protected dialogService: DialogService
+    protected dialogService: DialogService,
+    private ontimizeService: OntimizeService,
+    private cd: ChangeDetectorRef
   ) {
-    this.carService = this.injector.get(OntimizeService);
+    this.ontimizeService.configureService(this.ontimizeService.getDefaultServiceConfiguration('trips'));
+    this.ontimizeService.query({}, ['id_user'], 'numberTrips').subscribe(
+      res => {
+        if (res && res.data.length && res.code === 0) {
+          this.accountAmount = res.data.length;
+          this.adaptResult(res.data);
+        }
+      },
+      err => console.log(err),
+      () => this.cd.detectChanges()
+    );
+  }
+
+  adaptResult(data: any) {
+    if (data && data.length) {
+      // chart data
+      this.graphData = [
+        {
+          'key': 'number_trips',
+          'values': data
+        }
+      ]
+    }
   }
 
   ngOnInit() {

@@ -103,6 +103,16 @@ public class TripService implements ITripService {
                 getExpression(auth.getName()));
         return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
     }
+
+    @Override
+    public EntityResult numberTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        if (keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String) {
+            keyMap.put(TripDao.ATTR_ID_TRIP, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_NUMBER_TRIPS);
+    }
     
     /**
      * Inserts a new trip based on the provided attribute map.

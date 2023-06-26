@@ -18,7 +18,7 @@
   margin-bottom: 10px !important;
 }
 .container-item{
-  width: 90%;
+  width: 80%;
   height: 90%;
   border-radius: 5px;
   border: 1px solid #AB47BC;
@@ -75,4 +75,16 @@
 
 #grid{
   background-color:white !important;
+}
+
+.seatsDiv{
+  display:flex;
+  justify-content: space-between;
+  margin-top:10px;
+}
+
+.seatsIcon{
+  color: green;
+  padding-right: 0px !important;
+  margin-top: 10px;
 }

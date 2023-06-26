@@ -1,4 +1,24 @@
 <o-form-layout-manager
+  title="{{ 'STATS_INFORMATION' | oTranslate }}"
+  separator=" "
+  mode="dialog"
+  label-columns="NAME;SURNAME"
+  show-header="no"
+>
+  <div layout="column">
+  <!--   <div fxLayout="row" fxFlexFill>
+      <o-chart fxFlex type="pie" service="trips" entity="trip" parent-keys="id_trip" x-axis="CONCEPT"
+        y-axis="MOVEMENT" query-on-init="no" [chart-parameters]="movementTypesChartParams" class="movements-chart">
+      </o-chart>
+      <o-chart fxFlex type="line" x-label="Time" y-label="Amount (€)" service="trips" entity="trip"
+        x-axis="DATE_" y-axis="MOVEMENT" x-data-type="time" parent-keys="id_trip"></o-chart>
+    </div> -->
+    <!-- <o-chart type="donutChart" layout-fill service="trips" entity="numberTrips" keys="id_trip;id_user"  x-axis="number_trips" y-axis="PRUEBA" chart-height="400"></o-chart> -->
+    <o-chart type="pie" chart-height="350" service="trips" entity="numberTrips" parent-keys="id_user" x-axis="id_user" y-axis="number_trips"></o-chart>
+  </div>
+</o-form-layout-manager>
+
+<o-form-layout-manager
   title="{{ 'TRIP_INFORMATION' | oTranslate }}"
   separator=" "
   mode="dialog"

@@ -24,14 +24,14 @@
             -->
             <Sentence>
                 <![CDATA[
-                    SELECT (c.seats - count(b.*)) as free_seats, t.*, c.id_car_brand, c.id_car_model
+                    SELECT (c.seats - count(b.*)) as free_seats, t.*, c.id_car_brand, c.id_car_model, tu.name
                     FROM trip t
                     JOIN car c ON t.id_car = c.id_car
                     JOIN tuser tu ON tu.user_ = t.id_user
                     LEFT JOIN booking b ON b.id_trip = t.id_trip
                     #WHERE#
                         AND date >= cast(now() as date)
-                    GROUP BY c.seats, t.id_trip, c.id_car_brand, c.id_car_model
+                    GROUP BY c.seats, t.id_trip, c.id_car_brand, c.id_car_model, tu.name
                     HAVING (c.seats - count(b.*)) > 0
                 ]]>
             </Sentence>
@@ -157,6 +157,25 @@
                     SELECT t.*, c.id_car_brand, c.id_car_model
                     FROM trip t
                     JOIN car c ON t.id_car = c.id_car
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="number_trips">
+            <!--
+                The query retrieves trip details along with the number of cars for each trip.
+                It selects columns from the trip and car tables, calculates the number of cars using a right join,
+                and groups the results based on the trip ID and user ID.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
+            <ValidColumns>
+                <Column>id_user</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT count(t.*) as number_trips, id_user
+                    FROM trip t
+                    #WHERE#
+                    GROUP BY id_user
                 ]]>
             </Sentence>
         </Query>

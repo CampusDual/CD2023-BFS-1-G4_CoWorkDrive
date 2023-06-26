@@ -6,27 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/ColorDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/ColorDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ITripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ITripService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/booking/booking-home/booking-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/booking/booking-home/booking-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-detail/car-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-home/car-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.css" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/car/car-new/car-new.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/trip-booking/trip-booking.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/trip-booking/trip-booking.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-new/trip-new.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/home/home.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +108,7 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint type="java-line">
           <url>jar://$MAVEN_REPOSITORY$/com/ontimize/jee/ontimize-jee-server-jdbc/5.7.0/ontimize-jee-server-jdbc-5.7.0.jar!/com/ontimize/jee/server/dao/jdbc/OntimizeJdbcDaoSupport.class</url>
           <line>138</line>
           <option name="timeStamp" value="7" />
