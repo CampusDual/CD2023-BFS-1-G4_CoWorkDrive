@@ -18,9 +18,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Service implementation for managing trips.
@@ -105,13 +103,32 @@ public class TripService implements ITripService {
     }
 
     @Override
-    public EntityResult numberTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
+    public EntityResult moreTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(PRIMARYUSERKEY, auth.getName());
         if (keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String) {
             keyMap.put(TripDao.ATTR_ID_TRIP, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
         }
-        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_NUMBER_TRIPS);
+        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_MORE_TRIPS);
+    }
+
+    @Override
+    public EntityResult historicalTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        if (keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String) {
+            keyMap.put(TripDao.ATTR_ID_TRIP, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_HISTORICAL_TRIPS);
+    }
+
+    @Override
+    public EntityResult numberTripsOnBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        //LinkedHashMap<String, Object> idTripLinked = new LinkedHashMap<>();
+        //idTripLinked.put("id_trip", keyMap.get("id_trip"));
+
+        //keyMap.put("id_trip", idTripLinked.get("id_trip"));
+        return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_NUMBER_TRIPS_ON_BOOKING);
     }
     
     /**

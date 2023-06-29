@@ -22,7 +22,8 @@
           value-column="id_car_brand"
           columns="id_car_brand;brand_name" 
           visible-columns="brand_name"
-          keys="id_car_brand">
+          keys="id_car_brand"
+          searchable="yes">
           </o-combo>
 
           <o-combo 
@@ -38,7 +39,8 @@
           visible-columns="model_name" 
           keys="id_car_model" 
           [query-on-event]="comboCarBrands.onValueChange" 
-          parent-keys="id_car_brand">
+          parent-keys="id_car_brand"
+          searchable="yes">
           </o-combo>
         </o-row>
         <o-row>
@@ -67,7 +69,8 @@
             visible-columns="color_name"
             required="yes" 
             searchable="yes"
-            width="280px">
+            width="280px"
+            translate="yes">
           </o-combo>
         </o-row>
         <o-row>
@@ -82,10 +85,20 @@
           >
             <o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT (EXAMPLE: 1111ZZZ)"></o-validator>
           </o-text-input>
+          <o-text-input
+            class="input-padding large-input"
+            title="{{ 'id_car' | oTranslate }}"
+            attr="id_car"
+            required="yes"
+            id="id_car"
+            width="300px"
+            oHidden
+          ></o-text-input>
         </o-row>
         <div class="ontimize-buttons">
-          <button id="undoCar" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
-          <button id="saveCar" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteCar()" layout-padding>{{ 'Delete' | oTranslate }}</button >
         </div>
     </o-column>
   </o-row>

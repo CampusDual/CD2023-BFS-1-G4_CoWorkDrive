@@ -160,7 +160,33 @@
                 ]]>
             </Sentence>
         </Query>
-        <Query id="number_trips">
+        <Query id="more_trips">
+            <!--
+                The query retrieves trip details along with the number of cars for each trip.
+                It selects columns from the trip and car tables, calculates the number of cars using a right join,
+                and groups the results based on the trip ID and user ID.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_user" prefix="t" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>more_trips</Column>
+                <Column>id_user</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT count(b.*) as more_trips, b.id_user
+                    FROM booking b
+                    JOIN trip t ON b.id_trip = t.id_trip
+                    #WHERE#
+                    GROUP BY b.id_user
+                    ORDER BY more_trips ASC
+                    LIMIT 3
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="historical_trips">
             <!--
                 The query retrieves trip details along with the number of cars for each trip.
                 It selects columns from the trip and car tables, calculates the number of cars using a right join,
@@ -168,14 +194,37 @@
                 The WHERE clause filters the rows based on the provided conditions.
             -->
             <ValidColumns>
+                <Column>trips_last_month</Column>
+                <Column>trips_current_month</Column>
                 <Column>id_user</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT count(t.*) as number_trips, id_user
+                    SELECT count(t.*) as trips_current_month, null trips_last_month
                     FROM trip t
                     #WHERE#
-                    GROUP BY id_user
+                        AND t."date" BETWEEN DATE_TRUNC('month', CURRENT_DATE) AND (DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month' - INTERVAL '1 day')
+                    GROUP BY t.id_user, t."date"
+                    UNION
+                    SELECT null trips_current_month, count(t.*) as trips_last_month
+                    FROM trip t
+                    #WHERE#
+                        AND t."date" BETWEEN DATE_TRUNC('month', CURRENT_DATE) - interval '1 month' AND (DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 day')
+                    GROUP BY t.id_user
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="number_trips_on_booking">
+            <ValidColumns>
+                <Column>id_trip</Column>
+                <Column>number_bookings</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT
+                    #COLUMNS#
+                    FROM numberbookings
+                    #WHERE#
                 ]]>
             </Sentence>
         </Query>

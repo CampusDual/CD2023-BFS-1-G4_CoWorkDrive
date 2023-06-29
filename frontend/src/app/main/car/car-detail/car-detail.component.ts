@@ -1,5 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { ValidatorFn } from '@angular/forms';
+import { MatDialogRef } from '@angular/material';
 import { DialogService, OFormComponent, OntimizeService, SnackBarService, OValidators, OSnackBarConfig } from 'ontimize-web-ngx';
 
 @Component({
@@ -18,11 +19,13 @@ export class CarDetailComponent implements OnInit {
 
   constructor(public injector: Injector,    
     protected dialogService: DialogService,
+    public dialogRef: MatDialogRef<CarDetailComponent>
     ) { 
       // Add a pattern validator for car registration
       this.validatorCarRegistration.push(OValidators.patternValidator(/(([A-Z]{1}[A-Z]{0,1})(\d{4})([A-Z]{1}[A-Z]{0,1}))|((\d{4})([BCDFGHJKLMNPRSTVWXYZ]{3}))/, 'hasValidCarRegisitration'));
       // Add a pattern validator for number of seats
-      this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/,'hasValidNumber'))
+      this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/,'hasValidNumber'));
+      this.carService = this.injector.get(OntimizeService);
   }
 
   ngOnInit() {
@@ -53,6 +56,21 @@ export class CarDetailComponent implements OnInit {
   clearCar(): void{
     this.formCar.clearData();
   }
+
+  deleteCar(): void{
+    // Show a confirmation dialog
+    this.dialogService.confirm('Car delete', 'Do you really want to confirm?');
+    // Subscribe to dialog close
+    this.dialogService.dialogRef.afterClosed().subscribe( result => {
+      if(result) {
+        // Perform the form update
+        this.carService.delete({id_car: this.formCar.getFieldValue("id_car")}, 'car').subscribe(
+          res=>{
+            this.dialogRef.close();
+          });
+      }
+    });
+}
 
   // Configure the car service
   configureService(){

@@ -1,4 +1,6 @@
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { MatDialogRef } from '@angular/material';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
@@ -9,13 +11,25 @@ import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx
 export class TripDetailComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
   private tripService: OntimizeService;
+  idTrip: number;
+
+  private bookingService: OntimizeService;
+  public bookingsNumber: Number;
 
   constructor(public injector: Injector,
     protected dialogService: DialogService,
+    public router: Router,
+    public dialogRef: MatDialogRef<TripDetailComponent>
     ) {
+    this.tripService = this.injector.get(OntimizeService);
+    this.bookingService = this.injector.get(OntimizeService);
   }
   
   ngOnInit() {
+
+  }
+
+  ngAfterContentInit(){
   }
 
   clearTrip(): void {
@@ -29,17 +43,42 @@ export class TripDetailComponent implements OnInit {
     this.dialogService.dialogRef.afterClosed().subscribe(result => {
       if (result) {
         // If the update is confirmed, set the form field values and perform the update
-        this.formTrip.setFieldValue("id_trip", this.formTrip.getFieldValue("id_trip"));
-        this.formTrip.setFieldValue("origin_title", this.formTrip.getFieldValue("origin_title"));
-        this.formTrip.setFieldValue("origin_address", this.formTrip.getFieldValue("origin_address"));
-        this.formTrip.setFieldValue("destination_title", this.formTrip.getFieldValue("destination_title"));
-        this.formTrip.setFieldValue("destination_address", this.formTrip.getFieldValue("destination_address"));
-        this.formTrip.setFieldValue("date", this.formTrip.getFieldValue("date"));
-        this.formTrip.setFieldValue("time", this.formTrip.getFieldValue("time"));
-        this.formTrip.setFieldValue("id_car", this.formTrip.getFieldValue("id_car"));
         this.formTrip.update();
       }
     });
+  }
+
+  hasBookings(){
+    const conf = this.bookingService.getDefaultServiceConfiguration('trips');
+    this.bookingService.configureService(conf);
+    // Get the number of available cars and show an alert if there are none
+    this.bookingService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['number_bookings'], 'numberTripsOnBooking').subscribe(
+      res => {
+        this.getNumberBookings(res.data[0].number_bookings);
+      }
+    );
+  }
+
+  getNumberBookings(bookingsNumber: Number){
+    this.bookingsNumber = bookingsNumber;
+    if(this.bookingsNumber !=0){
+      alert("You cannot change anything or delete");
+    }
+  }
+
+  deleteTrip(): void{
+      // Show a confirmation dialog
+      this.dialogService.confirm('Trip delete', 'Do you really want to confirm?');
+      // Subscribe to dialog close
+      this.dialogService.dialogRef.afterClosed().subscribe( result => {
+        if(result) {
+          // Perform the form update
+          this.tripService.delete({id_trip: this.formTrip.getFieldValue("id_trip")}, 'trip').subscribe(
+            res=>{
+              this.dialogRef.close();
+            });
+        }
+      });
   }
 
   configureService() {

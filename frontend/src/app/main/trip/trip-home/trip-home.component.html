@@ -5,19 +5,17 @@
   label-columns="NAME;SURNAME"
   show-header="no"
 >
-  <div layout="column">
-  <!--   <div fxLayout="row" fxFlexFill>
-      <o-chart fxFlex type="pie" service="trips" entity="trip" parent-keys="id_trip" x-axis="CONCEPT"
-        y-axis="MOVEMENT" query-on-init="no" [chart-parameters]="movementTypesChartParams" class="movements-chart">
-      </o-chart>
-      <o-chart fxFlex type="line" x-label="Time" y-label="Amount (€)" service="trips" entity="trip"
-        x-axis="DATE_" y-axis="MOVEMENT" x-data-type="time" parent-keys="id_trip"></o-chart>
-    </div> -->
-    <!-- <o-chart type="donutChart" layout-fill service="trips" entity="numberTrips" keys="id_trip;id_user"  x-axis="number_trips" y-axis="PRUEBA" chart-height="400"></o-chart> -->
-    <o-chart type="pie" chart-height="350" service="trips" entity="numberTrips" parent-keys="id_user" x-axis="id_user" y-axis="number_trips"></o-chart>
-  </div>
+  <o-row>
+    <div class="statsDiv">
+      <p label="Most people who book with you"><strong>{{'Most people who book with you' | oTranslate}}</strong></p>
+      <o-chart type="discreteBar" show-label="yes" x-label="User" y-label="Number of trips" service="trips" entity="moreTrips" x-axis="id_user" y-axis="more_trips"></o-chart>
+    </div>
+    <div class="statsDiv">
+      <p label="Most people who book with you"><strong>{{'Comparison trips published this month / last month' | oTranslate}}</strong></p>
+      <o-chart #bubbleChart type="bubbleChart" chart-height="400" [data]="dataTripsStats"></o-chart>
+    </div>
+    </o-row>
 </o-form-layout-manager>
-
 <o-form-layout-manager
   title="{{ 'TRIP_INFORMATION' | oTranslate }}"
   separator=" "
@@ -28,8 +26,8 @@
 <o-form-layout-dialog-options width="800px" height="600px"
   disable-close="false" ></o-form-layout-dialog-options>
   <div fxFill>
-    <o-list
-      #list
+    <o-grid
+      #grid
       attr="tripslist"
       title="TRIPS"
       service="trips"
@@ -39,25 +37,25 @@
       selectable="true"
       refresh-button="true"
       [insert-button]="carsNumber>0? true : false"
-      insert-method="insertDetail()"
       insert-button-floatable="false"
       delete-button="true"
-      detail-button-in-row="true"
-      detail-button-in-row-icon="chevron_right"
-      edit-button-in-row="false"
-      edit-button-in-row-icon="edit"
-      detail-mode="none"
+      detail-mode="click"
+      query-rows="8"
+      gutter-size="20px"
+      cols="4"
       pagination-controls="yes"
     >
-      <o-list-item *ngFor="let row of list.dataArray">
-        <o-list-item-card
-          #item
-          title="{{ row.origin_title }} - {{ row.destination_title }}"
-          subtitle="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
-          image="./assets/images/mapIcon.png"
-        >
-        </o-list-item-card>
-      </o-list-item>
-    </o-list>
+      <o-grid-item *ngFor="let list of grid.dataArray">
+        <o-column layout-padding class="container-item">
+          <img class="map" src="./assets/images/mapIcon.png"/>
+          <div class="origin">
+            <mat-icon>directions_car</mat-icon><b>{{ list.origin_title }} - {{ list.destination_title }}</b>
+          </div>
+          <div class="destination">
+            <mat-icon>dehaze</mat-icon> <b> {{ convertDate(list.date) }} - {{ convertTime(list.time) }} </b>
+          </div>
+        </o-column>
+      </o-grid-item>
+    </o-grid>
   </div>
 </o-form-layout-manager>

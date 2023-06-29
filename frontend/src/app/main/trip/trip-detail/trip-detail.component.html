@@ -4,9 +4,11 @@
   service="trips"
   entity="trip"
   keys="id_trip"
-  id="formCar"
+  id="formTrip"
   show-header="no"
   class="formTripDetail"
+  (onDataLoaded)="hasBookings()"
+  header-actions="D"
 >
   <o-row>
     <o-column class="columnTripDetail">
@@ -88,10 +90,21 @@
             searchable="yes"
             width="280px">
           </o-combo>
+          <o-text-input
+            class="input-padding large-input"
+            title="{{ 'id_trip' | oTranslate }}"
+            attr="id_trip"
+            required="yes"
+            id="id_trip"
+            width="300px"
+            placeholder="Santiago de Compostela"
+            oHidden
+          ></o-text-input>
         </o-row>
         <div class="ontimize-buttons">
-          <button id="clearTrip" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
-          <button id="saveTrip" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+           <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteTrip()" layout-padding>{{ 'Delete' | oTranslate }}</button >
         </div>
     </o-column>
   </o-row>
