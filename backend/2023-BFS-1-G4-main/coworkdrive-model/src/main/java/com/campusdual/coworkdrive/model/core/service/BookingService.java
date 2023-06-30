@@ -115,4 +115,11 @@ public class BookingService implements IBookingService {
     public EntityResult getSeatsQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_SEATS_INFO);
     }
+    
+    @Override
+    public EntityResult userIsInBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_NUMBER_USER_IN_BOOKING);
+    }
 }

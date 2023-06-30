@@ -18,4 +18,6 @@ public interface IBookingService {
     EntityResult myBookingsDelete(Map<String, Object> keyMap);
 
     EntityResult getSeatsQuery(Map<String, Object> keyMap, List<String> attrList);
+    
+    EntityResult userIsInBookingQuery(Map<String, Object> keyMap, List<String> attrList);
 }

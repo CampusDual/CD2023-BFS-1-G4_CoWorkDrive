@@ -7,6 +7,7 @@
   id="idForm"
   show-header="no"
   class="formTripDetail"
+  (onDataLoaded)="isBooking()"
 >
   <o-row>
     <o-column class="columnTripDetail">
@@ -150,7 +151,7 @@ show-header="no">
 <button 
   id="signUp"
   title="{{ 'Sign Up' | oTranslate }}"
-  [disabled]="valor==0 ? true : false" 
+  [disabled]="(valor==0 || numBooking>0) ? true : false" 
   (click)="signUp()"
   >{{ 'Sign Up' | oTranslate }}</button>
 </o-form>

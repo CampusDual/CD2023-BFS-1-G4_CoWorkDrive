@@ -78,5 +78,18 @@
                    ]]>
             </Sentence>
         </Query>
+        <Query id="number_user_in_booking">
+            <ValidColumns>
+                <Column>numberUserBooking</Column>
+                <Column>id_trip</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT count(*) as numberUserBooking
+                    FROM booking
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

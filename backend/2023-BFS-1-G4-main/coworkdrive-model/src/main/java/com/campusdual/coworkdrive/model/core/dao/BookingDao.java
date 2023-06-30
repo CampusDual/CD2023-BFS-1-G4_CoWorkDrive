@@ -17,4 +17,7 @@ public class BookingDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID_USER = "id_user";
     public static final String QUERY_SEATS_INFO = "seats_info";
     public static final String QUERY_MY_BOOKINGS = "my_bookings";
+    
+    public static final String QUERY_NUMBER_USER_IN_BOOKING = "number_user_in_booking";
+    
 }

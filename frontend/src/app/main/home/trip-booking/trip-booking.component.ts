@@ -13,13 +13,16 @@ export class TripBookingComponent implements OnInit {
   disabledState: boolean = false; // State to enable or disable a button
   valor: Number; // Value to control the button disabled state
   private bookingService: OntimizeService;
+  numBooking: Number;
 
   constructor(public injector: Injector,
     protected dialogService: DialogService,
-    private snackBarService: SnackBarService) { }
+    private snackBarService: SnackBarService) { 
+      this.bookingService = this.injector.get(OntimizeService);
+    }
 
   ngOnInit() {
-    this.configureService();
+    //this.configureService();
   }
 
   signUp(): void {
@@ -38,7 +41,24 @@ export class TripBookingComponent implements OnInit {
   freeSeatsValue(event){
     this.valor = this.formTrip.getFieldValue("free_seats");
   }
- 
+  
+  isBooking(){
+    console.log(this.formTrip.getFieldValue("id_trip"))
+    const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
+    this.bookingService.configureService(conf);
+    // Get the number of available cars and show an alert if there are none
+    this.bookingService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['numberUserBooking'], 'userIsInBooking').subscribe(
+      res => {
+
+        this.getUserBookings(res.data[0].numberUserBooking);
+      }
+    );
+   
+  }
+  getUserBookings(num: Number) {
+    this.numBooking = num;
+    console.log(this.numBooking)
+  }
 
   configureService() {
     // Get the default configuration of the 'bookings' service and configure the 'bookingService'
