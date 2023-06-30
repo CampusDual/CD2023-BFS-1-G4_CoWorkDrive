@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -144,7 +145,18 @@ public class TripService implements ITripService {
         attrMap.put(TripDao.ATTR_DATE,formatDate(attrMap));
         Date dateReceived = (Date) attrMap.get("date");
         Date todayDate = new Date();
-        if (dateReceived.before(todayDate)) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(todayDate);
+        Calendar dateCompare = Calendar.getInstance();
+        dateCompare.setTime(todayDate);
+        dateCompare.add(Calendar.DAY_OF_YEAR, -1);
+        if (dateReceived.before(dateCompare.getTime())) {
+            return null;
+        }
+
+        long timestampActual = System.currentTimeMillis();
+        Timestamp timeReceived = (Timestamp) attrMap.get("time");
+        if(timeReceived.getTime() <= timestampActual){
             return null;
         }
         return this.daoHelper.insert(this.tripDao, attrMap);

@@ -39,15 +39,6 @@ export class TripNewComponent implements OnInit {
     this.dialogService.confirm('Trip register', 'Do you really want to confirm?');
     this.dialogService.dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // If the registration is confirmed, set the form values and perform the insertion
-        this.formTrip.setFieldValue("id_trip", this.formTrip.getFieldValue("id_trip"));
-        this.formTrip.setFieldValue("origin_title", this.formTrip.getFieldValue("origin_title"));
-        this.formTrip.setFieldValue("origin_address", this.formTrip.getFieldValue("origin_address"));
-        this.formTrip.setFieldValue("destination_title", this.formTrip.getFieldValue("destination_title"));
-        this.formTrip.setFieldValue("destination_address", this.formTrip.getFieldValue("destination_address"));
-        this.formTrip.setFieldValue("date", this.formTrip.getFieldValue("date"));
-        this.formTrip.setFieldValue("time", this.formTrip.getFieldValue("time"));
-        this.formTrip.setFieldValue("id_car", this.formTrip.getFieldValue("id_car"));
         this.formTrip.insert();
       }
     });

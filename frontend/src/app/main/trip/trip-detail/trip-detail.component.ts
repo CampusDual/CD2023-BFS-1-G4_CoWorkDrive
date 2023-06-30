@@ -62,7 +62,7 @@ export class TripDetailComponent implements OnInit {
   getNumberBookings(bookingsNumber: Number){
     this.bookingsNumber = bookingsNumber;
     if(this.bookingsNumber !=0){
-      alert("You cannot change anything or delete");
+      this.dialogService.alert("No changes or delete available!","You cannot change anything or delete when a trip has bookings");
     }
   }
 
