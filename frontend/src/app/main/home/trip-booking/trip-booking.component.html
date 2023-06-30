@@ -151,8 +151,9 @@ show-header="no">
 <button 
   id="signUp"
   title="{{ 'Sign Up' | oTranslate }}"
-  [disabled]="(valor==0 || numBooking>0) ? true : false" 
+  [hidden]="(valor==0 || numBooking>0) ? true : false" 
   (click)="signUp()"
   >{{ 'Sign Up' | oTranslate }}</button>
+  <p [hidden]="numBooking>0 ? false : true">{{ 'You have already registered for this trip!' | oTranslate}}</p>
 </o-form>
 </o-form>

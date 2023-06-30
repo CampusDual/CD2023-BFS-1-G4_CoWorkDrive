@@ -9,7 +9,7 @@
     <o-grid
       #grid
       attr="carslist"
-      title="MY CAR"
+      title="MY CARS"
       service="cars"
       entity="car"
       keys="id_car"
@@ -34,7 +34,7 @@
             <mat-icon>directions_car</mat-icon><b>{{ list.brand_name }} {{ list.model_name }}</b>
           </div>
           <div class="destination">
-            <mat-icon>dehaze</mat-icon> <b> {{ list.car_registration }} - {{ list.color_name | oTranslate }} </b>
+            <mat-icon>dehaze</mat-icon> {{ list.car_registration }} - {{ list.color_name | oTranslate }}
           </div>
         </o-column>
       </o-grid-item>

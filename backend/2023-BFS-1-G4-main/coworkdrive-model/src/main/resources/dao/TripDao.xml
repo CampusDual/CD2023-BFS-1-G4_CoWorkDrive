@@ -132,34 +132,6 @@
            ]]>
             </Sentence>
         </Query>
-        <Query id="trip_detail">
-            <!--
-                The query retrieves trip details along with the number of cars for each trip.
-                It selects columns from the trip and car tables, calculates the number of cars using a right join,
-                and groups the results based on the trip ID and user ID.
-                The WHERE clause filters the rows based on the provided conditions.
-            -->
-            <ValidColumns>
-                <Column>origin_title</Column>
-                <Column>origin_address</Column>
-                <Column>destination_titles</Column>
-                <Column>destination_address</Column>
-                <Column>date</Column>
-                <Column>time</Column>
-                <Column>number_cars</Column>
-                <Column>id_trip</Column>
-                <Column>id_car</Column>
-                <Column>id_car_brand</Column>
-                <Column>id_car_model</Column>
-            </ValidColumns>
-            <Sentence>
-                <![CDATA[
-                    SELECT t.*, c.id_car_brand, c.id_car_model
-                    FROM trip t
-                    JOIN car c ON t.id_car = c.id_car
-                ]]>
-            </Sentence>
-        </Query>
         <Query id="more_trips">
             <!--
                 The query retrieves trip details along with the number of cars for each trip.
