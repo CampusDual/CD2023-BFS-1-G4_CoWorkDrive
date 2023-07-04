@@ -8,6 +8,7 @@
   show-header="no"
   class="formTripDetail"
 >
+<!-- (onDataLoaded)="formInit()" -->
   <o-row>
     <o-column class="columnTripDetail">
       <o-row>
@@ -52,7 +53,7 @@
         ></o-text-input>
       </o-row>
 
-        <o-row style="display: flex; justify-content: center;">
+        <o-row style="display: flex; justify-content: center; height: 120px;">
           <o-date-input
             class="date-input"
             title="{{ 'date' | oTranslate }}"

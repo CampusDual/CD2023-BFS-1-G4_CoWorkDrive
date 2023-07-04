@@ -22,7 +22,7 @@ export class TripBookingComponent implements OnInit {
     }
 
   ngOnInit() {
-    //this.configureService();
+    this.isBooking();
   }
 
   signUp(): void {

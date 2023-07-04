@@ -82,6 +82,7 @@
             <ValidColumns>
                 <Column>numberUserBooking</Column>
                 <Column>id_trip</Column>
+                <Column>id_user</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[

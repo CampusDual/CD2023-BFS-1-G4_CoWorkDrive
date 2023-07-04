@@ -54,7 +54,7 @@
           ></o-text-input>
         </o-row>
 
-        <o-row style="display: flex; justify-content: center;">
+        <o-row style="display: flex; justify-content: center; height:120px">
           <o-date-input
             class="date-input"
             title="{{ 'date' | oTranslate }}"
@@ -64,7 +64,7 @@
             max={{maxDate}}
             id="date"
             width="145px"
-            placeholder="01/01/2000"
+            placeholder="12/31/2000"
             value-type="STRING"
             sql-type="VARCHAR"
           ></o-date-input>
@@ -106,7 +106,8 @@
           oHidden
         ></o-text-input>
         <div class="ontimize-buttons">
-          <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+        <!-- <button title="{{ 'Reuse' | oTranslate }}" label="Reuse" (click)="reuseTrip()" layout-padding>{{ 'Reuse' | oTranslate }}</button ></o-form-layout-manager> -->
+        <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
           <!-- <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button > -->
           <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteTrip()" layout-padding>{{ 'Delete' | oTranslate }}</button >
         </div>

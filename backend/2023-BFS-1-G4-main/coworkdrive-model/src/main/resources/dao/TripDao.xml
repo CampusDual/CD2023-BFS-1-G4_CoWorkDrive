@@ -170,7 +170,7 @@
                     JOIN trip t ON b.id_trip = t.id_trip
                     #WHERE#
                     GROUP BY b.id_user
-                    ORDER BY more_trips ASC
+                    ORDER BY more_trips DESC
                     LIMIT 3
                 ]]>
             </Sentence>

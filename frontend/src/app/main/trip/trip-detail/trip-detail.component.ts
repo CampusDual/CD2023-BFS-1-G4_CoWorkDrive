@@ -11,6 +11,7 @@ import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx
 })
 export class TripDetailComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
+  
   private tripService: OntimizeService;
   idTrip: number;
 
@@ -20,13 +21,16 @@ export class TripDetailComponent implements OnInit {
   private bookingService: OntimizeService;
   public bookingsNumber: Number;
 
-  constructor(public injector: Injector,
-    protected dialogService: DialogService,
+  constructor(
+    private actRoute: ActivatedRoute,
     public router: Router,
+    public injector: Injector,
+    protected dialogService: DialogService,
     public dialogRef: MatDialogRef<TripDetailComponent>
     ) {
     this.tripService = this.injector.get(OntimizeService);
     this.bookingService = this.injector.get(OntimizeService);
+    this.router = router;
   }
   
   ngOnInit() {
@@ -88,6 +92,17 @@ export class TripDetailComponent implements OnInit {
             });
         }
       });
+  }
+
+  reuseTrip(){
+    localStorage.setItem("origin_title",this.formTrip.getFieldValue("origin_title"));
+    localStorage.setItem("origin_address",this.formTrip.getFieldValue("origin_address"));
+    localStorage.setItem("destination_title",this.formTrip.getFieldValue("destination_title"));
+    localStorage.setItem("destination_address",this.formTrip.getFieldValue("destination_address"));
+    localStorage.setItem("time",this.formTrip.getFieldValue("time"));
+    localStorage.setItem("id_car",this.formTrip.getFieldValue("id_car"));
+    this.dialogRef.close();
+    this.router.navigate(['/main/trip/new'], { relativeTo: this.actRoute });
   }
 
   configureService() {

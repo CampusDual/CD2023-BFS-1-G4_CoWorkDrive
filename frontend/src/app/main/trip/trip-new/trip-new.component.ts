@@ -23,6 +23,20 @@ export class TripNewComponent implements OnInit {
     this.maxDate = formatDate(this.getMaxDate(), 'MM-dd-yyyy', 'en-US');
   }
 
+  ngAfterViewInit(){
+
+    
+  }
+
+  formInit(){
+    if(localStorage.length > 0){
+      this.formTrip.setFieldValue("origin_title", localStorage.getItem("origin_title"));
+      this.formTrip.setFieldValue("origin_address", localStorage.getItem("origin_address"));
+      this.formTrip.setFieldValue("destination_title", localStorage.getItem("destination_title"));
+      this.formTrip.setFieldValue("destination_address", localStorage.getItem("destination_address"));
+    }
+  }
+
   getMaxDate(): Date{
     let dateMonth = new Date();
     dateMonth.setMonth(dateMonth.getMonth() + 6);
