@@ -26,4 +26,6 @@ public interface ITripService {
     EntityResult tripUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
 
     EntityResult tripDelete(Map<String, Object> keyMap);
+
+    EntityResult getDate(Map<String, Object> attrMap, List<String> attrList);
 }

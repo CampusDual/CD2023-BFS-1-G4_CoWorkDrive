@@ -144,21 +144,12 @@ public class TripService implements ITripService {
         attrMap.put(PRIMARYUSERKEY, auth.getName());
         attrMap.put(TripDao.ATTR_DATE,formatDate(attrMap));
         Date dateReceived = (Date) attrMap.get("date");
-        Date todayDate = new Date();
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(todayDate);
-        Calendar dateCompare = Calendar.getInstance();
-        dateCompare.setTime(todayDate);
-        dateCompare.add(Calendar.DAY_OF_YEAR, -1);
-        if (dateReceived.before(dateCompare.getTime())) {
+        Timestamp timeReceived = (Timestamp) attrMap.get("time");
+
+        if(compareDateTime(dateReceived, timeReceived)){
             return null;
         }
 
-        long timestampActual = System.currentTimeMillis();
-        Timestamp timeReceived = (Timestamp) attrMap.get("time");
-        if(timeReceived.getTime() <= timestampActual){
-            return null;
-        }
         return this.daoHelper.insert(this.tripDao, attrMap);
     }
     
@@ -171,6 +162,51 @@ public class TripService implements ITripService {
      */
     @Override
     public EntityResult tripUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap) {
+        if(attrMap.get("date") == null && attrMap.get("time") != null) {
+            List<String> listValue = new ArrayList<>();
+            listValue.add("date");
+            listValue.add("time");
+            EntityResult queryResult = getDate(keyMap, listValue);
+            if (queryResult.isWrong()) {
+                return queryResult;
+            }
+            Date dateReceived = (Date) queryResult.getRecordValues(0).get("date");
+            Timestamp timeReceived = (Timestamp) attrMap.get("time");
+
+            if(compareDateTime(dateReceived, timeReceived)){
+                return null;
+            }
+        }
+
+        if(attrMap.get("date") != null && attrMap.get("time") == null) {
+            List<String> listValue = new ArrayList<>();
+            listValue.add("date");
+            listValue.add("time");
+            EntityResult queryResult = getDate(keyMap, listValue);
+            if (queryResult.isWrong()) {
+                return queryResult;
+            }
+
+            attrMap.put(TripDao.ATTR_DATE, formatDate(attrMap));
+            Date dateReceived = (Date) attrMap.get("date");
+            Timestamp timeReceived = (Timestamp) queryResult.getRecordValues(0).get("time");
+
+            if(compareDateTime(dateReceived, timeReceived)){
+                return null;
+            }
+        }
+
+
+        if(attrMap.get("date") != null && attrMap.get("time") != null) {
+            attrMap.put(TripDao.ATTR_DATE, formatDate(attrMap));
+            Date dateReceived = (Date) attrMap.get("date");
+            Timestamp timeReceived = (Timestamp) attrMap.get("time");
+
+            if(compareDateTime(dateReceived, timeReceived)){
+                return null;
+            }
+        }
+
         return this.daoHelper.update(tripDao, attrMap, keyMap);
     }
     
@@ -200,5 +236,30 @@ public class TripService implements ITripService {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate dateTime = LocalDate.parse((String) attrMap.get(TripDao.ATTR_DATE), formatter);
         return Date.from(dateTime.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+    }
+
+    @Override
+    public EntityResult getDate(Map<String, Object> attrMap, List<String> attrList) {
+        return this.daoHelper.query(tripDao, attrMap, attrList,TripDao.QUERY_GET_DATE);
+    }
+
+    public boolean compareDateTime(Date dateReceived, Timestamp timeReceived){
+        Date todayDate = new Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(todayDate);
+        Calendar dateCompare = Calendar.getInstance();
+        dateCompare.setTime(todayDate);
+        dateCompare.add(Calendar.DAY_OF_YEAR, -1);
+        if (dateReceived.before(dateCompare.getTime())) {
+            return true;
+        }
+
+        long timestampActual = System.currentTimeMillis();
+        dateCompare.add(Calendar.DAY_OF_YEAR, 1);
+        if (timeReceived.getTime() <= timestampActual && dateReceived.before(dateCompare.getTime())) {
+            return true;
+        }
+
+        return false;
     }
 }

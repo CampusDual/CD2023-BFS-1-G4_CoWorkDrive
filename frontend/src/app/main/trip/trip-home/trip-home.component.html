@@ -8,11 +8,11 @@
   <o-row>
     <div class="statsDiv">
       <p label="Most people who book with you"><strong>{{'Most people who book with you' | oTranslate}}</strong></p>
-      <o-chart type="discreteBar" show-label="yes" x-label="User" y-label="Number of trips" service="trips" entity="moreTrips" x-axis="id_user" y-axis="more_trips"></o-chart>
+      <o-chart type="discreteBar" show-label="yes" x-label="User" y-label="Number of trips" service="trips" entity="moreTrips" x-axis="id_user" y-axis="more_trips" translate="yes"></o-chart>
     </div>
     <div class="statsDiv">
       <p label="Most people who book with you"><strong>{{'Comparison trips published this month / last month' | oTranslate}}</strong></p>
-      <o-chart #bubbleChart type="bubbleChart" chart-height="400" [data]="dataTripsStats"></o-chart>
+      <o-chart #bubbleChart type="bubbleChart" chart-height="400" [data]="dataTripsStats" translate="yes"></o-chart>
     </div>
     </o-row>
 </o-form-layout-manager>
@@ -23,7 +23,7 @@
   label-columns="NAME;SURNAME"
   show-header="no"
 >
-<o-form-layout-dialog-options width="800px" height="600px"
+<o-form-layout-dialog-options width="800px" height="470px"
   disable-close="false" ></o-form-layout-dialog-options>
     <o-grid
       #grid
@@ -32,7 +32,7 @@
       service="trips"
       entity="trip"
       keys="id_trip"
-      columns="id_trip;origin_title;destination_title;date;time;id_user"
+      columns="origin_title;destination_title;date;time"
       selectable="true"
       refresh-button="true"
       [insert-button]="carsNumber>0? true : false"

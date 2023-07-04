@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -13,6 +14,9 @@ export class TripDetailComponent implements OnInit {
   private tripService: OntimizeService;
   idTrip: number;
 
+  public minDate: string;
+  public maxDate: string;
+
   private bookingService: OntimizeService;
   public bookingsNumber: Number;
 
@@ -26,16 +30,21 @@ export class TripDetailComponent implements OnInit {
   }
   
   ngOnInit() {
+    this.minDate = formatDate(Date.now(), 'MM-dd-yyyy', 'en-US');
+    this.maxDate = formatDate(this.getMaxDate(), 'MM-dd-yyyy', 'en-US');
 
   }
 
-  ngAfterContentInit(){
+  getMaxDate(): Date{
+    let dateMonth = new Date();
+    dateMonth.setMonth(dateMonth.getMonth() + 6);
+    return dateMonth;
   }
 
-  clearTrip(): void {
+/*   clearTrip(): void {
     // Clear the data of the trip form
     this.formTrip.clearData();
-  }
+  } */
 
   updateTrip(): void {
     // Display a confirmation dialog when attempting to update a trip

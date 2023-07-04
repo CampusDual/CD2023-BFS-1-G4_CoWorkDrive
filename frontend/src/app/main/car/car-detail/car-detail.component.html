@@ -52,7 +52,6 @@
             min="1"
             max="9"
             [validators]="validatorNumberSeats"
-            width="220px"
             placeholder="4"
           >
             <o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator>
@@ -69,8 +68,8 @@
             visible-columns="color_name"
             required="yes" 
             searchable="yes"
-            width="280px"
-            translate="yes">
+            translate="yes"
+            width="250px">
           </o-combo>
         </o-row>
         <o-row>
@@ -96,8 +95,8 @@
           ></o-text-input>
         </o-row>
         <div class="ontimize-buttons">
-          <button title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
           <button title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
           <button title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteCar()" layout-padding>{{ 'Delete' | oTranslate }}</button >
         </div>
     </o-column>

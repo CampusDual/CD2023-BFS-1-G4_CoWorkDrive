@@ -85,30 +85,15 @@ export class TripHomeComponent implements OnInit {
     // Get the number of available cars and show an alert if there are none
     this.tripService.query({}, ['trips_current_month', 'trips_last_month'], 'historicalTrips').subscribe(
       res => {
-        if(res.data[0] != null){
           this.adaptResultBubble(res.data);
-          this.tripsCurrentMonth = res.data[0].trips_current_month;
-        }
-        if(res.data[1] != null){
-          this.adaptResultBubble(res.data);
-          this.tripsLastMonth = res.data[1].trips_last_month;
-        }
         this.bubbleChart.setDataArray(this.dataTripsStats);
       }
     );
   }
-  //Añadir excepción si no hay viajes publicados, que ponga 0
+  
   adaptResultBubble(dataTripsStats: Array<any>) {
-    //Esto primero se hace porque si solo hay 1 viaje, la consulta genera un Array de 3 elementos y si hay 2 viajes, genera un Array de 2
-    let valueThisMonth: number;
-    let valueLastMonth: number;
-    if(dataTripsStats[0].trips_current_month == 1){
-      valueThisMonth = dataTripsStats[0].trips_current_month + dataTripsStats[1].trips_current_month;
-      valueLastMonth = dataTripsStats[2].trips_last_month;
-    } else {
-      valueThisMonth = dataTripsStats[0].trips_current_month;
-      valueLastMonth = dataTripsStats[1].trips_last_month;
-    }
+     let valueThisMonth: number = dataTripsStats[0].trips_current_month;
+    let valueLastMonth: number = dataTripsStats[0].trips_last_month;
     if (dataTripsStats && dataTripsStats.length) {
       // chart data
       this.dataTripsStats = [
@@ -137,7 +122,7 @@ export class TripHomeComponent implements OnInit {
     }
 
     protected static configureDiscreteBarChart(chartConf: DiscreteBarChartConfiguration, preferences: OChartPreferences, oTableOptions: OTableOptions): void {
-      let colors: Array<string> = ['#20217B', '#373995', '#4649A6', '#6264B3', '#7E80C1', '#A3A4D3', '#B9D1E4', '#E9E9F4'];
+      let colors: Array<string> = ['#20217B', '#373995', '#4649A6', '#6264B3', '#7E80C1'];
       preferences.selectedPalette.push();
       chartConf.agroup = true;
       chartConf.showLegend = true;

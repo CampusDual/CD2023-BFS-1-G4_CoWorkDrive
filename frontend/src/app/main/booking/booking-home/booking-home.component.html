@@ -1,34 +1,24 @@
-<o-form-layout-manager
-  title="{{ 'BOOKINGS' | oTranslate }}"
-  separator=" "
-  mode="tab"
-  label-columns="ORIGIN_TITLE;DESTINATION_DESTINATION"
->
-  <div fxFill>
-    <o-list
-      #list
-      attr="bookingslist"
-      title="MY BOOKINGS"
-      service="bookings"
-      entity="myBookings"
-      keys="id_booking"
-      columns="id_booking;destination_title;date;time;name;brand_name;model_name;car_registration;id_user"
-      selectable="true"
-      refresh-button="true"
-      delete-button="true"
-      detail-mode="none"
-      keys-sql-types="STRING"
-      pagination-controls="yes"
-    >
-      <o-list-item *ngFor="let row of list.dataArray">
-        <o-list-item-text
-        #item 
-        title="{{ row.origin_title }} - {{ row.destination_title }}" 
-        primary-text="{{ convertDate(row.date) }} - {{ convertTime(row.time) }}"
-        secondary-text="{{ row.name }} - {{ row.brand_name }} {{ row.model_name }} - {{ row.car_registration }}"
-        >
-        </o-list-item-text>
-      </o-list-item>
-    </o-list>
-  </div>
-</o-form-layout-manager>
+<o-table fxFill service="bookings" entity="myBookings" keys="id_booking" 
+columns="id_booking;origin_title;destination_title;date;time;driver;brand_name;model_name;car_registration;id_user"
+visible-columns="origin_title;destination_title;driver"
+      title="{{ 'BOOKINGS' | oTranslate }}" insert-button="no" delete-button="yes" refresh-button="yes" pagination-controls="no" detail-mode="none" export-button="no"
+      query-rows="10" fixed-header="yes">
+  <o-table-row-expandable>
+    <ng-template let-row>
+      <o-column title="BOOKING_INFORMATION" icon="info" class="vertical-margin-10" layout-gap="12px">
+        <div fxLayout="row wrap" fxLayoutGap="14px">
+          <span fxFlex="35%"><strong>{{ 'ORIGIN_ADDRESS' | oTranslate}}</strong>: {{row.origin_address}}</span>
+          <span fxFlex="35%"><strong>{{'DESTINATION_ADDRESS' | oTranslate}}</strong>: {{row.destination_address}}</span>
+          <span fxFlex="10%" ><strong>{{'DATE' | oTranslate}}</strong>: {{convertDate(row.date)}}</span>
+          <span fxFlex="10%"><strong>{{'TIME' | oTranslate}}</strong>: {{convertTime(row.time)}}</span>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="14px">
+          <span  fxFlex="20%"><strong>{{'DRIVER' | oTranslate}}</strong>: {{row.driver}}</span>
+          <span  fxFlex="20%"><strong>{{'BRAND_NAME' | oTranslate}}</strong>: {{row.brand_name}}</span>
+          <span  fxFlex="20%"><strong>{{'MODEL_NAME' | oTranslate}}</strong>: {{row.model_name}}</span>
+          <span  fxFlex="20%"><strong>{{'CAR_REGISTRATION' | oTranslate}}</strong>: {{row.car_registration}}</span>
+        </div>
+      </o-column>
+    </ng-template>
+  </o-table-row-expandable>
+</o-table>

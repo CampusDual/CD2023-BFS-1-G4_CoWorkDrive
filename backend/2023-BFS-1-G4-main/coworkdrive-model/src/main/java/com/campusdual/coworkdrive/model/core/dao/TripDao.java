@@ -29,4 +29,5 @@ public class TripDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_MORE_TRIPS = "more_trips";
     public static final String QUERY_HISTORICAL_TRIPS = "historical_trips";
     public static final String QUERY_NUMBER_TRIPS_ON_BOOKING = "number_trips_on_booking";
+    public static final String QUERY_GET_DATE = "get_date";
 }

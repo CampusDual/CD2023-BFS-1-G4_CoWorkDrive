@@ -14,8 +14,8 @@
     <o-column class="columnTripDetail">
         <o-row>
           <o-text-input
-            class="input-padding large-input"
-            title="{{ 'origin_title' | oTranslate }}"
+            class="date-input"
+            title="{{ 'title_origin' | oTranslate }}"
             attr="origin_title"
             required="yes"
             id="origin_title"
@@ -23,7 +23,7 @@
             placeholder="Santiago de Compostela"
           ></o-text-input>
           <o-text-input
-            class="input-padding large-input"
+            class="date-input"
             title="{{ 'origin_address' | oTranslate }}"
             attr="origin_address"
             required="yes"
@@ -35,8 +35,8 @@
 
         <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
-            class="input-padding large-input"
-            title="{{ 'destination_title' | oTranslate }}"
+            class="date-input"
+            title="{{ 'title_destination' | oTranslate }}"
             attr="destination_title"
             required="yes"
             id="destination_title"
@@ -44,7 +44,7 @@
             placeholder="A Coruña"
           ></o-text-input>
           <o-text-input
-            class="input-padding large-input"
+            class="date-input"
             title="{{ 'destination_address' | oTranslate }}"
             attr="destination_address"
             required="yes"
@@ -60,13 +60,17 @@
             title="{{ 'date' | oTranslate }}"
             attr="date"
             required="yes"
+            min={{minDate}}
+            max={{maxDate}}
             id="date"
             width="145px"
             placeholder="01/01/2000"
+            value-type="STRING"
+            sql-type="VARCHAR"
           ></o-date-input>
 
           <o-hour-input
-            class="input-padding time-input"
+          class="date-input"
             title="{{ 'time' | oTranslate }}"
             attr="time"
             required="yes"
@@ -74,9 +78,9 @@
             width="145px"
             placeholder="12:00"
           ></o-hour-input>
-        </o-row>
-        <o-row>
+
           <o-combo 
+            class="date-input"
             service="cars" 
             entity="car" 
             keys="id_car"
@@ -88,22 +92,22 @@
             visible-columns="brand_name;model_name"
             required="yes" 
             searchable="yes"
-            width="280px">
+            width="300px">
           </o-combo>
-          <o-text-input
-            class="input-padding large-input"
-            title="{{ 'id_trip' | oTranslate }}"
-            attr="id_trip"
-            required="yes"
-            id="id_trip"
-            width="300px"
-            placeholder="Santiago de Compostela"
-            oHidden
-          ></o-text-input>
         </o-row>
+        <o-text-input
+          class="date-input"
+          title="{{ 'id_trip' | oTranslate }}"
+          attr="id_trip"
+          required="yes"
+          id="id_trip"
+          width="300px"
+          placeholder="Santiago de Compostela"
+          oHidden
+        ></o-text-input>
         <div class="ontimize-buttons">
-          <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button >
-           <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <!-- <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button > -->
           <button [disabled]="bookingsNumber>0 ? true : false" title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteTrip()" layout-padding>{{ 'Delete' | oTranslate }}</button >
         </div>
     </o-column>

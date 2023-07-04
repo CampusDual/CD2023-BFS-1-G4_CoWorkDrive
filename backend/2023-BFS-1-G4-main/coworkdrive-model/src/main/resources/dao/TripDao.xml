@@ -53,6 +53,23 @@
             </Sentence>
         </Query>
 
+        <Query id="trip_data">
+            <!--
+                The query retrieves the user ID from the trip table based on the specified conditions.
+                It selects the id_user column from the trip table.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
+            <Sentence>
+                <![CDATA[
+                     SELECT
+                      #COLUMNS#
+                    FROM trip
+                    #WHERE#
+                    ORDER BY date DESC
+           ]]>
+            </Sentence>
+        </Query>
+
         <Query id="booking_info">
             <!--
                 The query retrieves booking information for trips.
@@ -169,20 +186,19 @@
                 <Column>trips_last_month</Column>
                 <Column>trips_current_month</Column>
                 <Column>id_user</Column>
+                <Column>date</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT count(t.*) as trips_current_month, null trips_last_month
+                    SELECT
+                        COALESCE(SUM(CASE WHEN t.date BETWEEN DATE_TRUNC('month', CURRENT_DATE)
+                                        AND (DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month' - INTERVAL '1 day')
+                                        THEN 1 ELSE 0 END), 0) AS trips_current_month,
+                        COALESCE(SUM(CASE WHEN t.date BETWEEN DATE_TRUNC('month', CURRENT_DATE) - interval '1 month'
+                                        AND (DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 day')
+                                        THEN 1 ELSE 0 END), 0) AS trips_last_month
                     FROM trip t
                     #WHERE#
-                        AND t."date" BETWEEN DATE_TRUNC('month', CURRENT_DATE) AND (DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month' - INTERVAL '1 day')
-                    GROUP BY t.id_user, t."date"
-                    UNION
-                    SELECT null trips_current_month, count(t.*) as trips_last_month
-                    FROM trip t
-                    #WHERE#
-                        AND t."date" BETWEEN DATE_TRUNC('month', CURRENT_DATE) - interval '1 month' AND (DATE_TRUNC('month', CURRENT_DATE) - INTERVAL '1 day')
-                    GROUP BY t.id_user
                 ]]>
             </Sentence>
         </Query>
@@ -196,6 +212,19 @@
                     SELECT
                     #COLUMNS#
                     FROM numberbookings
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="get_date">
+            <ValidColumns>
+                <Column>id_trip</Column>
+                <Column>date</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT date, time
+                    FROM trip t
                     #WHERE#
                 ]]>
             </Sentence>

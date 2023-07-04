@@ -17,8 +17,9 @@
 }
 
 .seats-input {
-  padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
   width:250px;
+  padding-right: 10px;
+  padding-bottom: 10px;
 }
 
 button{
