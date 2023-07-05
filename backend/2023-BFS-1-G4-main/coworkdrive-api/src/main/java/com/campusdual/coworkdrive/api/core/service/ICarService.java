@@ -13,4 +13,6 @@ public interface ICarService {
     EntityResult carUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);
 
     EntityResult carDelete(Map<String, Object> keyMap);
+
+    EntityResult numberCarsQuery(Map<String, Object> keyMap, List<String> attrList);
 }

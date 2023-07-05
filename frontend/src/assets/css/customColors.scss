@@ -2,7 +2,7 @@
 
 /* Color definitions */
 $mat-custom-primary: (
-    50:#F3E5F5,
+/*     50:#F3E5F5,
     100:#E1BEE7,
     200:#CE93D8,
     300:#BA68C8,
@@ -12,6 +12,20 @@ $mat-custom-primary: (
     700:#7B1FA2,
     800:#6A1B9A,
     900:#4A148C,
+    A100:#EA80FC,
+    A200:#E040FB,
+    A400:#D500F9,
+    A700:#AA00FF, */
+    50: #FCE8E9,
+    100: #FAD6D8,
+    200: #F4AEB1,
+    300: #EF858B,
+    400: #EA5D64,
+    500: #E4333C,
+    600: #C61A23,
+    700: #95141A,
+    800: #630D11,
+    900: #320709,
     A100:#EA80FC,
     A200:#E040FB,
     A400:#D500F9,
@@ -39,7 +53,7 @@ $mat-custom-primary: (
 * (imported above). For each palette, you can optionally specify a default, lighter, and darker
 * hue. Available color palettes: https://material.io/design/color/*/
 $primary: mat-palette($mat-custom-primary);
-$accent:  mat-palette($mat-green, 700, 800, 900);
+$accent:  mat-palette($mat-red, 700, 800, 900);
 
 /* The warn palette is optional (defaults to red).*/
 $warn:    mat-palette($mat-red);

@@ -1,11 +1,47 @@
-.large-input {
-    font-size: 1.2rem; /* Ajusta el tamaño de fuente según tus preferencias */
-  }
-  
-.date-input {
-padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
+.ontimize-buttons{
+  margin: 0 auto;
 }
 
-.center-form{
-width: 100%;
+.formTripDetail {
+  display: flex;
+  align-items: center;
+  font-size: large;
+}
+
+.columnTripDetail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info_title{
+  width: 300px;
+  padding-right: 10px;
+}
+
+.large-input{
+  width: 615px;
+}
+
+.input-padding{
+  width:198px;
+}
+
+.date-input {
+  padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
+}
+
+button{
+  width: 300px;
+  padding-right: 10px;
+  margin: 5px;
+  border-radius: 5px;
+  color: black;
+  border: 0.5px solid black;
+}
+
+button:hover{
+  background-color: #C61A23;
+  color: white;
 }

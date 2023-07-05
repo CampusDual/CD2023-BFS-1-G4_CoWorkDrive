@@ -10,41 +10,58 @@ export class TripBookingComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
   @ViewChild('formBooking', { static: false }) formBooking: OFormComponent;
 
-  disabledState: boolean = false;
-  valor: string;
+  disabledState: boolean = false; // State to enable or disable a button
+  valor: Number; // Value to control the button disabled state
   private bookingService: OntimizeService;
+  numBooking: Number;
 
-  constructor(public injector: Injector,    
+  constructor(public injector: Injector,
     protected dialogService: DialogService,
-    private snackBarService: SnackBarService) { }
+    private snackBarService: SnackBarService) { 
+      this.bookingService = this.injector.get(OntimizeService);
+    }
 
   ngOnInit() {
-    this.configureService();
-    //this.updateButton();
-    //console.log(document.getElementById("free_seats").textContent);
+    this.isBooking();
   }
 
-  updateButton() {
-    if(parseInt(this.valor) == 0){
-      this.disabledState = true;
-    }
+  signUp(): void {
+    // Show a confirmation dialog when attempting to make a booking
+    this.dialogService.confirm('Booking confirm', 'Do you really want to confirm?');
+    this.dialogService.dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        // If the booking is confirmed, get the trip ID and insert it into the booking form
+        let getIdTrip = this.formTrip.getFieldValue("id_trip");
+        this.formBooking.setFieldValue("id_trip", getIdTrip);
+        this.formBooking.insert();
+      }
+    });
   }
 
-  signUp():void{
-      this.dialogService.confirm('Booking confirm', 'Do you really want to confirm?');
-      this.dialogService.dialogRef.afterClosed().subscribe( result => {
-        if(result) {
-          let getIdTrip = this.formTrip.getFieldValue("id_trip");
-          this.formBooking.setFieldValue("id_trip",getIdTrip);
-          this.formBooking.insert();
-        }
-      });
-    }
-    /*if(resp == null){
-      this.snackBarService.open("No puedes reservar en coches sin asientos disponibles");
-    }*/
+  freeSeatsValue(event){
+    this.valor = this.formTrip.getFieldValue("free_seats");
+  }
+  
+  isBooking(){
+    console.log(this.formTrip.getFieldValue("id_trip"))
+    const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
+    this.bookingService.configureService(conf);
+    // Get the number of available cars and show an alert if there are none
+    this.bookingService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['numberUserBooking'], 'userIsInBooking').subscribe(
+      res => {
 
-  configureService(){
+        this.getUserBookings(res.data[0].numberUserBooking);
+      }
+    );
+   
+  }
+  getUserBookings(num: Number) {
+    this.numBooking = num;
+    console.log(this.numBooking)
+  }
+
+  configureService() {
+    // Get the default configuration of the 'bookings' service and configure the 'bookingService'
     const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
     this.bookingService.configureService(conf);
   }

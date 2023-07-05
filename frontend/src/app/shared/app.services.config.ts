@@ -7,5 +7,14 @@ export const SERVICE_CONFIG: Object = {
   },
   'bookings': {
     'path': '/bookings'
+  },
+  'colors': {
+    'path': '/colors'
+  },
+  'carbrands': {
+    'path': '/carbrands'
+  },
+  'carmodels': {
+    'path': '/carmodels'
   }
 };

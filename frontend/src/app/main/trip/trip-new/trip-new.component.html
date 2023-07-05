@@ -1,55 +1,103 @@
 <o-form
+  title="{{ 'TRIP_INFORMATION' | oTranslate }}"
+  #formTrip
   service="trips"
   entity="trip"
   keys="id_trip"
-  header-actions="R;I;U;D"
-  show-header-navigation="no"
+  id="formCar"
+  show-header="no"
+  class="formTripDetail"
 >
+<!-- (onDataLoaded)="formInit()" -->
   <o-row>
-    <o-column title-label="TRIP_PERSONAL_INFORMATION" fxFlex>
-      <div class="center-form">
-        <o-row>
-          <o-text-input
-            class="input-padding large-input"
-            attr="origin"
-            fxFlex="40"
-            required="yes"
-            id="origin"
-            placeholder="Santiago de Compostela"
-          ></o-text-input>
-        </o-row>
+    <o-column class="columnTripDetail">
+      <o-row>
+        <o-text-input
+          class="date-input"
+          title="{{ 'title_origin' | oTranslate }}"
+          attr="origin_title"
+          required="yes"
+          id="origin_title"
+          width="300px"
+          placeholder="Santiago de Compostela"
+        ></o-text-input>
+        <o-text-input
+          class="date-input"
+          title="{{ 'origin_address' | oTranslate }}"
+          attr="origin_address"
+          required="yes"
+          id="origin_address"
+          width="300px"
+          placeholder="Santiago de Compostela"
+        ></o-text-input>
+      </o-row>
 
-        <o-row>
-          <o-text-input
-            class="input-padding large-input"
-            attr="destination"
-            fxFlex="40"
-            required="yes"
-            id="destination"
-            placeholder="A Coruña"
-          ></o-text-input>
-        </o-row>
+      <o-row style="display: flex; flex-direction: column; align-items: center;">
+        <o-text-input
+          class="date-input"
+          title="{{ 'title_destination' | oTranslate }}"
+          attr="destination_title"
+          required="yes"
+          id="destination_title"
+          width="300px"
+          placeholder="A Coruña"
+        ></o-text-input>
+        <o-text-input
+          class="date-input"
+          title="{{ 'destination_address' | oTranslate }}"
+          attr="destination_address"
+          required="yes"
+          id="destination_address"
+          width="300px"
+          placeholder="A Coruña"
+        ></o-text-input>
+      </o-row>
 
-        <o-row>
+        <o-row style="display: flex; justify-content: center; height: 120px;">
           <o-date-input
             class="date-input"
+            title="{{ 'date' | oTranslate }}"
             attr="date"
-            fxFlex="20"
             required="yes"
+            min={{minDate}}
+            max={{maxDate}}
             id="date"
-            placeholder="01/01/2000"
+            width="145px"
+            placeholder="16/06/2023"
+            value-type="STRING"
+            sql-type="VARCHAR"
           ></o-date-input>
 
-          <o-text-input
-            class="input-padding time-input"
+          <o-hour-input
+            class="date-input"
+            title="{{ 'time' | oTranslate }}"
             attr="time"
-            fxFlex="20"
             required="yes"
             id="time"
+            width="145px"
             placeholder="12:00"
-          ></o-text-input>
+          ></o-hour-input>
+          
+          <o-combo 
+            class="date-input"
+            service="cars" 
+            entity="car" 
+            keys="id_car"
+            sql-type="INTEGER" 
+            attr="id_car" 
+            label="Car" 
+            value-column="id_car" 
+            columns="id_car;brand_name;model_name" 
+            visible-columns="brand_name;model_name"
+            required="yes" 
+            searchable="yes"
+            width="300px">
+          </o-combo>
         </o-row>
-      </div>
+        <div class="ontimize-buttons">
+          <button id="clearTrip" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button>
+          <button id="saveTrip" title="{{ 'Register' | oTranslate }}" label="Save" (click)="insertTrip()" layout-padding>{{ 'Register' | oTranslate }}</button>
+        </div>
     </o-column>
   </o-row>
 </o-form>

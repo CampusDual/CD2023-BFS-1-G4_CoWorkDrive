@@ -6,6 +6,7 @@ import { TripRoutingModule } from './trip-routing.module';
 import { TripHomeComponent } from './trip-home/trip-home.component';
 import { TripNewComponent } from './trip-new/trip-new.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { OChartModule } from 'ontimize-web-ngx-charts';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { TripDetailComponent } from './trip-detail/trip-detail.component';
   imports: [
     CommonModule,
     TripRoutingModule,
-    OntimizeWebModule
+    OntimizeWebModule,
+    OChartModule
   ]
 })
 export class TripModule { }

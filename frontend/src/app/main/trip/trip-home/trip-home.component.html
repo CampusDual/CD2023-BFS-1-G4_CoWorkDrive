@@ -1,39 +1,59 @@
 <o-form-layout-manager
-  title="{{ 'TRIPS' | oTranslate }}"
+  title="{{ 'STATS_INFORMATION' | oTranslate }}"
   separator=" "
-  mode="tab"
+  mode="dialog"
   label-columns="NAME;SURNAME"
+  show-header="no"
 >
-  <div fxFill>
-    <o-list
-      #list
+  <o-row>
+    <div class="statsDiv">
+      <p label="Most people who book with you"><strong>{{'Most people who book with you' | oTranslate}}</strong></p>
+      <o-chart type="discreteBar" show-label="yes" x-label="User" y-label="Number of trips" service="trips" entity="moreTrips" x-axis="id_user" y-axis="more_trips" translate="yes"></o-chart>
+    </div>
+    <div class="statsDiv">
+      <p label="Most people who book with you"><strong>{{'Comparison trips published this month / last month' | oTranslate}}</strong></p>
+      <o-chart #bubbleChart type="bubbleChart" chart-height="400" [data]="dataTripsStats" translate="yes"></o-chart>
+    </div>
+    </o-row>
+</o-form-layout-manager>
+<o-form-layout-manager
+  title="{{ 'TRIP_INFORMATION' | oTranslate }}"
+  separator=" "
+  mode="dialog"
+  label-columns="NAME;SURNAME"
+  show-header="no"
+>
+<o-form-layout-dialog-options width="800px" height="500px"
+  disable-close="false" ></o-form-layout-dialog-options>
+    <o-grid
+      #grid
       attr="tripslist"
       title="TRIPS"
       service="trips"
       entity="trip"
       keys="id_trip"
-      columns="id_trip;origin;destination;date;time;id_user"
+      columns="origin_title;destination_title;date;time"
       selectable="true"
       refresh-button="true"
-      insert-button="true"
-      insert-button-position="top"
+      [insert-button]="carsNumber>0? true : false"
+      insert-button-floatable="false"
       delete-button="true"
-      detail-button-in-row="true"
-      detail-button-in-row-icon="chevron_right"
-      edit-button-in-row="false"
-      edit-button-in-row-icon="edit"
-      detail-mode="none"
-      pagination-controls="yes"
+      detail-mode="click"
+      query-rows="9"
+      gutter-size="60px"
+      cols="3"
+      pagination-controls="no"
     >
-      <o-list-item *ngFor="let row of list.dataArray">
-        <o-list-item-card
-          #item
-          title="{{ row.origin }} - {{ row.destination }}"
-          subtitle="{{ convertDate(row.date) }} - {{ row.time }}"
-          image="./assets/images/mapIcon.png"
-        >
-        </o-list-item-card>
-      </o-list-item>
-    </o-list>
-  </div>
+      <o-grid-item *ngFor="let list of grid.dataArray">
+        <o-column layout-padding class="container-item">
+          <img class="map" src="./assets/images/destination.png"/>
+          <div class="origin">
+            <mat-icon>directions_car</mat-icon><b>{{ list.origin_title }} - {{ list.destination_title }}</b>
+          </div>
+          <div class="destination">
+            <mat-icon>dehaze</mat-icon> {{ convertDate(list.date) }} - {{ convertTime(list.time) }}
+          </div>
+        </o-column>
+      </o-grid-item>
+    </o-grid>
 </o-form-layout-manager>

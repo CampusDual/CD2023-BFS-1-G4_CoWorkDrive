@@ -32,9 +32,15 @@
                 "input": "node_modules/ontimize-web-ngx-report/assets",
                 "output": "/assets"
               },
+              {
+                "glob": "**/*",
+                "input": "node_modules/ontimize-web-ngx-charts/assets",
+                "output": "/assets"
+              },
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "node_modules/ontimize-web-ngx-charts/styles.scss",
               "node_modules/ontimize-web-ngx/ontimize.scss",
               "src/assets/css/app.scss",
               "src/styles.scss"

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { OGridComponent } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-car-home',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./car-home.component.css']
 })
 export class CarHomeComponent implements OnInit {
+
+  @ViewChild("grid",{static:true}) gridElement: OGridComponent;
 
   constructor() { }
 

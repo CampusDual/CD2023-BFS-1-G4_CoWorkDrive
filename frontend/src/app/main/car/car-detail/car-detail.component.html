@@ -1,48 +1,104 @@
 <o-form
+  title="{{ 'CAR_INFORMATION' | oTranslate }}"
+  #formCar
   service="cars"
   entity="car"
   keys="id_car"
-  header-actions="R;U"
-  show-header-navigation="no"
+  id="formCar"
+  show-header="no"
+  class="formCarDetail"
 >
   <o-row>
-    <o-column title-label="CAR_INFORMATION" fxFlex>
-      <div class="center-form">
+    <o-column class="columnCarDetail">
         <o-row>
-          <o-text-input
-            class="input-padding large-input"
-            attr="car_brand"
-            fxFlex="40"
-            required="yes"
-          ></o-text-input>
-        </o-row>
+          <o-combo 
+          #comboCarBrands 
+          class="seats-input large-input"
+          attr="id_car_brand" 
+          label="Select Brand"
+          query-method="query" 
+          service="carbrands" 
+          entity="carBrand" 
+          value-column="id_car_brand"
+          columns="id_car_brand;brand_name" 
+          visible-columns="brand_name"
+          keys="id_car_brand"
+          searchable="yes">
+          </o-combo>
 
-        <o-row>
-          <o-text-input
-            class="input-padding large-input"
-            attr="model"
-            fxFlex="40"
-            required="yes"
-          ></o-text-input>
+          <o-combo 
+          #comboCarModels 
+          class="seats-input large-input"
+          attr="id_car_model" 
+          label="Select Model"
+          query-method="query" 
+          service="carmodels" 
+          entity="carModel" 
+          value-column="id_car_model"
+          columns="id_car_model;model_name;id_car_brand" 
+          visible-columns="model_name" 
+          keys="id_car_model" 
+          [query-on-event]="comboCarBrands.onValueChange" 
+          parent-keys="id_car_brand"
+          searchable="yes">
+          </o-combo>
         </o-row>
-
         <o-row>
           <o-integer-input
             class="seats-input large-input"
+            title="{{ 'seats' | oTranslate }}"
             attr="seats"
-            fxFlex="20"
             required="yes"
             min="1"
             max="9"
-          ></o-integer-input>
+            [validators]="validatorNumberSeats"
+            placeholder="4"
+          >
+            <o-validator error-name="hasValidNumber" error-text="OUT OF SEATS RANGE"></o-validator>
+          </o-integer-input>
+          <o-combo 
+            service="colors" 
+            entity="color" 
+            keys="id_color"
+            sql-type="INTEGER" 
+            attr="id_color" 
+            label="Color" 
+            value-column="id_color" 
+            columns="id_color;color_name" 
+            visible-columns="color_name"
+            required="yes" 
+            searchable="yes"
+            translate="yes"
+            width="250px">
+          </o-combo>
+        </o-row>
+        <o-row>
           <o-text-input
             class="input-padding large-input"
+            title="{{ 'car_registration' | oTranslate }}"
             attr="car_registration"
-            fxFlex="20"
             required="yes"
+            [validators]="validatorCarRegistration"
+            width="510px"
+            placeholder="1111ZZZ"
+          >
+            <o-validator error-name="hasValidCarRegisitration" error-text="CAR REGISTRATION INVALID FORMAT (EXAMPLE: 1111ZZZ)"></o-validator>
+          </o-text-input>
+          <o-text-input
+            class="input-padding large-input"
+            title="{{ 'id_car' | oTranslate }}"
+            attr="id_car"
+            required="yes"
+            id="id_car"
+            width="300px"
+            oHidden
           ></o-text-input>
         </o-row>
-      </div>
+        <div class="ontimize-buttons">
+          <button title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateCar()" layout-padding>{{ 'Save' | oTranslate }}</button >
+          <button title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearCar()" layout-padding>{{ 'Clear' | oTranslate }}</button >
+          <button title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteCar()" layout-padding>{{ 'Delete' | oTranslate }}</button >
+        </div>
     </o-column>
   </o-row>
 </o-form>
