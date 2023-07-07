@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="notification"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_notification</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_notification</Column>
+    </UpdateKeys>
+    <GeneratedKey>id_notification</GeneratedKey>
+    <Queries>
+        <Query id="notification_data">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_user" prefix="b"/>
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT n.text_notification, n.time_notification, t.origin_title, t.origin_address, t.destination_title, t.destination_address,
+                    t."date", t."time", c.car_registration, cb.brand_name, cm.model_name, co.color_name, tu."name" as driver
+                    FROM notification n
+                    JOIN trip t ON t.id_trip = n.id_trip
+                    JOIN car c ON c.id_car = t.id_car
+                    JOIN car_brand cb ON cb.id_car_brand = c.id_car_brand
+                    JOIN car_model cm ON cm.id_car_model = c.id_car_model
+                    JOIN color co ON co.id_color = c.id_color
+                    JOIN booking b ON b.id_trip = t.id_trip
+                    JOIN tuser tu ON tu.user_ = t.id_user
+                    #WHERE#
+                    ORDER BY n.time_notification DESC
+                ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

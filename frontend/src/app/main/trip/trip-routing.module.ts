@@ -3,20 +3,30 @@ import { Routes, RouterModule } from '@angular/router';
 import { TripHomeComponent } from './trip-home/trip-home.component';
 import { TripNewComponent } from './trip-new/trip-new.component';
 import { TripDetailComponent } from './trip-detail/trip-detail.component';
+import { TripDoneComponent } from './trip-done/trip-done.component';
+import { TripDetailDoneComponent } from './trip-detail-done/trip-detail-done.component';
 
 
 const routes: Routes = [
   {
-    path : '',
+    path : 'scheduled',
     component: TripHomeComponent
+  },
+  {
+    path : 'done',
+    component: TripDoneComponent
   },
   {
     path : 'new',
     component: TripNewComponent
   },
   {
-    path : ':id_trip',
+    path : 'scheduled/:id_trip',
     component: TripDetailComponent
+  },
+  {
+    path : 'done/:id_trip',
+    component: TripDetailDoneComponent
   }
 
 ];

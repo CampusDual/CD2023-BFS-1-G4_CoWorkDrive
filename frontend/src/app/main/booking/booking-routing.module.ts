@@ -1,12 +1,17 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { BookingHomeComponent } from './booking-home/booking-home.component';
+import { BookingDoneComponent } from './booking-done/booking-done.component';
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'scheduled',
     component: BookingHomeComponent
+  },
+  {
+    path: 'done',
+    component: BookingDoneComponent
   }
 ];
 

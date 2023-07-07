@@ -1,13 +1,27 @@
-<o-table fxFill service="bookings" entity="myBookings" keys="id_booking" 
-columns="id_booking;origin_title;destination_title;date;time;driver;brand_name;model_name;car_registration;id_user;color_name"
-visible-columns="origin_title;destination_title;driver"
-      title="{{ 'BOOKINGS' | oTranslate }}" insert-button="no" delete-button="yes" refresh-button="yes" pagination-controls="no" detail-mode="none" export-button="no"
-      query-rows="10" fixed-header="yes">
-  <o-table-row-expandable>
+ <o-table 
+  fxFill 
+  service="notifications" 
+  entity="notification" 
+  keys="id_user" 
+  visible-columns="text_notification;time_notification"
+  columns="text_notification;time_notification;origin_title;origin_address;destination_title;destination_address;datetime;car_registration;brand_name;model_name;color_name;driver"
+  title="{{ 'NOTIFICATIONS' | oTranslate }}" 
+  insert-button="no" 
+  delete-button="no" 
+  refresh-button="yes" 
+  pagination-controls="no" 
+  detail-mode="none" 
+  export-button="no"
+  query-rows="10" 
+  fixed-header="yes" 
+>
+ <o-table-row-expandable>
     <ng-template let-row>
-      <o-column title="BOOKING_INFORMATION" icon="info" class="vertical-margin-10" layout-gap="12px">
+      <o-column title="{{ 'NOTIFICATION_INFO' | oTranslate }}" icon="info" class="vertical-margin-10" layout-gap="12px">
         <div fxLayout="row wrap" fxLayoutGap="14px">
+            <span fxFlex="35%"><strong>{{ 'ORIGIN_TITLE' | oTranslate}}</strong>: {{row.origin_title}}</span>
           <span fxFlex="35%"><strong>{{ 'ORIGIN_ADDRESS' | oTranslate}}</strong>: {{row.origin_address}}</span>
+          <span fxFlex="35%"><strong>{{'DESTINATION_TITLE' | oTranslate}}</strong>: {{row.destination_title}}</span>
           <span fxFlex="35%"><strong>{{'DESTINATION_ADDRESS' | oTranslate}}</strong>: {{row.destination_address}}</span>
           <span fxFlex="10%" ><strong>{{'DATE' | oTranslate}}</strong>: {{convertDate(row.date)}}</span>
           <span fxFlex="10%"><strong>{{'TIME' | oTranslate}}</strong>: {{convertTime(row.time)}}</span>

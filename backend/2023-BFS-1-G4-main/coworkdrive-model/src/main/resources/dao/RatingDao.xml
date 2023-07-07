@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JdbcEntitySetup
+        xmlns="http://www.ontimize.com/schema/jdbc"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.ontimize.com/schema/jdbc http://www.ontimize.com/schema/jdbc/ontimize-jdbc-dao.xsd"
+        catalog="" schema="${mainschema}" table="rating"
+        datasource="mainDataSource" sqlhandler="dbSQLStatementHandler">
+    <DeleteKeys>
+        <Column>id_rating</Column>
+    </DeleteKeys>
+    <UpdateKeys>
+        <Column>id_rating</Column>
+    </UpdateKeys>
+    <GeneratedKey>id_rating</GeneratedKey>
+    <Queries>
+        <Query id="is_rated">
+            <!--
+                The query retrieves information about available seats in trips.
+                It calculates the number of free seats by subtracting the count of bookings from the total number of seats in a car.
+                The query involves the trip, tuser, car, and booking tables with appropriate joins and groupings.
+            -->
+            <ValidColumns>
+                <Column>id_user</Column>
+                <Column>id_booking</Column>
+                <Column>rate</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                        SELECT rate
+                        FROM rating r
+                        #WHERE#
+                       ]]>
+            </Sentence>
+        </Query>
+    </Queries>
+</JdbcEntitySetup>

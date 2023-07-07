@@ -16,5 +16,11 @@ export const SERVICE_CONFIG: Object = {
   },
   'carmodels': {
     'path': '/carmodels'
+  },
+  'ratings': {
+    'path': '/ratings'
+  },
+  'notifications': {
+    'path': '/notifications'
   }
 };

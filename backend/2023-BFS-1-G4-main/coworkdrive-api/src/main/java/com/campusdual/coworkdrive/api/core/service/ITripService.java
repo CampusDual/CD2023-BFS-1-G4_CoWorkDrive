@@ -9,6 +9,8 @@ import java.util.Map;
 public interface ITripService {
     EntityResult tripQuery(Map<String, Object> keyMap, List<String> attrList);
 
+    EntityResult tripDoneQuery(Map<String, Object> keyMap, List<String> attrList);
+
     EntityResult tripDetailQuery(Map<String, Object> keyMap, List<String> attrList);
 
     EntityResult bookingQuery(Map<String, Object> keyMap, List<String> attrList);

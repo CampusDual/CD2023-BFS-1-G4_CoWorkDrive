@@ -57,6 +57,20 @@ public class BookingService implements IBookingService {
         keyMap.put(PRIMARYUSERKEY, auth.getName());
         return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_MY_BOOKINGS);
     }
+
+    /**
+     * Retrieves bookings of the authenticated user based on the provided key map and attribute list.
+     *
+     * @param keyMap    The key map containing the filter parameters.
+     * @param attrList  The list of attributes to retrieve.
+     * @return          The resulting EntityResult containing the queried bookings of the authenticated user.
+     */
+    @Override
+    public EntityResult myBookingsDoneQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_MY_BOOKINGS_DONE);
+    }
     
     /**
      * Inserts a new booking based on the provided attribute map.

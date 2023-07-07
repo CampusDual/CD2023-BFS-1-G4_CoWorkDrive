@@ -66,15 +66,59 @@
                 <![CDATA[
                     SELECT b.id_booking, t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time, b.id_user,
                     tu.name as driver, tu.surname1, tu.surname2, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration,
-                    cb.brand_name, cm.model_name
+                    cb.brand_name, cm.model_name, co.color_name
                     FROM trip t
                     JOIN booking b ON t.id_trip = b.id_trip
                     JOIN car c ON c.id_car = t.id_car
+                    JOIN color co ON co.id_color = c.id_color
                     JOIN tuser tu ON tu.user_ = c.id_user
                     JOIN car_brand cb ON c.id_car_brand = cb.id_car_brand
                     JOIN car_model cm ON c.id_car_model = cm.id_car_model
                     #WHERE#
                         AND t.date >= CAST(now() as date)
+                   ]]>
+            </Sentence>
+        </Query>
+        <Query id="my_bookings_done">
+            <!--
+                The query retrieves bookings of the authenticated user.
+                It joins the booking, trip, tuser, and car tables to gather relevant information.
+                The WHERE clause includes a condition to filter bookings with dates greater than or equal to the current date.
+            -->
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_user" prefix="b" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>origin_title</Column>
+                <Column>origin_address</Column>
+                <Column>destination_title</Column>
+                <Column>destination_address</Column>
+                <Column>date</Column>
+                <Column>time</Column>
+                <Column>name</Column>
+                <Column>id_car_brand</Column>
+                <Column>id_car_model</Column>
+                <Column>brand_name</Column>
+                <Column>model_name</Column>
+                <Column>car_registration</Column>
+                <Column>id_user</Column>
+                <Column>id_booking</Column>
+                <Column>id_driver</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT b.id_booking, t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time, b.id_user,
+                    tu.user_ as id_driver, tu.name as driver, tu.surname1, tu.surname2, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration,
+                    cb.brand_name, cm.model_name, co.color_name
+                    FROM trip t
+                    JOIN booking b ON t.id_trip = b.id_trip
+                    JOIN car c ON c.id_car = t.id_car
+                    JOIN color co ON co.id_color = c.id_color
+                    JOIN tuser tu ON tu.user_ = c.id_user
+                    JOIN car_brand cb ON c.id_car_brand = cb.id_car_brand
+                    JOIN car_model cm ON c.id_car_model = cm.id_car_model
+                    #WHERE#
+                        AND t.date < CAST(now() as date)
                    ]]>
             </Sentence>
         </Query>

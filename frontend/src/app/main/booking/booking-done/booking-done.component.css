@@ -1,0 +1,26 @@
+.rateRow{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rate-input{
+    width: 80px;
+    height: 50px;
+}
+
+.rate-button{
+    width: 80px;
+    height: 20px;
+    border-radius: 5px;
+    color: black;
+    border: 0.5px solid black;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.rate-button:hover{
+    background-color: #C61A23;
+    color: white;
+}

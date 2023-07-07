@@ -24,10 +24,11 @@
             -->
             <Sentence>
                 <![CDATA[
-                    SELECT (c.seats - count(b.*)) as free_seats, t.*, c.id_car_brand, c.id_car_model, tu.name
+                    SELECT (c.seats - count(b.*)) as free_seats, t.*, c.id_car_brand, c.id_car_model, tu.name, COALESCE(avg(r.rate), 0) as rate, count(r.*) as number_rates
                     FROM trip t
                     JOIN car c ON t.id_car = c.id_car
                     JOIN tuser tu ON tu.user_ = t.id_user
+                    LEFT JOIN rating r on r.id_driver = tu.user_
                     LEFT JOIN booking b ON b.id_trip = t.id_trip
                     #WHERE#
                         AND date >= cast(now() as date)
@@ -59,14 +60,74 @@
                 It selects the id_user column from the trip table.
                 The WHERE clause filters the rows based on the provided conditions.
             -->
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="t" />
+                <AmbiguousColumn name="id_user" prefix="t" />
+            </AmbiguousColumns>
             <Sentence>
                 <![CDATA[
-                     SELECT
-                      #COLUMNS#
-                    FROM trip
+                     SELECT *, (SELECT string_agg(tu.name, ', ')
+                                  FROM booking b
+                                  JOIN tuser tu ON b.id_user = tu.user_
+                                  JOIN trip t ON b.id_trip = t.id_trip
+                                  #WHERE#) AS booking_users
+                    FROM trip t
                     #WHERE#
+                        AND t.date >= CAST(now() as date)
                     ORDER BY date DESC
-           ]]>
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="trip_data_done">
+            <!--
+                The query retrieves the user ID from the trip table based on the specified conditions.
+                It selects the id_user column from the trip table.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="t" />
+                <AmbiguousColumn name="id_user" prefix="t" />
+            </AmbiguousColumns>
+            <Sentence>
+                <![CDATA[
+                     SELECT t.*, (SELECT string_agg(tu.name, ', ')
+                                  FROM booking b
+                                  JOIN tuser tu ON b.id_user = tu.user_
+                                  JOIN trip t ON b.id_trip = t.id_trip
+                                  #WHERE#) AS booking_users,
+                                  COALESCE(avg(r.rate), 0) as rate, count(r.*) as number_rates
+                    FROM trip t
+                    LEFT JOIN booking bo ON bo.id_trip = t.id_trip
+                    LEFT JOIN rating r ON r.id_booking = bo.id_booking
+                    #WHERE#
+                        AND t.date < CAST(now() as date)
+                    GROUP BY t.id_trip, r.id_driver
+                    ORDER BY date desc
+                ]]>
+            </Sentence>
+        </Query>
+
+        <Query id="get_booking_users">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="b" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>booking_users</Column>
+            </ValidColumns>
+            <!--
+                The query retrieves the user ID from the trip table based on the specified conditions.
+                It selects the id_user column from the trip table.
+                The WHERE clause filters the rows based on the provided conditions.
+            -->
+            <Sentence>
+                <![CDATA[
+                    SELECT tu.name as booking_users
+                    FROM booking b
+                    JOIN trip t ON t.id_trip = b.id_trip
+                    JOIN tuser tu ON b.id_user = tu.user_
+                    #WHERE#
+                ]]>
             </Sentence>
         </Query>
 
@@ -162,14 +223,16 @@
             <ValidColumns>
                 <Column>more_trips</Column>
                 <Column>id_user</Column>
+                <Column>name</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
-                    SELECT count(b.*) as more_trips, b.id_user
+                    SELECT count(b.*) as more_trips, b.id_user, tu.name
                     FROM booking b
                     JOIN trip t ON b.id_trip = t.id_trip
+                    JOIN tuser tu ON tu.user_ = b.id_user
                     #WHERE#
-                    GROUP BY b.id_user
+                    GROUP BY b.id_user, tu.name
                     ORDER BY more_trips DESC
                     LIMIT 3
                 ]]>

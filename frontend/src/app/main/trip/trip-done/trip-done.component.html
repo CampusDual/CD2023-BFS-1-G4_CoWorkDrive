@@ -23,16 +23,16 @@
   label-columns="NAME;SURNAME"
   show-header="no"
 >
-<o-form-layout-dialog-options width="800px" height="590px"
+<o-form-layout-dialog-options width="800px" height="510px"
   disable-close="false" ></o-form-layout-dialog-options>
     <o-grid
       #grid
       attr="tripslist"
       title="TRIPS"
       service="trips"
-      entity="trip"
+      entity="tripDone"
       keys="id_trip"
-      columns="origin_title;destination_title;date;time"
+      columns="origin_title;destination_title;date;time;rate;number_rates"
       selectable="true"
       refresh-button="true"
       [insert-button]="carsNumber>0? true : false"

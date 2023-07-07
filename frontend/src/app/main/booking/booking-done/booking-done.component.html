@@ -1,0 +1,68 @@
+<o-table 
+  #tableBookingsDone 
+  fxFill 
+  service="bookings" 
+  entity="myBookingsDone" 
+  keys="id_booking" 
+  columns="id_booking;origin_title;destination_title;date;time;driver;brand_name;model_name;car_registration;id_user;color_name;id_driver"
+  visible-columns="origin_title;destination_title;driver"
+  title="{{ 'BOOKINGS' | oTranslate }}" 
+  insert-button="no" 
+  delete-button="no" 
+  refresh-button="yes" 
+  pagination-controls="no" 
+  detail-mode="none" 
+  export-button="no"
+  query-rows="10" 
+  fixed-header="yes" 
+  (onRowSelected)="isRated()"
+>
+  <o-table-row-expandable (onExpanded)="isRated()">
+    <ng-template let-row>
+      <o-column title="BOOKING_INFORMATION" icon="info" class="vertical-margin-10" layout-gap="12px">
+        <div fxLayout="row wrap" fxLayoutGap="14px">
+          <span fxFlex="35%"><strong>{{ 'ORIGIN_ADDRESS' | oTranslate}}</strong>: {{row.origin_address}}</span>
+          <span fxFlex="35%"><strong>{{'DESTINATION_ADDRESS' | oTranslate}}</strong>: {{row.destination_address}}</span>
+          <span fxFlex="10%" ><strong>{{'DATE' | oTranslate}}</strong>: {{convertDate(row.date)}}</span>
+          <span fxFlex="10%"><strong>{{'TIME' | oTranslate}}</strong>: {{convertTime(row.time)}}</span>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="14px">
+          <span  fxFlex="20%"><strong>{{'DRIVER' | oTranslate}}</strong>: {{row.driver}}</span>
+          <span  fxFlex="20%"><strong>{{'BRAND_NAME' | oTranslate}}</strong>: {{row.brand_name}}</span>
+          <span  fxFlex="20%"><strong>{{'MODEL_NAME' | oTranslate}}</strong>: {{row.model_name}}</span>
+          <span  fxFlex="19%"><strong>{{'CAR_REGISTRATION' | oTranslate}}</strong>: {{row.car_registration}}</span>
+          <span  fxFlex="16%"><strong>{{'COLOR_NAME' | oTranslate}}</strong>: {{row.color_name | oTranslate}}</span>
+        </div>
+      </o-column>
+      <o-column>
+        <o-form
+          #formRate
+          service="ratings"
+          entity="rating"
+          show-header="no"
+          header-actions="I"
+        >
+          <o-row class="rateRow">
+            <o-text-input attr="id_booking" oHidden></o-text-input>
+            <o-text-input attr="id_driver" oHidden></o-text-input>
+            <o-integer-input
+                class="rate-input"
+                attr="rate"
+                id="rate"
+                title="{{ 'rating' | oTranslate }}"
+                min="1"
+                max="5"
+                [validators]="validatorNumberRate"
+                placeholder="4"
+                [read-only]="rate>0 ? true : false"
+                required="yes"
+              >
+                <o-validator error-name="hasValidNumber" error-text="OUT OF RATING RANGE"></o-validator>
+              </o-integer-input>
+              <button class="rate-button" (click)="insertRate()" [hidden]="rate>0 ? true : false">Valorar</button>
+          </o-row>
+        </o-form>
+      </o-column>
+    </ng-template>
+  </o-table-row-expandable>
+</o-table>

@@ -2,13 +2,12 @@
   title="{{ 'TRIP_INFORMATION' | oTranslate }}"
   #formTrip
   service="trips"
-  entity="trip"
+  entity="tripDone"
   keys="id_trip"
   id="formTrip"
   show-header="no"
   class="formTripDetail"
   (onDataLoaded)="hasBookings()"
-  header-actions="D"
 >
   <o-row>
     <o-column class="columnTripDetail">
@@ -20,7 +19,7 @@
             required="yes"
             id="origin_title"
             width="300px"
-            placeholder="Santiago de Compostela"
+            read-only="true"
           ></o-text-input>
           <o-text-input
             class="date-input"
@@ -29,11 +28,11 @@
             required="yes"
             id="origin_address"
             width="300px"
-            placeholder="Santiago de Compostela"
+            read-only="true"
           ></o-text-input>
         </o-row>
 
-        <o-row style="display: flex; flex-direction: column; align-items: center;">
+        <o-row>
           <o-text-input
             class="date-input"
             title="{{ 'title_destination' | oTranslate }}"
@@ -41,7 +40,7 @@
             required="yes"
             id="destination_title"
             width="300px"
-            placeholder="A Coruña"
+            read-only="true"
           ></o-text-input>
           <o-text-input
             class="date-input"
@@ -50,11 +49,11 @@
             required="yes"
             id="destination_address"
             width="300px"
-            placeholder="A Coruña"
+            read-only="true"
           ></o-text-input>
         </o-row>
 
-        <o-row style="display: flex; justify-content: center;  align-items: center; height: 120px;">
+        <o-row>
           <o-date-input
             class="date-input"
             title="{{ 'date' | oTranslate }}"
@@ -64,7 +63,7 @@
             max={{maxDate}}
             id="date"
             width="145px"
-            placeholder="12/31/2000"
+            read-only="true"
             value-type="STRING"
             sql-type="VARCHAR"
           ></o-date-input>
@@ -76,7 +75,7 @@
             required="yes"
             id="time"
             width="145px"
-            placeholder="12:00"
+            read-only="true"
           ></o-hour-input>
 
           <o-combo 
@@ -92,10 +91,11 @@
             visible-columns="brand_name;model_name"
             required="yes" 
             searchable="yes"
-            width="300px">
-          </o-combo>
+            width="300px"
+            read-only="true"
+            ></o-combo>
         </o-row>
-        <o-row style="display: flex; justify-content: center; height:100px">
+        <o-row style="height:100px">
           <o-text-input
             class="date-input"
             title="{{ 'booking_users' | oTranslate }}"
@@ -105,8 +105,19 @@
             disabled="yes"
             read-only="yes"
             [hidden]="bookingsNumber>0 ? false : true"
+            read-only="true"
           ></o-text-input>
-          <p [hidden]="bookingsNumber>0 ? true : false">{{ 'No bookings yet!' | oTranslate }}</p>
+          <p class="date-input" [hidden]="bookingsNumber>0 ? true : false">{{ 'There were no bookings!' | oTranslate }}</p>
+          <o-text-input 
+            class="date-input rating" 
+            attr="rate"
+            read-only="true"
+            ></o-text-input>
+          <o-text-input 
+            class="date-input rating" 
+            attr="number_rates"
+            read-only="true"
+            ></o-text-input>
         </o-row>
         <o-text-input
           class="date-input"
@@ -115,13 +126,10 @@
           required="yes"
           id="id_trip"
           width="300px"
-          placeholder="Santiago de Compostela"
           oHidden
         ></o-text-input>
         <div class="ontimize-buttons">
         <!-- <button title="{{ 'Reuse' | oTranslate }}" label="Reuse" (click)="reuseTrip()" layout-padding>{{ 'Reuse' | oTranslate }}</button ></o-form-layout-manager> -->
-          <button title="{{ 'Save' | oTranslate }}" label="Save" (click)="updateTrip()" layout-padding>{{ 'Save' | oTranslate }}</button >
-          <button title="{{ 'Delete' | oTranslate }}" label="Delete" (click)="deleteTrip()" layout-padding>{{ 'Delete' | oTranslate }}</button >
         </div>
     </o-column>
   </o-row>

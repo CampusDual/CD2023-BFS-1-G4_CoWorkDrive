@@ -85,7 +85,7 @@ export class TripHomeComponent implements OnInit {
     // Get the number of available cars and show an alert if there are none
     this.tripService.query({}, ['trips_current_month', 'trips_last_month'], 'historicalTrips').subscribe(
       res => {
-          this.adaptResultBubble(res.data);
+        this.adaptResultBubble(res.data);
         this.bubbleChart.setDataArray(this.dataTripsStats);
       }
     );

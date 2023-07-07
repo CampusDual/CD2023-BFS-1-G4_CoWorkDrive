@@ -1,0 +1,46 @@
+package com.campusdual.coworkdrive.model.core.service;
+
+import com.campusdual.coworkdrive.api.core.service.INotificationService;
+import com.campusdual.coworkdrive.model.core.dao.NotificationDao;
+import com.campusdual.coworkdrive.model.core.dao.TripDao;
+import com.ontimize.jee.common.dto.EntityResult;
+import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Service;
+
+import java.sql.Timestamp;
+import java.util.Calendar;
+import java.util.List;
+import java.util.Map;
+
+@Lazy
+@Service("NotificationService")
+public class NotificationService implements INotificationService {
+    private static final String PRIMARYUSERKEY = "id_user";
+    @Autowired
+    private NotificationDao notificationDao;
+
+    @Autowired
+    private DefaultOntimizeDaoHelper daoHelper;
+    @Override
+    public EntityResult notificationQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        return this.daoHelper.query(notificationDao, keyMap, attrList, NotificationDao.QUERY_NOTIFICATION_DATA);
+    }
+
+    @Override
+    public EntityResult notificationInsert(Map<String, Object> attrMap) {
+        if (attrMap.get(NotificationDao.ATTR_ID_TRIP) instanceof String) {
+            attrMap.put(NotificationDao.ATTR_ID_TRIP, Integer.parseInt((String) attrMap.get(NotificationDao.ATTR_ID_TRIP)));
+        }
+        attrMap.put(NotificationDao.ATTR_TEXT_NOTIFICATION, "There has been a change in your booking");
+        long timestampActual = System.currentTimeMillis();
+        Timestamp timeNotification = new Timestamp(timestampActual);
+        attrMap.put(NotificationDao.ATTR_TIME_NOTIFICATION, timeNotification);
+        return this.daoHelper.insert(notificationDao, attrMap);
+    }
+}

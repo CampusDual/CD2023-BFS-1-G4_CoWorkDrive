@@ -11,6 +11,8 @@ public interface IBookingService {
     EntityResult myBookingsQuery(Map<String, Object> keyMap, List<String> attrList);
 
 
+    EntityResult myBookingsDoneQuery(Map<String, Object> keyMap, List<String> attrList);
+
     EntityResult bookingInsert(Map<String, Object> attrMap);
 
     EntityResult bookingDelete(Map<String, Object> keyMap);

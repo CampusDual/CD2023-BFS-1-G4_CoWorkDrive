@@ -55,6 +55,23 @@ public class TripService implements ITripService {
         }
         return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_TRIP_DATA);
     }
+
+    /**
+     * Retrieves the trips based on the provided key map and attribute list.
+     *
+     * @param keyMap    The key map containing the filter parameters.
+     * @param attrList  The list of attributes to retrieve.
+     * @return          The resulting EntityResult containing the queried trips.
+     */
+    @Override
+    public EntityResult tripDoneQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        if (keyMap.get(TripDao.ATTR_ID_TRIP) instanceof String) {
+            keyMap.put(TripDao.ATTR_ID_TRIP, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_TRIP)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_TRIP_DATA_DONE);
+    }
     
     /**
      * Retrieves the details of a specific trip based on the provided key map and attribute list.
@@ -261,5 +278,15 @@ public class TripService implements ITripService {
         }
 
         return false;
+    }
+
+    public String getBookingUsers(Map<String, Object> keyMap, List<String> attrList){
+        EntityResult bookingUsers = this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_BOOKING_USERS);
+        StringBuilder usersConcat = new StringBuilder();
+        for(int i=0; i<bookingUsers.calculateRecordNumber();i++) {
+            usersConcat.append(",").append(bookingUsers.getRecordValues(i).toString());
+        }
+        usersConcat.deleteCharAt(0);
+        return usersConcat.toString();
     }
 }

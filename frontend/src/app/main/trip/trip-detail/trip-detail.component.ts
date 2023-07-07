@@ -20,6 +20,8 @@ export class TripDetailComponent implements OnInit {
 
   private bookingService: OntimizeService;
   public bookingsNumber: Number;
+  
+  private notificationService: OntimizeService;
 
   constructor(
     private actRoute: ActivatedRoute,
@@ -30,6 +32,7 @@ export class TripDetailComponent implements OnInit {
     ) {
     this.tripService = this.injector.get(OntimizeService);
     this.bookingService = this.injector.get(OntimizeService);
+    this.notificationService = this.injector.get(OntimizeService);
     this.router = router;
   }
   
@@ -45,11 +48,6 @@ export class TripDetailComponent implements OnInit {
     return dateMonth;
   }
 
-/*   clearTrip(): void {
-    // Clear the data of the trip form
-    this.formTrip.clearData();
-  } */
-
   updateTrip(): void {
     // Display a confirmation dialog when attempting to update a trip
     this.dialogService.confirm('Trip update', 'Do you really want to confirm?');
@@ -57,6 +55,7 @@ export class TripDetailComponent implements OnInit {
       if (result) {
         // If the update is confirmed, set the form field values and perform the update
         this.formTrip.update();
+        this.sendNotification(this.formTrip.getFieldValue("id_trip"));
       }
     });
   }
@@ -75,8 +74,17 @@ export class TripDetailComponent implements OnInit {
   getNumberBookings(bookingsNumber: Number){
     this.bookingsNumber = bookingsNumber;
     if(this.bookingsNumber !=0){
-      this.dialogService.alert("No changes or delete available!","You cannot change anything or delete when a trip has bookings");
+      this.dialogService.alert("There are some bookings!","Be careful with changes as there are bookings made");
     }
+  }
+
+  sendNotification(id_trip: Number){
+    const conf = this.notificationService.getDefaultServiceConfiguration('notifications');
+    this.notificationService.configureService(conf);
+    this.notificationService.insert({id_trip: id_trip},"notification").subscribe(
+      res=>{
+        this.dialogRef.close();
+      });
   }
 
   deleteTrip(): void{
