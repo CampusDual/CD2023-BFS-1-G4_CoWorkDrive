@@ -28,8 +28,16 @@
   width:198px;
 }
 
+.dataDriver{
+  width: 250px;
+}
+
 .date-input {
-  padding-right: 10px; /* Ajusta el margen derecho según tus preferencias */
+  padding-right: 10px;
+}
+
+.carData-input{
+  padding-right: 165px;
 }
 
 button{

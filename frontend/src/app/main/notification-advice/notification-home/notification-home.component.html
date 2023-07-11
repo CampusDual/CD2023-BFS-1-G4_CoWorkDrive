@@ -13,8 +13,13 @@
   detail-mode="none" 
   export-button="no"
   query-rows="10" 
-  fixed-header="yes" 
+  fixed-header="yes"
+  type="translate" 
 >
+<o-table-column attr="text_notification" type="translate">
+  <o-table-translate-message></o-table-translate-message>
+</o-table-column>
+<o-table-column attr="time_notification" type="date" format="LLLL"></o-table-column>
  <o-table-row-expandable>
     <ng-template let-row>
       <o-column title="{{ 'NOTIFICATION_INFO' | oTranslate }}" icon="info" class="vertical-margin-10" layout-gap="12px">

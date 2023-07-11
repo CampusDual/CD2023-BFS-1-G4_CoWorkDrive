@@ -31,7 +31,7 @@
                     LEFT JOIN rating r on r.id_driver = tu.user_
                     LEFT JOIN booking b ON b.id_trip = t.id_trip
                     #WHERE#
-                        AND date >= cast(now() as date)
+                        AND date >= cast(now() as date) AND t.active = true
                     GROUP BY c.seats, t.id_trip, c.id_car_brand, c.id_car_model, tu.name
                     HAVING (c.seats - count(b.*)) > 0
                 ]]>
@@ -73,7 +73,7 @@
                                   #WHERE#) AS booking_users
                     FROM trip t
                     #WHERE#
-                        AND t.date >= CAST(now() as date)
+                        AND t.date >= CAST(now() as date) AND t.active = true
                     ORDER BY date DESC
                 ]]>
             </Sentence>
@@ -149,8 +149,8 @@
                 <Column>date</Column>
                 <Column>time</Column>
                 <Column>name</Column>
-                <Column>surname1</Column>
-                <Column>surname2</Column>
+                <Column>surnames</Column>
+                <Column>email</Column>
                 <Column>free_seats</Column>
                 <Column>id_trip</Column>
                 <Column>id_car</Column>
@@ -163,7 +163,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time,
-                    tu.name, tu.surname1 , tu.surname2, (c.seats - count(b.*)) as free_seats, t.id_trip, t.id_car,
+                    tu.name, CONCAT(tu.surname1, ' ',tu.surname2) as surnames, tu.email, (c.seats - count(b.*)) as free_seats, t.id_trip, t.id_car,
                     c.id_car_brand, c.id_car_model, c.car_registration, cb.brand_name, cm.model_name
                     FROM trip t
                     JOIN car c ON t.id_car = c.id_car
@@ -173,7 +173,7 @@
                     LEFT JOIN booking b ON b.id_trip = t.id_trip
                     #WHERE#
                     GROUP BY t.origin_title, t.origin_address, t.destination_title, t.destination_address, t.date, t.time,
-                    tu.name, tu.surname1 , tu.surname2, c.seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration,
+                    tu.name, surnames, tu.email, c.seats, t.id_trip, t.id_car, c.id_car_brand, c.id_car_model, c.car_registration,
                     cb.brand_name, cm.model_name
                 ]]>
             </Sentence>

@@ -48,7 +48,7 @@
 
       <o-row class="rowTripDetail">
         <o-date-input
-          class="date-input"
+          class="carData-input"
           title="{{ 'date' | oTranslate }}"
           attr="date"
           id="date"
@@ -56,7 +56,7 @@
         ></o-date-input>
 
         <o-hour-input
-          class="input-padding date-input"
+          class="carData-input"
           title="{{ 'time' | oTranslate }}"
           attr="time"
           id="time"
@@ -64,7 +64,6 @@
         ></o-hour-input>
 
         <o-text-input
-          width="190px"
           title="{{ 'free_seats' | oTranslate }}"
           attr="free_seats"
           id="free_seats"
@@ -74,7 +73,7 @@
       <h3>{{ 'DRIVER_INFORMATION' | oTranslate }}</h3>
       <o-row class="rowTripDetail">
         <o-text-input
-          class="input-padding date-input"
+          class="dataDriver date-input"
           title="{{ 'name' | oTranslate }}"
           attr="name"
           id="name"
@@ -82,19 +81,20 @@
         ></o-text-input>
 
         <o-text-input
-          class="input-padding date-input"
-          title="{{ 'surname1' | oTranslate }}"
-          attr="surname1"
-          id="surname1"
+          class="dataDriver date-input"
+          title="{{ 'surnames' | oTranslate }}"
+          attr="surnames"
+          id="surnames"
           read-only="true"
         ></o-text-input>
-
+        
         <o-text-input
-          class="input-padding"
-          title="{{ 'surname2' | oTranslate }}"
-          attr="surname2"
-          id="surname2"
+          class="dataDriver"
+          title="{{ 'email' | oTranslate }}"
+          attr="email"
+          id="email"
           read-only="true"
+          width="405px"
         ></o-text-input>
 
         <o-text-input
@@ -110,7 +110,7 @@
       <h3>{{ 'CAR_INFORMATION' | oTranslate }}</h3>
       <o-row class="rowTripDetail">
         <o-text-input
-          class="input-padding date-input"
+          class="input-padding carData-input"
           title="{{ 'brand_name' | oTranslate }}"
           attr="brand_name"
           id="brand_name"
@@ -118,7 +118,7 @@
         ></o-text-input>
 
         <o-text-input
-          class="input-padding date-input"
+          class="input-padding carData-input"
           title="{{ 'model_name' | oTranslate }}"
           attr="model_name"
           id="model_name"

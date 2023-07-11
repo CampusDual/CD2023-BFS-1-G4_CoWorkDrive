@@ -70,5 +70,21 @@
             </Sentence>
         </Query>
 
+        <Query id="get_user_name">
+            <ValidColumns>
+                <Column>user_</Column>
+                <Column>name</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+            SELECT
+                name
+            FROM
+                ${mainschema}.TUSER
+            #WHERE#
+        ]]>
+            </Sentence>
+        </Query>
+
     </Queries>
 </JdbcEntitySetup>

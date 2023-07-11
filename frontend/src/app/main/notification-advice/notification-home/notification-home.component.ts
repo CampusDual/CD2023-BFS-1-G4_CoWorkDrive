@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Injector, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { OBaseTableCellRenderer, OTranslateService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-notification-home',
@@ -23,4 +24,4 @@ export class NotificationHomeComponent implements OnInit {
     const newTime = new Date(hour);
     return (newTime.toLocaleTimeString());
   }
-}
+}  

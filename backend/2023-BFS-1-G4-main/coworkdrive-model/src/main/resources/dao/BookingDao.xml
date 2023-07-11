@@ -75,7 +75,7 @@
                     JOIN car_brand cb ON c.id_car_brand = cb.id_car_brand
                     JOIN car_model cm ON c.id_car_model = cm.id_car_model
                     #WHERE#
-                        AND t.date >= CAST(now() as date)
+                        AND t.date >= CAST(now() as date) AND t.active = true
                    ]]>
             </Sentence>
         </Query>

@@ -10,4 +10,6 @@ public interface INotificationService {
     EntityResult notificationQuery(Map<String, Object> keyMap, List<String> attrList);
 
     EntityResult notificationInsert(Map<String, Object> attrMap);
+
+    EntityResult notificationDeleteInsert(Map<String, Object> attrMap);
 }

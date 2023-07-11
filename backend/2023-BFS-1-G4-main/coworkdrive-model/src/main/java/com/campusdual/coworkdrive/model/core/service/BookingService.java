@@ -104,7 +104,7 @@ public class BookingService implements IBookingService {
      */
     @Override
     public EntityResult bookingDelete(Map<String, Object> keyMap) {
-        return null;
+        return this.daoHelper.delete(bookingDao, keyMap);
     }
     
     /**

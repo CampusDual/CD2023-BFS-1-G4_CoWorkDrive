@@ -13,6 +13,7 @@ export class TripDetailComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
   
   private tripService: OntimizeService;
+  private tripHistoricalsService: OntimizeService;
   idTrip: number;
 
   public minDate: string;
@@ -31,6 +32,7 @@ export class TripDetailComponent implements OnInit {
     public dialogRef: MatDialogRef<TripDetailComponent>
     ) {
     this.tripService = this.injector.get(OntimizeService);
+    this.tripHistoricalsService = this.injector.get(OntimizeService);
     this.bookingService = this.injector.get(OntimizeService);
     this.notificationService = this.injector.get(OntimizeService);
     this.router = router;
@@ -55,16 +57,15 @@ export class TripDetailComponent implements OnInit {
       if (result) {
         // If the update is confirmed, set the form field values and perform the update
         this.formTrip.update();
-        this.sendNotification(this.formTrip.getFieldValue("id_trip"));
+        this.sendNotificationUpdate(this.formTrip.getFieldValue("id_trip"));
       }
     });
   }
 
   hasBookings(){
-    const conf = this.bookingService.getDefaultServiceConfiguration('trips');
-    this.bookingService.configureService(conf);
+    this.configureServiceTrip();
     // Get the number of available cars and show an alert if there are none
-    this.bookingService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['number_bookings'], 'numberTripsOnBooking').subscribe(
+    this.tripService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['number_bookings'], 'numberTripsOnBooking').subscribe(
       res => {
         this.getNumberBookings(res.data[0].number_bookings);
       }
@@ -78,10 +79,9 @@ export class TripDetailComponent implements OnInit {
     }
   }
 
-  sendNotification(id_trip: Number){
-    const conf = this.notificationService.getDefaultServiceConfiguration('notifications');
-    this.notificationService.configureService(conf);
-    this.notificationService.insert({id_trip: id_trip},"notification").subscribe(
+  sendNotificationUpdate(idTrip: Number){
+    this.configureServiceNotification();
+    this.notificationService.insert({id_trip: idTrip},"notification").subscribe(
       res=>{
         this.dialogRef.close();
       });
@@ -93,12 +93,40 @@ export class TripDetailComponent implements OnInit {
       // Subscribe to dialog close
       this.dialogService.dialogRef.afterClosed().subscribe( result => {
         if(result) {
-          // Perform the form update
-          this.tripService.delete({id_trip: this.formTrip.getFieldValue("id_trip")}, 'trip').subscribe(
+          /* this.configureServiceTripHistorical();
+          this.tripHistoricalsService.insert({
+            origin_title: this.formTrip.getFieldValue("origin_title"),
+            origin_address: this.formTrip.getFieldValue("origin_address"),
+            destination_title: this.formTrip.getFieldValue("destination_title"),
+            destination_address: this.formTrip.getFieldValue("destination_address"),
+            date: this.formTrip.getFieldValue("date"),
+            time: this.formTrip.getFieldValue("time"),
+            id_user: this.formTrip.getFieldValue("id_user"),
+            id_car: this.formTrip.getFieldValue("id_car"), 
+            id_trip: this.formTrip.getFieldValue("id_trip")
+          },'tripHistorical').subscribe(
+            res=>{}
+          ); */
+
+          //Cambiar localización de la inserción de la notificación para que se realice cuando se haya confirmado el borrado
+          this.sendNotificationDelete(this.formTrip.getFieldValue("id_trip"),this.formTrip.getFieldValue("origin_title"),this.formTrip.getFieldValue("destination_title"),this.formTrip.getFieldValue("date"));
+          
+          //Ahora eliminamos el viaje en sí
+          this.configureServiceTrip();
+          this.tripService.update({id_trip: this.formTrip.getFieldValue("id_trip")}, {active: false}, 'trip').subscribe(
             res=>{
               this.dialogRef.close();
             });
         }
+      });
+  }
+  
+  sendNotificationDelete(idTrip: Number, origin_title: String, destination_title: String, date: Date){
+    this.configureServiceNotification();
+    const textNotification = "has canceled";
+    this.notificationService.insert({id_trip: idTrip, text_notification: textNotification},"notificationDelete").subscribe(
+      res=>{
+        this.dialogRef.close();
       });
   }
 
@@ -113,9 +141,33 @@ export class TripDetailComponent implements OnInit {
     this.router.navigate(['/main/trip/new'], { relativeTo: this.actRoute });
   }
 
-  configureService() {
+  // Function to convert a date into a readable date format
+  convertDate(date: Date){
+    const newDate = new Date(date);
+    return (newDate.toLocaleDateString());
+  }
+ 
+  configureServiceTrip() {
     // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
     const conf = this.tripService.getDefaultServiceConfiguration('trips');
     this.tripService.configureService(conf);
+  }
+  
+  configureServiceTripHistorical() {
+    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
+    const conf = this.tripHistoricalsService.getDefaultServiceConfiguration('tripshistoricals');
+    this.tripHistoricalsService.configureService(conf);
+  }
+
+  configureServiceBooking() {
+    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
+    const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
+    this.bookingService.configureService(conf);
+  }
+  
+  configureServiceNotification() {
+    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
+    const conf = this.notificationService.getDefaultServiceConfiguration('notifications');
+    this.notificationService.configureService(conf);
   }
 }

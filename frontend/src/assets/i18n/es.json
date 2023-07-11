@@ -78,6 +78,8 @@
   "name": "Nombre",
   "surname1": "Primer apellido",
   "surname2": "Segundo apellido",
+  "surnames": "Apellidos",
+  "email": "Email",
   "free_seats": "Asientos libres",
   "DRIVER": "Conductor",
   "driver": "Conductor",
@@ -147,5 +149,9 @@
   "NOTIFICATION_INFO": "Información de la notificación",
   "text_notification": "Notificación",
   "time_notification": "Hora",
-  "There has been a change in your booking": "Ha habido cambios en tu reserva"
+  "has canceled": "ha cancelado",
+  "has changed": "ha cambiado",
+  "your trip for day": "tu viaje para el día",
+  "from": "desde",
+  "to": "a"
 }
