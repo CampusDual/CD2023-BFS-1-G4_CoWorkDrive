@@ -1,7 +1,8 @@
-import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { Component, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { ValidatorFn } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService, OFormComponent, OTableComponent, OValidators, OntimizeService } from 'ontimize-web-ngx';
+import { StarRatingComponent } from './star-rating/star-rating.component';
 
 @Component({
   selector: 'app-booking-done',
@@ -11,6 +12,7 @@ import { DialogService, OFormComponent, OTableComponent, OValidators, OntimizeSe
 export class BookingDoneComponent implements OnInit {
   @ViewChild('formRate', { static: false }) formRate: OFormComponent;
   @ViewChild('tableBookingsDone', { static: false }) tableBookingsDone: OTableComponent;
+  @ViewChild('starRate', { static: false }) starRate: StarRatingComponent;
   private ratingService: OntimizeService;
   // Validators for the number of seats
   validatorNumberRate: ValidatorFn[] = [];
@@ -43,11 +45,15 @@ export class BookingDoneComponent implements OnInit {
   this.configurationRatingsService();
   this.dialogService.confirm('Rate register', 'Do you really want to confirm?');
   this.dialogService.dialogRef.afterClosed().subscribe(result => {
-    if (result) {
-      const valuesSelected = this.tableBookingsDone.getExpandableItems();
+    if(this.starRate.selectedValue<1){
+      this.dialogService.alert("Puntuación errónea", "La puntuación no puede ser 0")
+    } else if (result) {
+      const valuesSelected = this. tableBookingsDone.getExpandableItems();
       this.formRate.setFieldValue("id_booking",valuesSelected[0].id_booking);
       this.formRate.setFieldValue("id_driver",valuesSelected[0].id_driver);
+      this.formRate.setFieldValue("rate",this.starRate.selectedValue);
       this.formRate.insert();
+      this.reloadComponent();
     }
   });
  }
@@ -75,4 +81,10 @@ export class BookingDoneComponent implements OnInit {
   const conf = this.ratingService.getDefaultServiceConfiguration('ratings');
   this.ratingService.configureService(conf);
  }
+
+ reloadComponent() {
+  this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  this.router.onSameUrlNavigation = 'reload';
+  this.router.navigate([this.router.url]);
+}
 }

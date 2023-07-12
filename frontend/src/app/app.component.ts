@@ -6,4 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  userRating: number = 3; // Valor inicial del rating seleccionado por el usuario
 }

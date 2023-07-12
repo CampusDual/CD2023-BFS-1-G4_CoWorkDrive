@@ -24,3 +24,13 @@
     background-color: #C61A23;
     color: white;
 }
+
+.star {
+    cursor: pointer;
+    font-size: 24px;
+    color: #ccc;
+  }
+  
+  .star-filled {
+    color: gold;
+  }

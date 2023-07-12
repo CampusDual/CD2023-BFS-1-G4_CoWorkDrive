@@ -1,0 +1,5 @@
+<ul class="rating-list rating-padding" *ngFor="let star of stars; let i= index">
+    <li (click)="countStar(star)" [ngClass]="{'selected': (star <= selectedValue)}" (mouseover)="addClass(star)"
+         (mouseout)="removeClass()"> <span class="material-icons">star</span>
+    </li>
+</ul>
