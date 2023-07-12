@@ -14,7 +14,7 @@
   service="trips"
   entity="tripGetAll"
   keys="id_trip"
-  columns="origin_title;destination_title;date;time;free_seats;id_car;name;rate;number_rates"
+  columns="origin_title;destination_title;date;time;free_seats;id_car;name;rate;number_rates;destination_image"
   fixed-header="true" 
   style="height:'400px'" 
   pagination-controls="no" 
@@ -31,7 +31,7 @@
   >
     <o-grid-item *ngFor="let list of grid.dataArray">
       <o-column layout-padding class="container-item">
-        <img class="map" src="../../../assets/images/destination.png"/>
+        <img class="map" src="../../../assets/images/offices/{{ list.destination_image }}"/>
         <div class="origin_title">
           <mat-icon>my_location</mat-icon><b>{{ list.origin_title }}</b>
         </div>

@@ -1,6 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
-import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-trip-new',
@@ -9,13 +9,19 @@ import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx
 })
 export class TripNewComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
+  @ViewChild('switchDestination', { static: false }) switchDestination: OSlideToggleComponent;
   private tripService: OntimizeService;
+  private headquarterService: OntimizeService;
 
   public minDate: string;
   public maxDate: string;
+  public switchDestinationState: boolean = false;
 
   constructor(public injector: Injector,    
     protected dialogService: DialogService) { 
+      this.tripService = this.injector.get(OntimizeService);
+      this.headquarterService = this.injector.get(OntimizeService);
+
   }
 
   ngOnInit() {
@@ -53,14 +59,40 @@ export class TripNewComponent implements OnInit {
     this.dialogService.confirm('Trip register', 'Do you really want to confirm?');
     this.dialogService.dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.formTrip.insert();
+        if(this.switchDestinationState){
+          this.formTrip.setFieldValue("destination_image","default.png");
+          this.configureServiceTrip();
+          this.formTrip.insert();
+        } else {
+          this.configureServiceHeadquarter();
+          this.headquarterService.query({id_headquarter: this.formTrip.getFieldValue("id_headquarter")},['id_headquarter', 'headquarter_destination_title',
+        'headquarter_destination_address', 'image_headquarter_name'],'headquarter').subscribe(
+            res=>{
+              this.formTrip.setFieldValue("destination_title",res.data[0].headquarter_destination_title);
+              this.formTrip.setFieldValue("destination_address",res.data[0].headquarter_destination_address);
+              this.formTrip.setFieldValue("destination_image",res.data[0].image_headquarter_name);
+              this.configureServiceTrip();
+              this.formTrip.insert();
+            }
+          )
+        }
       }
     });
   }
 
-  configureService() {
+  configureServiceTrip() {
     // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
     const conf = this.tripService.getDefaultServiceConfiguration('trips');
     this.tripService.configureService(conf);
+  }
+
+  configureServiceHeadquarter() {
+    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
+    const conf = this.headquarterService.getDefaultServiceConfiguration('headquarters');
+    this.headquarterService.configureService(conf);
+  }
+
+  getSwitchValue(){
+    this.switchDestinationState = this.switchDestination.getValue();
   }
 }

@@ -11,6 +11,9 @@ export const SERVICE_CONFIG: Object = {
   'bookings': {
     'path': '/bookings'
   },
+  'headquarters': {
+    'path': '/headquarters'
+  },
   'colors': {
     'path': '/colors'
   },

@@ -17,7 +17,7 @@ const routes: Routes = [
     component: TripDoneComponent
   },
   {
-    path : 'new',
+    path : 'scheduled/new',
     component: TripNewComponent
   },
   {

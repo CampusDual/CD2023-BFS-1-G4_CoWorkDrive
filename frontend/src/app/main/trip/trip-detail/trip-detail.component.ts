@@ -2,7 +2,7 @@ import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx';
+import { DialogService, OFormComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
   selector: 'app-trip-detail',
@@ -11,13 +11,15 @@ import { DialogService, OFormComponent, OntimizeService } from 'ontimize-web-ngx
 })
 export class TripDetailComponent implements OnInit {
   @ViewChild('formTrip', { static: false }) formTrip: OFormComponent;
+  @ViewChild('switchDestination', { static: false }) switchDestination: OSlideToggleComponent;
   
   private tripService: OntimizeService;
-  private tripHistoricalsService: OntimizeService;
+  private headquarterService: OntimizeService;
   idTrip: number;
 
   public minDate: string;
   public maxDate: string;
+  public switchDestinationState: boolean = false;
 
   private bookingService: OntimizeService;
   public bookingsNumber: Number;
@@ -32,7 +34,7 @@ export class TripDetailComponent implements OnInit {
     public dialogRef: MatDialogRef<TripDetailComponent>
     ) {
     this.tripService = this.injector.get(OntimizeService);
-    this.tripHistoricalsService = this.injector.get(OntimizeService);
+    this.headquarterService = this.injector.get(OntimizeService);
     this.bookingService = this.injector.get(OntimizeService);
     this.notificationService = this.injector.get(OntimizeService);
     this.router = router;
@@ -55,14 +57,30 @@ export class TripDetailComponent implements OnInit {
     this.dialogService.confirm('Trip update', 'Do you really want to confirm?');
     this.dialogService.dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        // If the update is confirmed, set the form field values and perform the update
-        this.formTrip.update();
-        this.sendNotificationUpdate(this.formTrip.getFieldValue("id_trip"));
+        if(this.switchDestinationState){
+          this.formTrip.setFieldValue("destination_image","default.png");
+          this.configureServiceTrip();
+          this.formTrip.update();
+          this.sendNotificationUpdate(this.formTrip.getFieldValue("id_trip"));
+        } else {
+          this.configureServiceHeadquarter();
+          this.headquarterService.query({id_headquarter: this.formTrip.getFieldValue("id_headquarter")},['id_headquarter', 'headquarter_destination_title',
+        'headquarter_destination_address', 'image_headquarter_name'],'headquarter').subscribe(
+            res=>{
+              this.formTrip.setFieldValue("destination_title",res.data[0].headquarter_destination_title);
+              this.formTrip.setFieldValue("destination_address",res.data[0].headquarter_destination_address);
+              this.formTrip.setFieldValue("destination_image",res.data[0].image_headquarter_name);
+              this.configureServiceTrip();
+              this.formTrip.update();
+              this.sendNotificationUpdate(this.formTrip.getFieldValue("id_trip"));
+            }
+          )
+        }
       }
     });
   }
 
-  hasBookings(){
+  hasBookingsAndSetDestination(){
     this.configureServiceTrip();
     // Get the number of available cars and show an alert if there are none
     this.tripService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['number_bookings'], 'numberTripsOnBooking').subscribe(
@@ -70,6 +88,20 @@ export class TripDetailComponent implements OnInit {
         this.getNumberBookings(res.data[0].number_bookings);
       }
     );
+    this.configureServiceHeadquarter();
+    this.headquarterService.query({headquarter_destination_title: this.formTrip.getFieldValue("destination_title")},['headquarter_quantity'],'headquarterQuantity').subscribe(
+      res=>{
+        if(res.data[0].headquarter_quantity != 0){
+          this.headquarterService.query({headquarter_destination_title: this.formTrip.getFieldValue("destination_title")},['id_headquarter'],'headquarter').subscribe(
+            resData=>{
+            this.formTrip.setFieldValue("id_headquarter",resData.data[0].id_headquarter);
+            this.switchDestination.setValue(false);
+            })
+        } else {
+          this.switchDestination.setValue(true);
+        }
+      }
+    )
   }
 
   getNumberBookings(bookingsNumber: Number){
@@ -153,12 +185,6 @@ export class TripDetailComponent implements OnInit {
     this.tripService.configureService(conf);
   }
   
-  configureServiceTripHistorical() {
-    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
-    const conf = this.tripHistoricalsService.getDefaultServiceConfiguration('tripshistoricals');
-    this.tripHistoricalsService.configureService(conf);
-  }
-
   configureServiceBooking() {
     // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
     const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
@@ -169,5 +195,25 @@ export class TripDetailComponent implements OnInit {
     // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
     const conf = this.notificationService.getDefaultServiceConfiguration('notifications');
     this.notificationService.configureService(conf);
+  }
+
+  configureServiceHeadquarter() {
+    // Get the default configuration of the 'trips' service and configure the 'tripService' accordingly
+    const conf = this.headquarterService.getDefaultServiceConfiguration('headquarters');
+    this.headquarterService.configureService(conf);
+  }
+
+  getSwitchValue(){
+    this.switchDestinationState = this.switchDestination.getValue();
+  }
+
+  setNewDestinationValues(){    
+    this.configureServiceHeadquarter();
+    this.headquarterService.query({id_headquarter: this.formTrip.getFieldValue("id_headquarter")},['headquarter_destination_title',
+    'headquarter_destination_address', 'image_headquarter_name'],'headquarter').subscribe(
+      res=>{
+        this.formTrip.setFieldValue("destination_title",res.data[0].headquarter_destination_title);
+        this.formTrip.setFieldValue("destination_address",res.data[0].headquarter_destination_address);
+      })
   }
 }

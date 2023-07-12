@@ -32,12 +32,11 @@
       service="trips"
       entity="tripDone"
       keys="id_trip"
-      columns="origin_title;destination_title;date;time;rate;number_rates"
+      columns="origin_title;destination_title;date;time;rate;number_rates;destination_image"
       selectable="true"
       refresh-button="true"
-      [insert-button]="carsNumber>0? true : false"
-      insert-button-floatable="false"
-      delete-button="true"
+      insert-button="false"
+      delete-button="false"
       detail-mode="click"
       query-rows="9"
       gutter-size="60px"
@@ -46,7 +45,7 @@
     >
       <o-grid-item *ngFor="let list of grid.dataArray">
         <o-column layout-padding class="container-item">
-          <img class="map" src="./assets/images/destination.png"/>
+          <img class="map" src="./assets/images/offices/{{ list.destination_image }}"/>
           <div class="origin">
             <mat-icon>directions_car</mat-icon><b>{{ list.origin_title }} - {{ list.destination_title }}</b>
           </div>

@@ -7,7 +7,7 @@
   id="formTrip"
   show-header="no"
   class="formTripDetail"
-  (onDataLoaded)="hasBookings()"
+  (onDataLoaded)="hasBookingsAndSetDestination()"
   header-actions="D"
 >
   <o-row>
@@ -33,6 +33,31 @@
           ></o-text-input>
         </o-row>
 
+        <o-row>
+          <o-combo 
+          class="date-input"
+          service="headquarters" 
+          entity="headquarter" 
+          keys="id_headquarter"
+          sql-type="INTEGER" 
+          attr="id_headquarter" 
+          label="Headquarter" 
+          id="id_headquarter"
+          value-column="id_headquarter" 
+          columns="id_headquarter;headquarter_destination_title;headquarter_destination_address;image_headquarter_name;headquarter_type" 
+          visible-columns="headquarter_destination_title"
+          required="yes" 
+          searchable="yes"
+          null-selection="no"
+          width="300px"
+          [enabled]="switchDestinationState? false : true"
+          (onChange)="setNewDestinationValues()"
+          >
+          </o-combo>
+          <o-slide-toggle class="date-input" #switchDestination id="switchDestination" attr="slidetoggle-editable" label="{{ 'Other destination' | oTranslate}}" read-only="no" (onValueChange)="getSwitchValue()"
+          ></o-slide-toggle>
+        </o-row>
+
         <o-row style="display: flex; flex-direction: column; align-items: center;">
           <o-text-input
             class="date-input"
@@ -42,6 +67,7 @@
             id="destination_title"
             width="300px"
             placeholder="A Coruña"
+            [enabled]="switchDestinationState? true : false"
           ></o-text-input>
           <o-text-input
             class="date-input"
@@ -51,6 +77,7 @@
             id="destination_address"
             width="300px"
             placeholder="A Coruña"
+            [enabled]="switchDestinationState? true : false"
           ></o-text-input>
         </o-row>
 
@@ -92,6 +119,7 @@
             visible-columns="brand_name;model_name"
             required="yes" 
             searchable="yes"
+            null-selection="no"
             width="300px">
           </o-combo>
         </o-row>
@@ -117,6 +145,11 @@
           width="300px"
           placeholder="Santiago de Compostela"
           oHidden
+        ></o-text-input>
+        <o-text-input
+        attr="destination_image"
+        id="destination_image"
+        oHidden
         ></o-text-input>
         <div class="ontimize-buttons">
         <!-- <button title="{{ 'Reuse' | oTranslate }}" label="Reuse" (click)="reuseTrip()" layout-padding>{{ 'Reuse' | oTranslate }}</button ></o-form-layout-manager> -->

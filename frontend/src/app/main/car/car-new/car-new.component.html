@@ -23,7 +23,8 @@
           columns="id_car_brand;brand_name" 
           visible-columns="brand_name"
           keys="id_car_brand"
-          searchable="yes">
+          searchable="yes"
+          null-selection="no">
           </o-combo>
 
           <o-combo 
@@ -40,7 +41,8 @@
           keys="id_car_model" 
           [query-on-event]="comboCarBrands.onValueChange" 
           parent-keys="id_car_brand"
-          searchable="yes">
+          searchable="yes"
+          null-selection="no">
           </o-combo>
         </o-row>
         <o-row>
@@ -69,6 +71,7 @@
             required="yes" 
             searchable="yes"
             translate="yes"
+            null-selection="no"
             width="250px">
           </o-combo>
         </o-row>

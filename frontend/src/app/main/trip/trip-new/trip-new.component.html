@@ -8,7 +8,6 @@
   show-header="no"
   class="formTripDetail"
 >
-<!-- (onDataLoaded)="formInit()" -->
   <o-row>
     <o-column class="columnTripDetail">
       <o-row>
@@ -31,25 +30,50 @@
           placeholder="Santiago de Compostela"
         ></o-text-input>
       </o-row>
+      <o-row>
+        <o-combo 
+        class="date-input"
+        service="headquarters" 
+        entity="headquarter" 
+        keys="id_headquarter"
+        sql-type="INTEGER" 
+        attr="id_headquarter" 
+        label="Headquarter" 
+        id="id_headquarter"
+        value-column="id_headquarter" 
+        columns="id_headquarter;headquarter_destination_title;headquarter_destination_address;image_headquarter_name;headquarter_type" 
+        visible-columns="headquarter_destination_title"
+        required="yes" 
+        searchable="yes"
+        null-selection="no"
+        width="300px"
+        [enabled]="switchDestinationState? false : true"
+        >
+        </o-combo>
+        <o-slide-toggle class="date-input" #switchDestination id="switchDestination" attr="slidetoggle-editable" label="{{ 'Other destination' | oTranslate}}" read-only="no" (onValueChange)="getSwitchValue()"
+        ></o-slide-toggle>
+      </o-row>
 
       <o-row style="display: flex; flex-direction: column; align-items: center;">
         <o-text-input
           class="date-input"
           title="{{ 'title_destination' | oTranslate }}"
           attr="destination_title"
-          required="yes"
+          [required]="switchDestinationState? true : false"
           id="destination_title"
           width="300px"
           placeholder="A Coruña"
+          [hidden]="switchDestinationState? false : true"
         ></o-text-input>
         <o-text-input
           class="date-input"
           title="{{ 'destination_address' | oTranslate }}"
           attr="destination_address"
-          required="yes"
+          [required]="switchDestinationState? true : false"
           id="destination_address"
           width="300px"
           placeholder="A Coruña"
+          [hidden]="switchDestinationState? false : true"
         ></o-text-input>
       </o-row>
 
@@ -91,8 +115,14 @@
             visible-columns="brand_name;model_name"
             required="yes" 
             searchable="yes"
+            null-selection="no"
             width="300px">
           </o-combo>
+          <o-text-input
+          attr="destination_image"
+          id="destination_image"
+          oHidden
+          ></o-text-input>
         </o-row>
         <div class="ontimize-buttons">
           <button id="clearTrip" title="{{ 'Clear' | oTranslate }}" label="Clear" (click)="clearTrip()" layout-padding>{{ 'Clear' | oTranslate }}</button>

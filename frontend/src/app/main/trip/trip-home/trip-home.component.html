@@ -23,7 +23,7 @@
   label-columns="NAME;SURNAME"
   show-header="no"
 >
-<o-form-layout-dialog-options width="800px" height="590px"
+<o-form-layout-dialog-options width="800px" height="700px"
   disable-close="false" ></o-form-layout-dialog-options>
     <o-grid
       #grid
@@ -32,7 +32,7 @@
       service="trips"
       entity="trip"
       keys="id_trip"
-      columns="origin_title;destination_title;date;time"
+      columns="origin_title;destination_title;date;time;destination_image"
       selectable="true"
       refresh-button="true"
       [insert-button]="carsNumber>0? true : false"
@@ -46,7 +46,7 @@
     >
       <o-grid-item *ngFor="let list of grid.dataArray">
         <o-column layout-padding class="container-item">
-          <img class="map" src="./assets/images/destination.png"/>
+          <img class="map" src="./assets/images/offices/{{ list.destination_image }}"/>
           <div class="origin">
             <mat-icon>directions_car</mat-icon><b>{{ list.origin_title }} - {{ list.destination_title }}</b>
           </div>

@@ -5,26 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/ITripHistoricalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripHistoricalDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/TripHistoricalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripHistoricalDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-ws/src/main/java/com/campusdual/coworkdrive/ws/core/rest/TripHistoricalRestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/IHeadquarterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/HeadquarterDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/HeadquarterService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/HeadquarterDao.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-ws/src/main/java/com/campusdual/coworkdrive/ws/core/rest/HeadquarterRestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/INotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-api/src/main/java/com/campusdual/coworkdrive/api/core/service/INotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/BookingDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/BookingDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/TripDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/UserDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/NotificationService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/NotificationService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/UserDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/notification-advice/notification-home/notification-home.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/notification-advice/notification-home/notification-home.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/main/trip/trip-detail/trip-detail.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/app/shared/app.services.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/app/shared/app.services.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/en.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/src/assets/i18n/es.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,9 +74,9 @@
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.campusdual.coworkdrive.api.core.service" />
-      <recent name="com.campusdual.coworkdrive.ws.core.rest" />
       <recent name="com.campusdual.coworkdrive.model.core.service" />
       <recent name="com.campusdual.coworkdrive.model.core.dao" />
+      <recent name="com.campusdual.coworkdrive.ws.core.rest" />
     </key>
   </component>
   <component name="RunManager">
