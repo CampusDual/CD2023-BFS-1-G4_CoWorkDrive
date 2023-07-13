@@ -31,7 +31,13 @@
 			<groupId>com.ontimize.jee</groupId>
 			<artifactId>ontimize-jee-server-jdbc</artifactId>
 		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>javax.mail</artifactId>
+            <version>1.6.2</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>

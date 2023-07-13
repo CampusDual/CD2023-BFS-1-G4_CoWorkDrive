@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import com.campusdual.coworkdrive.model.core.service.MailServiceApi;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -92,6 +93,7 @@ public class BookingService implements IBookingService {
         } else {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             attrMap.put(PRIMARYUSERKEY, auth.getName());
+            MailServiceApi.sendWithGMail("jaime.alvarez@campusdual.com","Nueva notificación","Nuevo viaje");
             return this.daoHelper.insert(bookingDao, attrMap);
         }
     }

@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5051c2e1-10f1-4df9-8fde-57a0590dff9b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/MailServiceApi.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/CarBrandDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/dao/CarBrandDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/BookingDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/CarDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/NotificationDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/NotificationDao.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/resources/dao/TripDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-boot/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-boot/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2023-BFS-1-G4-main/coworkdrive-model/src/main/java/com/campusdual/coworkdrive/model/core/service/BookingService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
