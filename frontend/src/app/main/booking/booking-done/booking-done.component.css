@@ -1,13 +1,21 @@
 .rateRow{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center !important;
     justify-content: center;
+    width:100%;
 }
 
 .rate-input{
     width: 80px;
     height: 50px;
+}
+
+.formRate{
+    display: flex;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center;
 }
 
 .rate-button{
@@ -16,8 +24,8 @@
     border-radius: 5px;
     color: black;
     border: 0.5px solid black;
-    margin-top: 15px;
-    margin-left: 5px;
+    margin-top: 17px;
+    margin-left: 10px;
 }
 
 .rate-button:hover{
@@ -32,5 +40,5 @@
   }
   
   .star-filled {
-    color: gold;
+    color: #E4333C;
   }

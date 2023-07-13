@@ -4,7 +4,7 @@
   entity="notification" 
   keys="id_user" 
   visible-columns="text_notification;time_notification"
-  columns="text_notification;time_notification;origin_title;origin_address;destination_title;destination_address;datetime;car_registration;brand_name;model_name;color_name;driver"
+  columns="text_notification;time_notification;origin_title;origin_address;destination_title;destination_address;datetime;car_registration;brand_name;model_name;color_name;driver;email"
   title="{{ 'NOTIFICATIONS' | oTranslate }}" 
   insert-button="no" 
   delete-button="no" 
@@ -24,19 +24,22 @@
     <ng-template let-row>
       <o-column title="{{ 'NOTIFICATION_INFO' | oTranslate }}" icon="info" class="vertical-margin-10" layout-gap="12px">
         <div fxLayout="row wrap" fxLayoutGap="14px">
-            <span fxFlex="35%"><strong>{{ 'ORIGIN_TITLE' | oTranslate}}</strong>: {{row.origin_title}}</span>
-          <span fxFlex="35%"><strong>{{ 'ORIGIN_ADDRESS' | oTranslate}}</strong>: {{row.origin_address}}</span>
-          <span fxFlex="35%"><strong>{{'DESTINATION_TITLE' | oTranslate}}</strong>: {{row.destination_title}}</span>
-          <span fxFlex="35%"><strong>{{'DESTINATION_ADDRESS' | oTranslate}}</strong>: {{row.destination_address}}</span>
-          <span fxFlex="10%" ><strong>{{'DATE' | oTranslate}}</strong>: {{convertDate(row.date)}}</span>
-          <span fxFlex="10%"><strong>{{'TIME' | oTranslate}}</strong>: {{convertTime(row.time)}}</span>
+          <span fxFlex="40%"><strong>{{ 'ORIGIN_TITLE' | oTranslate}}</strong>: {{row.origin_title}}</span>
+          <span fxFlex="40%"><strong>{{ 'DESTINATION_TITLE' | oTranslate}}</strong>: {{row.destination_title}}</span>
+          <span fxFlex="5%" ><strong>{{'DATE' | oTranslate}}</strong>: {{convertDate(row.date)}}</span>
         </div>
         <div fxLayout="row wrap" fxLayoutGap="14px">
-          <span  fxFlex="20%"><strong>{{'DRIVER' | oTranslate}}</strong>: {{row.driver}}</span>
-          <span  fxFlex="20%"><strong>{{'BRAND_NAME' | oTranslate}}</strong>: {{row.brand_name}}</span>
-          <span  fxFlex="20%"><strong>{{'MODEL_NAME' | oTranslate}}</strong>: {{row.model_name}}</span>
-          <span  fxFlex="19%"><strong>{{'CAR_REGISTRATION' | oTranslate}}</strong>: {{row.car_registration}}</span>
-          <span  fxFlex="16%"><strong>{{'COLOR_NAME' | oTranslate}}</strong>: {{row.color_name | oTranslate}}</span>
+          <span fxFlex="40%"><strong>{{ 'ORIGIN_ADDRESS' | oTranslate}}</strong>: {{row.origin_address}}</span>
+          <span fxFlex="40%"><strong>{{ 'DESTINATION_ADDRESS' | oTranslate}}</strong>: {{row.destination_address}}</span>
+          <span fxFlex="5%"><strong>{{'TIME' | oTranslate}}</strong>: {{convertTime(row.time)}}</span>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="14px">
+          <span  fxFlex="15%"><strong>{{'DRIVER' | oTranslate}}</strong>: {{row.driver}}</span>
+          <span  fxFlex="24%"><strong>{{'EMAIL' | oTranslate}}</strong>: {{row.email}}</span>
+          <span  fxFlex="12%"><strong>{{'BRAND_NAME' | oTranslate}}</strong>: {{row.brand_name}}</span>
+          <span  fxFlex="15%"><strong>{{'MODEL_NAME' | oTranslate}}</strong>: {{row.model_name}}</span>
+          <span  fxFlex="11%"><strong>{{'CAR_REGISTRATION' | oTranslate}}</strong>: {{row.car_registration}}</span>
+          <span  fxFlex="10%"><strong>{{'COLOR_NAME' | oTranslate}}</strong>: {{row.color_name | oTranslate}}</span>
         </div>
       </o-column>
     </ng-template>

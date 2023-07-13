@@ -3,3 +3,7 @@ styles.scss
 .input-padding{
     padding-right: 6px;
   }
+
+.o-app-sidenav .o-app-sidenav-menu-group a, .o-app-sidenav .o-app-sidenav-menu-item a{
+  margin-left: 0px !important;
+}

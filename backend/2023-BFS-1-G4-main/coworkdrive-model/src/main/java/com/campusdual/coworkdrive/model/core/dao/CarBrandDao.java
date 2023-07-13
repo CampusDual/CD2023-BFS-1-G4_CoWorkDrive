@@ -13,4 +13,5 @@ import org.springframework.stereotype.Repository;
 public class CarBrandDao extends OntimizeJdbcDaoSupport {
     public static final String ATTR_ID_CAR_BRAND = "id_car_brand";
     public static final String ATTR_BRAND_NAME = "brand_name";
+    public static final String ATTR_BRAND_IMAGE = "brand_image";
 }

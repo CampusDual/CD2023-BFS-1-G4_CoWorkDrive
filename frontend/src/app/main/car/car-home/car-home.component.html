@@ -13,7 +13,7 @@
       service="cars"
       entity="car"
       keys="id_car"
-      columns="seats;car_registration;color_name;brand_name;model_name;id_car"
+      columns="seats;car_registration;color_name;brand_name;model_name;brand_image;id_car"
       selectable="true"
       refresh-button="true"
       [insert-button]="grid.dataArray.length>3 ? false : true"
@@ -29,7 +29,7 @@
     >
       <o-grid-item *ngFor="let list of grid.dataArray">
         <o-column layout-padding class="container-item">
-          <img class="map" src="../../../assets/images/carIcon.png"/>
+          <img class="map" src="../../../assets/images/car_brands/{{ list.brand_image }}"/>
           <div class="origin">
             <mat-icon>directions_car</mat-icon><b>{{ list.brand_name }} {{ list.model_name }}</b>
           </div>

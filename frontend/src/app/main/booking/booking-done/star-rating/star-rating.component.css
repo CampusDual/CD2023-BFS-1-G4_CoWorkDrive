@@ -1,22 +1,22 @@
 .rating-list {
     display: inline-block;
     list-style: none;
-  }
-  .rating-padding {
-    padding-inline-start: 0px !important;
-  }
-  .rating-list li {
-    font-size: 20px;
-    float: right;
-    color: #ddd;
-    padding-right: 5px;
-  }
-  .rating-list li:hover {
-    color: #ffd700;
-  }
-  .rating-list li:hover ~ li {
-    color: #ffd700;
-  }
-  .rating-list li.selected {
-    color: #ffd700;
-  }
+}
+.rating-padding {
+  padding-inline-start: 0px !important;
+}
+.rating-list li {
+  font-size: 20px;
+  float: right;
+  color: #ddd;
+  padding-right: 5px;
+}
+.rating-list li:hover {
+  color: #E4333C;
+}
+.rating-list li:hover ~ li {
+  color: #E4333C;
+}
+.rating-list li.selected {
+  color: #E4333C;
+}

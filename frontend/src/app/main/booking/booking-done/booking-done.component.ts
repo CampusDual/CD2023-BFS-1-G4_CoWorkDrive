@@ -46,7 +46,7 @@ export class BookingDoneComponent implements OnInit {
   this.dialogService.confirm('Rate register', 'Do you really want to confirm?');
   this.dialogService.dialogRef.afterClosed().subscribe(result => {
     if(this.starRate.selectedValue<1){
-      this.dialogService.alert("Puntuación errónea", "La puntuación no puede ser 0")
+      this.dialogService.alert("Wrong rate!", "Rate cannot be 0")
     } else if (result) {
       const valuesSelected = this. tableBookingsDone.getExpandableItems();
       this.formRate.setFieldValue("id_booking",valuesSelected[0].id_booking);

@@ -20,7 +20,7 @@
             <Sentence>
                 <![CDATA[
                     SELECT n.text_notification, n.time_notification, t.origin_title, t.origin_address, t.destination_title, t.destination_address,
-                    t."date", t."time", c.car_registration, cb.brand_name, cm.model_name, co.color_name, tu."name" as driver
+                    t."date", t."time", c.car_registration, cb.brand_name, cm.model_name, co.color_name, tu."name" as driver, tu.email
                     FROM notification n
                     JOIN trip t ON t.id_trip = n.id_trip
                     JOIN car c ON c.id_car = t.id_car

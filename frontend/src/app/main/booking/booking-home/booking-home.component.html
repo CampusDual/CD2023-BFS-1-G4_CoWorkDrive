@@ -1,5 +1,5 @@
 <o-table fxFill service="bookings" entity="myBookings" keys="id_booking" 
-columns="id_booking;origin_title;destination_title;date;time;driver;brand_name;model_name;car_registration;id_user;color_name"
+columns="id_booking;origin_title;destination_title;date;time;driver;brand_name;model_name;car_registration;id_user;color_name;email"
 visible-columns="origin_title;destination_title;driver"
       title="{{ 'BOOKINGS' | oTranslate }}" insert-button="no" delete-button="yes" refresh-button="yes" pagination-controls="no" detail-mode="none" export-button="no"
       query-rows="10" fixed-header="yes">
@@ -13,11 +13,12 @@ visible-columns="origin_title;destination_title;driver"
           <span fxFlex="10%"><strong>{{'TIME' | oTranslate}}</strong>: {{convertTime(row.time)}}</span>
         </div>
         <div fxLayout="row wrap" fxLayoutGap="14px">
-          <span  fxFlex="20%"><strong>{{'DRIVER' | oTranslate}}</strong>: {{row.driver}}</span>
-          <span  fxFlex="20%"><strong>{{'BRAND_NAME' | oTranslate}}</strong>: {{row.brand_name}}</span>
-          <span  fxFlex="20%"><strong>{{'MODEL_NAME' | oTranslate}}</strong>: {{row.model_name}}</span>
-          <span  fxFlex="19%"><strong>{{'CAR_REGISTRATION' | oTranslate}}</strong>: {{row.car_registration}}</span>
-          <span  fxFlex="16%"><strong>{{'COLOR_NAME' | oTranslate}}</strong>: {{row.color_name | oTranslate}}</span>
+          <span  fxFlex="15%"><strong>{{'DRIVER' | oTranslate}}</strong>: {{row.driver}}</span>
+          <span  fxFlex="25%"><strong>{{'EMAIL' | oTranslate}}</strong>: {{row.email}}</span>
+          <span  fxFlex="12%"><strong>{{'BRAND_NAME' | oTranslate}}</strong>: {{row.brand_name}}</span>
+          <span  fxFlex="15%"><strong>{{'MODEL_NAME' | oTranslate}}</strong>: {{row.model_name}}</span>
+          <span  fxFlex="11%"><strong>{{'CAR_REGISTRATION' | oTranslate}}</strong>: {{row.car_registration}}</span>
+          <span  fxFlex="10%"><strong>{{'COLOR_NAME' | oTranslate}}</strong>: {{row.color_name | oTranslate}}</span>
         </div>
       </o-column>
     </ng-template>

@@ -48,6 +48,7 @@
         null-selection="no"
         width="300px"
         [enabled]="switchDestinationState? false : true"
+        (onChange)="setNewDestinationValues()"
         >
         </o-combo>
         <o-slide-toggle class="date-input" #switchDestination id="switchDestination" attr="slidetoggle-editable" label="{{ 'Other destination' | oTranslate}}" read-only="no" (onValueChange)="getSwitchValue()"
@@ -63,7 +64,7 @@
           id="destination_title"
           width="300px"
           placeholder="A Coruña"
-          [hidden]="switchDestinationState? false : true"
+          [enabled]="switchDestinationState? true : false"
         ></o-text-input>
         <o-text-input
           class="date-input"
@@ -73,7 +74,7 @@
           id="destination_address"
           width="300px"
           placeholder="A Coruña"
-          [hidden]="switchDestinationState? false : true"
+          [enabled]="switchDestinationState? true : false"
         ></o-text-input>
       </o-row>
 

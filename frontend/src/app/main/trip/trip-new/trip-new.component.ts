@@ -95,4 +95,14 @@ export class TripNewComponent implements OnInit {
   getSwitchValue(){
     this.switchDestinationState = this.switchDestination.getValue();
   }
+
+  setNewDestinationValues(){    
+    this.configureServiceHeadquarter();
+    this.headquarterService.query({id_headquarter: this.formTrip.getFieldValue("id_headquarter")},['headquarter_destination_title',
+    'headquarter_destination_address', 'image_headquarter_name'],'headquarter').subscribe(
+      res=>{
+        this.formTrip.setFieldValue("destination_title",res.data[0].headquarter_destination_title);
+        this.formTrip.setFieldValue("destination_address",res.data[0].headquarter_destination_address);
+      })
+  }
 }
