@@ -72,6 +72,8 @@
   "Select Brand":"Select a brand",
   "Select Model":"Select a model",
   "YOUR CAR": "Your car",
+  "Delete action no possible": "Delete action no possible",
+  "You cannot delete a car with scheduled trips": "You cannot delete a car with scheduled trips",
   "BOOKINGS": "Bookings",
   "name": "Name",
   "surname1": "First surname",

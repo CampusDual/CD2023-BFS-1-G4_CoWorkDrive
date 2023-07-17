@@ -85,6 +85,19 @@
         ]]>
             </Sentence>
         </Query>
-
+        <Query id="data_email_passenger">
+            <ValidColumns>
+                <Column>user_</Column>
+                <Column>name</Column>
+                <Column>email</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT user_, name, email
+                    FROM tuser
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

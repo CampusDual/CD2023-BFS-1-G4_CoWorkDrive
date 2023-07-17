@@ -26,5 +26,6 @@ public class UserDao extends OntimizeJdbcDaoSupport {
     public static final String FIRSTLOGIN = "firstlogin";
     public static final String SURNAME2 = "surname2";
     public static final String QUERY_GET_USER_NAME = "get_user_name";
+    public static final String QUERY_DATA_EMAIL_PASSSENGER = "data_email_passenger";
 
 }

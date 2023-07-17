@@ -11,6 +11,7 @@ import { DialogService, OFormComponent, OntimizeService, SnackBarService, OValid
 export class CarDetailComponent implements OnInit {
   @ViewChild('formCar', { static: false }) formCar: OFormComponent;
   private carService: OntimizeService;
+  private tripService: OntimizeService;
   
   // Validators for car registration
   validatorCarRegistration: ValidatorFn[] = [];
@@ -26,10 +27,11 @@ export class CarDetailComponent implements OnInit {
       // Add a pattern validator for number of seats
       this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/,'hasValidNumber'));
       this.carService = this.injector.get(OntimizeService);
+      this.tripService = this.injector.get(OntimizeService);
   }
 
   ngOnInit() {
-    this.configureService();
+    this.configureServiceCar();
   }
 
   // Function to update car data
@@ -72,9 +74,54 @@ export class CarDetailComponent implements OnInit {
     });
 }
 
+updateActiveCar(): void{
+  // Show a confirmation dialog
+  this.dialogService.confirm('Car delete', 'Do you really want to confirm?');
+  // Subscribe to dialog close
+  this.dialogService.dialogRef.afterClosed().subscribe( result => {
+    if(result) {
+      /* this.configureServiceTripHistorical();
+      this.tripHistoricalsService.insert({
+        origin_title: this.formTrip.getFieldValue("origin_title"),
+        origin_address: this.formTrip.getFieldValue("origin_address"),
+        destination_title: this.formTrip.getFieldValue("destination_title"),
+        destination_address: this.formTrip.getFieldValue("destination_address"),
+        date: this.formTrip.getFieldValue("date"),
+        time: this.formTrip.getFieldValue("time"),
+        id_user: this.formTrip.getFieldValue("id_user"),
+        id_car: this.formTrip.getFieldValue("id_car"), 
+        id_trip: this.formTrip.getFieldValue("id_trip")
+      },'tripHistorical').subscribe(
+        res=>{}
+      ); */
+      
+      this.configureServiceTrip();
+      this.tripService.query({id_car: this.formCar.getFieldValue("id_car")},['number_trips'],'scheduledTrips').subscribe(
+        res=>{
+          if(res.data[0].number_trips == 0){
+            this.configureServiceCar();
+            this.carService.update({id_car: this.formCar.getFieldValue("id_car")}, {active: false}, 'car').subscribe(
+              res=>{
+                this.dialogRef.close();
+              })
+          } else {
+            this.dialogService.alert("Delete action no possible", "You cannot delete a car with scheduled trips");
+          }
+        }
+      )
+    }
+  });
+}
+
   // Configure the car service
-  configureService(){
+  configureServiceCar(){
     const conf = this.carService.getDefaultServiceConfiguration('cars');
     this.carService.configureService(conf);
+  }
+
+  // Configure the trip service
+  configureServiceTrip(){
+    const conf = this.tripService.getDefaultServiceConfiguration('trips');
+    this.tripService.configureService(conf);
   }
 }

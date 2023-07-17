@@ -21,6 +21,8 @@ public interface ITripService {
 
     EntityResult historicalTripsQuery(Map<String, Object> keyMap, List<String> attrList);
 
+    EntityResult scheduledTripsQuery(Map<String, Object> keyMap, List<String> attrList);
+
     EntityResult numberTripsOnBookingQuery(Map<String, Object> keyMap, List<String> attrList);
 
     EntityResult tripInsert(Map<String, Object> attrMap) throws ParseException;

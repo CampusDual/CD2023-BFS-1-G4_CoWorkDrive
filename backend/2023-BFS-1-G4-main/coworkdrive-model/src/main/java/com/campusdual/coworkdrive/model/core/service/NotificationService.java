@@ -52,23 +52,10 @@ public class NotificationService implements INotificationService {
         if (attrMap.get(NotificationDao.ATTR_ID_TRIP) instanceof String) {
             attrMap.put(NotificationDao.ATTR_ID_TRIP, Integer.parseInt((String) attrMap.get(NotificationDao.ATTR_ID_TRIP)));
         }
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        attrMap.put(NotificationDao.ATTR_TEXT_NOTIFICATION, getUserName(auth.getName()) + attrMap.get("text_notification"));
+        attrMap.put(NotificationDao.ATTR_TEXT_NOTIFICATION, "has canceled");
         long timestampActual = System.currentTimeMillis();
         Timestamp timeNotification = new Timestamp(timestampActual);
         attrMap.put(NotificationDao.ATTR_TIME_NOTIFICATION, timeNotification);
         return this.daoHelper.insert(notificationDao, attrMap);
-    }
-
-    public String getUserName(String user){
-        Map<String, String> mapUser = new HashMap<>();
-        mapUser.put("user_", user);
-        List<String> listUser = new ArrayList<>();
-        listUser.add("name");
-        EntityResult nameUser = this.daoHelper.query(userDao, mapUser, listUser, UserDao.QUERY_GET_USER_NAME);
-        if(nameUser.isWrong() || nameUser.isEmpty()){
-            return null;
-        }
-        return (String) nameUser.getRecordValues(0).get("name");
     }
 }

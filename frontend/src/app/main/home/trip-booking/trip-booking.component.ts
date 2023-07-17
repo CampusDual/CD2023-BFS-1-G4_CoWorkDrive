@@ -43,13 +43,11 @@ export class TripBookingComponent implements OnInit {
   }
   
   isBooking(){
-    console.log(this.formTrip.getFieldValue("id_trip"))
     const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
     this.bookingService.configureService(conf);
     // Get the number of available cars and show an alert if there are none
     this.bookingService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['numberUserBooking'], 'userIsInBooking').subscribe(
       res => {
-
         this.getUserBookings(res.data[0].numberUserBooking);
       }
     );
@@ -57,7 +55,6 @@ export class TripBookingComponent implements OnInit {
   }
   getUserBookings(num: Number) {
     this.numBooking = num;
-    console.log(this.numBooking)
   }
 
   configureService() {

@@ -2,6 +2,7 @@ package com.campusdual.coworkdrive.model.core.service;
 
 import com.campusdual.coworkdrive.api.core.service.IBookingService;
 import com.campusdual.coworkdrive.model.core.dao.BookingDao;
+import com.campusdual.coworkdrive.model.core.dao.UserDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +10,9 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import com.campusdual.coworkdrive.model.core.service.MailServiceApi;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Service implementation for managing bookings.
@@ -26,6 +25,8 @@ public class BookingService implements IBookingService {
     
     @Autowired
     private BookingDao bookingDao;
+    @Autowired
+    private UserDao userDao;
     
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
@@ -93,8 +94,13 @@ public class BookingService implements IBookingService {
         } else {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             attrMap.put(PRIMARYUSERKEY, auth.getName());
-            MailServiceApi.sendWithGMail("jaime.alvarez@campusdual.com","Nueva notificación","Nuevo viaje");
-            return this.daoHelper.insert(bookingDao, attrMap);
+            EntityResult bookingInsertDone = this.daoHelper.insert(bookingDao, attrMap);
+            if(bookingInsertDone.isWrong()){
+                return null;
+            } else {
+                emailData(attrMap,"insertBooking");
+                return bookingInsertDone;
+            }
         }
     }
     
@@ -106,7 +112,19 @@ public class BookingService implements IBookingService {
      */
     @Override
     public EntityResult bookingDelete(Map<String, Object> keyMap) {
-        return this.daoHelper.delete(bookingDao, keyMap);
+        ArrayList<String> attrList = new ArrayList<>();
+        attrList.add("id_trip");
+        EntityResult getIdTripBooking = this.daoHelper.query(bookingDao, keyMap, attrList);
+        EntityResult bookingDeleteDone = this.daoHelper.delete(bookingDao, keyMap);
+        if(bookingDeleteDone.isWrong()){
+            return null;
+        } else {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            keyMap.put(PRIMARYUSERKEY, auth.getName());
+            keyMap.put("id_trip",getIdTripBooking.getRecordValues(0).get("id_trip"));
+            emailData(keyMap,"deleteBooking");
+            return bookingDeleteDone;
+        }
     }
     
     /**
@@ -117,7 +135,19 @@ public class BookingService implements IBookingService {
      */
     @Override
     public EntityResult myBookingsDelete(Map<String, Object> keyMap) {
-        return this.daoHelper.delete(bookingDao, keyMap);
+        ArrayList<String> attrList = new ArrayList<>();
+        attrList.add("id_trip");
+        EntityResult getIdTripBooking = this.daoHelper.query(bookingDao, keyMap, attrList);
+        EntityResult bookingDeleteDone = this.daoHelper.delete(bookingDao, keyMap);
+        if(bookingDeleteDone.isWrong()){
+            return null;
+        } else {
+            Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+            keyMap.put(PRIMARYUSERKEY, auth.getName());
+            keyMap.put("id_trip",getIdTripBooking.getRecordValues(0).get("id_trip"));
+            emailData(keyMap,"deleteBooking");
+            return bookingDeleteDone;
+        }
     }
     
     /**
@@ -137,5 +167,48 @@ public class BookingService implements IBookingService {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(PRIMARYUSERKEY, auth.getName());
         return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_NUMBER_USER_IN_BOOKING);
+    }
+
+    public void emailData(Map<String, Object> attrMap, String action){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        List<String> attrList = new ArrayList<>();
+        attrList.add("emailDriver");
+        attrList.add("namePassenger");
+        attrList.add("origin_title");
+        attrList.add("destination_title");
+        attrList.add("date");
+
+        attrMap.remove(PRIMARYUSERKEY);
+
+        EntityResult driverTripInfo = daoHelper.query(bookingDao, attrMap, attrList, BookingDao.QUERY_DATA_EMAIL_DRIVER);
+
+        attrMap.put("user_",auth.getName());
+
+        List<String> attrListPassenger = new ArrayList<>();
+        attrListPassenger.add("user_");
+        attrListPassenger.add("name");
+        attrListPassenger.add("email");
+
+        EntityResult passengerInfo = daoHelper.query(userDao, attrMap, attrListPassenger, UserDao.QUERY_DATA_EMAIL_PASSSENGER);
+
+        ArrayList<String> emailData = new ArrayList<>();
+
+        String emailDriver = (String) driverTripInfo.getRecordValues(0).get("email");
+        String emailPassenger = (String) passengerInfo.getRecordValues(0).get("email");
+        String namePassenger =  (String) passengerInfo.getRecordValues(0).get("name");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String dateTrip = sdf.format(driverTripInfo.getRecordValues(0).get("date"));
+        String originTitle = (String) driverTripInfo.getRecordValues(0).get("origin_title");
+        String destinationTitle = (String) driverTripInfo.getRecordValues(0).get("destination_title");
+
+        emailData.add(emailDriver);
+        emailData.add(emailPassenger);
+        emailData.add(namePassenger);
+        emailData.add(dateTrip);
+        emailData.add(originTitle);
+        emailData.add(destinationTitle);
+        emailData.add(action);
+
+        MailServiceApi.sendMails(emailData);
     }
 }

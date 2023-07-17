@@ -34,30 +34,21 @@
         </div>
       </o-column>
       <o-column>
-        <o-form
-          #formRate
-          class="formRate"
-          service="ratings"
-          entity="rating"
-          show-header="no"
-          header-actions="I"
-          after-insert-mode="new"
-        >
-          <o-row class="rateRow">
-            <o-text-input attr="id_booking" oHidden></o-text-input>
-            <o-text-input attr="id_driver" oHidden></o-text-input>
-            <o-integer-input
+        <o-row class="rateRow">
+          <div class="rateDiv">
+            <input type="text" attr="id_booking" oHidden/>
+            <input type="text" attr="id_driver" oHidden/>
+            <input type="text"
                 attr="rate"
                 id="rate"
                 required="yes"
                 oHidden
-              >
-            </o-integer-input>
+              />
             <app-star-rating #starRate [hidden]="rate>0 ? true : false"></app-star-rating>
             <p [hidden]="rate>0 ? false : true">Este viaje ya está valorado. ¡Gracias!</p>
             <button id="buttonInsert" class="rate-button" (click)="insertRate()" [hidden]="rate>0 ? true : false">Valorar</button>
-          </o-row>
-        </o-form>
+          </div>
+        </o-row>
       </o-column>
     </ng-template>
   </o-table-row-expandable>

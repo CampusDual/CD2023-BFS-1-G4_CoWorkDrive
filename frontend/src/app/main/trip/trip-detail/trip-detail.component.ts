@@ -155,8 +155,7 @@ export class TripDetailComponent implements OnInit {
   
   sendNotificationDelete(idTrip: Number, origin_title: String, destination_title: String, date: Date){
     this.configureServiceNotification();
-    const textNotification = "has canceled";
-    this.notificationService.insert({id_trip: idTrip, text_notification: textNotification},"notificationDelete").subscribe(
+    this.notificationService.insert({id_trip: idTrip},"notificationDelete").subscribe(
       res=>{
         this.dialogRef.close();
       });

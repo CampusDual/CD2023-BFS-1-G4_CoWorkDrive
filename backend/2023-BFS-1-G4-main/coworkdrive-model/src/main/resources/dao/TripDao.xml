@@ -24,7 +24,7 @@
             -->
             <Sentence>
                 <![CDATA[
-                    SELECT (c.seats - count(b.id_trip)) as free_seats, t.*, tu.name, pr.rate, pr.number_rates
+                    SELECT (c.seats - count(b.id_trip)) as free_seats, t.*, tu.name, round(pr.rate, 1) as rate, pr.number_rates
                     FROM trip t
                     JOIN car c ON t.id_car = c.id_car
                     JOIN tuser tu ON tu.user_ = t.id_user
@@ -96,13 +96,13 @@
                                   JOIN tuser tu ON b.id_user = tu.user_
                                   JOIN trip t ON b.id_trip = t.id_trip
                                   #WHERE#) AS booking_users,
-                                  COALESCE(avg(r.rate), 0) as rate, count(r.*) as number_rates
+                                  rpt.rate, rpt.number_rates
                     FROM trip t
                     LEFT JOIN booking bo ON bo.id_trip = t.id_trip
-                    LEFT JOIN rating r ON r.id_booking = bo.id_booking
+                    JOIN ratings_per_trip rpt ON rpt.id_trip = t.id_trip
                     #WHERE#
                         AND t.date < CAST(now() as date)
-                    GROUP BY t.id_trip, r.id_driver
+                    GROUP BY t.id_trip, t.id_user, rpt.rate, rpt.number_rates
                     ORDER BY date desc
                 ]]>
             </Sentence>
@@ -265,6 +265,21 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="scheduled_trips">
+            <ValidColumns>
+                <Column>id_car</Column>
+                <Column>date</Column>
+                <Column>number_trips</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT count(id_trip) as number_trips
+                    FROM trip t
+                    #WHERE#
+                        AND t.date >= CAST(now() as date)
+                ]]>
+            </Sentence>
+        </Query>
         <Query id="number_trips_on_booking">
             <ValidColumns>
                 <Column>id_trip</Column>
@@ -290,6 +305,28 @@
                     FROM trip t
                     #WHERE#
                 ]]>
+            </Sentence>
+        </Query>
+        <Query id="data_email_passenger">
+            <AmbiguousColumns>
+                <AmbiguousColumn name="id_trip" prefix="b" />
+            </AmbiguousColumns>
+            <ValidColumns>
+                <Column>origin_title</Column>
+                <Column>destination_title</Column>
+                <Column>date</Column>
+                <Column>name</Column>
+                <Column>email</Column>
+                <Column>id_trip</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT b.id_user, tu."name", tu.email, t.origin_title, t.destination_title, t."date"
+                    FROM booking b
+                    JOIN trip t ON b.id_trip = t.id_trip
+                    JOIN tuser tu ON tu.user_ = b.id_user
+                    #WHERE#
+                    ]]>
             </Sentence>
         </Query>
     </Queries>

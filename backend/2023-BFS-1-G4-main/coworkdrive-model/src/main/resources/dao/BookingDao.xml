@@ -95,21 +95,26 @@
                 <AmbiguousColumn name="id_user" prefix="b" />
             </AmbiguousColumns>
             <ValidColumns>
+                <Column>id_booking</Column>
                 <Column>origin_title</Column>
                 <Column>origin_address</Column>
                 <Column>destination_title</Column>
                 <Column>destination_address</Column>
                 <Column>date</Column>
                 <Column>time</Column>
-                <Column>name</Column>
+                <Column>id_user</Column>
+                <Column>id_driver</Column>
+                <Column>driver</Column>
+                <Column>surname1</Column>
+                <Column>surname2</Column>
+                <Column>id_trip</Column>
+                <Column>id_car</Column>
                 <Column>id_car_brand</Column>
                 <Column>id_car_model</Column>
+                <Column>car_registration</Column>
                 <Column>brand_name</Column>
                 <Column>model_name</Column>
-                <Column>car_registration</Column>
-                <Column>id_user</Column>
-                <Column>id_booking</Column>
-                <Column>id_driver</Column>
+                <Column>color_name</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
@@ -138,6 +143,24 @@
                 <![CDATA[
                     SELECT count(*) as numberUserBooking
                     FROM booking
+                    #WHERE#
+                ]]>
+            </Sentence>
+        </Query>
+        <Query id="data_email_driver">
+            <ValidColumns>
+                <Column>origin_title</Column>
+                <Column>destination_title</Column>
+                <Column>date</Column>
+                <Column>name</Column>
+                <Column>email</Column>
+                <Column>id_trip</Column>
+            </ValidColumns>
+            <Sentence>
+                <![CDATA[
+                    SELECT t.origin_title, t.destination_title, t.date, tu."name", tu.email
+                    FROM trip t
+                    JOIN tuser tu ON tu.user_ = t.id_user
                     #WHERE#
                 ]]>
             </Sentence>

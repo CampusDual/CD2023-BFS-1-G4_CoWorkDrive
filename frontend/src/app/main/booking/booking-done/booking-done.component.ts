@@ -48,11 +48,10 @@ export class BookingDoneComponent implements OnInit {
     if(this.starRate.selectedValue<1){
       this.dialogService.alert("Wrong rate!", "Rate cannot be 0")
     } else if (result) {
-      const valuesSelected = this. tableBookingsDone.getExpandableItems();
-      this.formRate.setFieldValue("id_booking",valuesSelected[0].id_booking);
-      this.formRate.setFieldValue("id_driver",valuesSelected[0].id_driver);
-      this.formRate.setFieldValue("rate",this.starRate.selectedValue);
-      this.formRate.insert();
+      const valuesSelected = this.tableBookingsDone.getExpandableItems();
+      this.ratingService.insert({id_booking: valuesSelected[0].id_booking, id_driver: valuesSelected[0].id_driver, rate: this.starRate.selectedValue},'rating').subscribe(
+        res=>{}
+      )
       this.reloadComponent();
     }
   });
@@ -64,7 +63,7 @@ export class BookingDoneComponent implements OnInit {
   this.ratingService.query({id_trip: valuesSelected[0].id_trip, id_booking: valuesSelected[0].id_booking}, ['rate'], 'isRated').subscribe(
     res => {
       if(res.data[0] != null){
-        this.formRate.setFieldValue("rate",res.data[0].rate);
+        document.getElementById("rate").textContent=res.data[0].rate;
         this.knowRate(res.data[0].rate);
       } else {
         this.knowRate(0);
@@ -86,5 +85,5 @@ export class BookingDoneComponent implements OnInit {
   this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   this.router.onSameUrlNavigation = 'reload';
   this.router.navigate([this.router.url]);
-}
+  }
 }

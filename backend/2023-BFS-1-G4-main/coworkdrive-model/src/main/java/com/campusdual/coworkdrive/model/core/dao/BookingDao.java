@@ -20,5 +20,6 @@ public class BookingDao extends OntimizeJdbcDaoSupport {
     public static final String QUERY_MY_BOOKINGS_DONE = "my_bookings_done";
     public static final String QUERY_NUMBER_USER_IN_BOOKING = "number_user_in_booking";
     public static final String QUERY_BOOKING_BY_TRIP = "number_user_in_booking";
+    public static final String QUERY_DATA_EMAIL_DRIVER = "data_email_driver";
     
 }

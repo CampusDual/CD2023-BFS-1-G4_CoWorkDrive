@@ -56,5 +56,36 @@
                 ]]>
             </Sentence>
         </Query>
+        <Query id="car_data_active">
+            <ValidColumns>
+                <Column>id_car</Column>
+                <Column>id_car_brand</Column>
+                <Column>id_car_model</Column>
+                <Column>seats</Column>
+                <Column>car_registration</Column>
+                <Column>brand_image</Column>
+                <Column>id_user</Column>
+                <Column>id_color</Column>
+                <Column>color_name</Column>
+                <Column>brand_name</Column>
+                <Column>model_name</Column>
+            </ValidColumns>
+            <!--
+                The query retrieves the total number of cars in the system.
+                It counts the rows in the car table.
+            -->
+            <Sentence>
+                <![CDATA[
+                    SELECT c.id_car, c.id_car_brand, c.id_car_model, c.seats, c.car_registration, c.id_user, c.id_color,
+                    co.color_name, cb.brand_name, cb.brand_image, cm.model_name
+                    FROM car c
+                    JOIN color co ON c.id_color = co.id_color
+                    JOIN car_brand cb ON cb.id_car_brand = c.id_car_brand
+                    JOIN car_model cm ON cm.id_car_model = c.id_car_model
+                    #WHERE#
+                        AND c.active = true
+                ]]>
+            </Sentence>
+        </Query>
     </Queries>
 </JdbcEntitySetup>

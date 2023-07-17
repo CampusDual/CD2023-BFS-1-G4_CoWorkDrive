@@ -76,6 +76,8 @@
   "Select Model":"Selecciona el modelo",
   "COLOR_NAME": "Color",
   "YOUR CAR": "Tu coche",
+  "Delete action no possible": "Acción de borrado no disponible",
+  "You cannot delete a car with scheduled trips": "No puedes eliminar un coche con viajes programados",
   "BOOKINGS": "Reservas",
   "name": "Nombre",
   "surname1": "Primer apellido",

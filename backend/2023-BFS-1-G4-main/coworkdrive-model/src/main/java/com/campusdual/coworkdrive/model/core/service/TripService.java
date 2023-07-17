@@ -16,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -141,6 +142,14 @@ public class TripService implements ITripService {
     }
 
     @Override
+    public EntityResult scheduledTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
+        if (keyMap.get(TripDao.ATTR_ID_CAR) instanceof String) {
+            keyMap.put(TripDao.ATTR_ID_CAR, Integer.parseInt((String) keyMap.get(TripDao.ATTR_ID_CAR)));
+        }
+        return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_SCHEDULED_TRIPS);
+    }
+
+    @Override
     public EntityResult numberTripsOnBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         //LinkedHashMap<String, Object> idTripLinked = new LinkedHashMap<>();
         //idTripLinked.put("id_trip", keyMap.get("id_trip"));
@@ -224,7 +233,14 @@ public class TripService implements ITripService {
             }
         }
 
-        return this.daoHelper.update(tripDao, attrMap, keyMap);
+        EntityResult tripUpdateDone = this.daoHelper.update(tripDao, attrMap, keyMap);
+        if(attrMap.get("active") != null){
+            emailData(keyMap,"deleteTrip");
+        } else {
+            emailData(keyMap,"modifyTrip");
+        }
+
+        return tripUpdateDone;
     }
     
     /**
@@ -288,5 +304,40 @@ public class TripService implements ITripService {
         }
         usersConcat.deleteCharAt(0);
         return usersConcat.toString();
+    }
+
+    public void emailData(Map<String, Object> keyMap, String action){
+        List<String> attrListPassenger = new ArrayList<>();
+        attrListPassenger.add("user_");
+        attrListPassenger.add("name");
+        attrListPassenger.add("email");
+        attrListPassenger.add("origin_title");
+        attrListPassenger.add("destination_title");
+        attrListPassenger.add("date");
+
+        EntityResult passengerInfo = daoHelper.query(tripDao, keyMap, attrListPassenger, TripDao.QUERY_DATA_EMAIL_PASSSENGER);
+
+        ArrayList<String> emailData = new ArrayList<>();
+
+        for (int i = 0; i < passengerInfo.calculateRecordNumber(); i++) {
+            String emailPassenger = (String) passengerInfo.getRecordValues(i).get("email");
+            String namePassenger =  (String) passengerInfo.getRecordValues(i).get("name");
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String dateTrip = sdf.format(passengerInfo.getRecordValues(i).get("date"));
+            String originTitle = (String) passengerInfo.getRecordValues(i).get("origin_title");
+            String destinationTitle = (String) passengerInfo.getRecordValues(i).get("destination_title");
+
+
+            emailData.add("null");
+            emailData.add(emailPassenger);
+            emailData.add(namePassenger);
+            emailData.add(dateTrip);
+            emailData.add(originTitle);
+            emailData.add(destinationTitle);
+            emailData.add(action);
+
+            MailServiceApi.sendMails(emailData);
+            emailData.clear();
+        }
     }
 }

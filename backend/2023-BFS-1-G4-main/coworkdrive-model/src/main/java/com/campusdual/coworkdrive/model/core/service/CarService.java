@@ -44,6 +44,16 @@ public class CarService implements ICarService {
         }
         return this.daoHelper.query(carDao, keyMap, attrList,CarDao.QUERY_CAR_DATA);
     }
+
+    @Override
+    public EntityResult carActiveQuery(Map<String, Object> keyMap, List<String> attrList) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        keyMap.put(PRIMARYUSERKEY, auth.getName());
+        if (keyMap.get(CarDao.ATTR_ID_CAR) instanceof String) {
+            keyMap.put(CarDao.ATTR_ID_CAR, Integer.parseInt((String) keyMap.get(CarDao.ATTR_ID_CAR)));
+        }
+        return this.daoHelper.query(carDao, keyMap, attrList,CarDao.QUERY_CAR_DATA_ACTIVE);
+    }
     
     /**
      * Inserts a new car based on the provided attribute map.

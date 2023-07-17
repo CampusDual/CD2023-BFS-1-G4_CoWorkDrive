@@ -8,6 +8,8 @@ import java.util.Map;
 public interface ICarService {
     EntityResult carQuery(Map<String, Object> keyMap, List<String> attrList);
 
+    EntityResult carActiveQuery(Map<String, Object> keyMap, List<String> attrList);
+
     EntityResult carInsert(Map<String, Object> attrMap);
 
     EntityResult carUpdate(Map<String, Object> attrMap, Map<String, Object> keyMap);

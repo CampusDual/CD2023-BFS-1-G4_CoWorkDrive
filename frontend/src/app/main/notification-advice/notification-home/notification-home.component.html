@@ -4,7 +4,7 @@
   entity="notification" 
   keys="id_user" 
   visible-columns="text_notification;time_notification"
-  columns="text_notification;time_notification;origin_title;origin_address;destination_title;destination_address;datetime;car_registration;brand_name;model_name;color_name;driver;email"
+  columns="text_notification;time_notification;origin_title;origin_address;destination_title;destination_address;datetime;car_registration;brand_name;model_name;color_name;driver;email;id_user"
   title="{{ 'NOTIFICATIONS' | oTranslate }}" 
   insert-button="no" 
   delete-button="no" 
@@ -15,6 +15,7 @@
   query-rows="10" 
   fixed-header="yes"
   type="translate" 
+  header-actions="R"
 >
 <o-table-column attr="text_notification" type="translate">
   <o-table-translate-message></o-table-translate-message>
