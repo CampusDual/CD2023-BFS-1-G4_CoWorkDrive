@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-star-rating',
@@ -9,7 +9,7 @@ export class StarRatingComponent implements OnInit {
   ngOnInit(): void {
   }
   stars: number[] = [1, 2, 3, 4, 5];
-  selectedValue: number = 0;
+  selectedValue: number;
   isMouseover = true;
   
   countStar(star: number) {

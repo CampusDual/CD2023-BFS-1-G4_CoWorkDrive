@@ -50,6 +50,7 @@ export class CarDetailComponent implements OnInit {
           this.formCar.setFieldValue("id_car_model",this.formCar.getFieldValue("id_car_model"));
           // Perform the form update
           this.formCar.update();
+          this.dialogRef.close();
         }
       });
   }

@@ -63,3 +63,19 @@
     font-family: Verdana !important;
     font-weight: bold !important;
   }
+
+  .thisMonthIcon{
+    color: #1F77B4;
+    margin-right: 5px;
+    font-size: 15px !important;
+  }
+
+  .lastMonthIcon{
+    color: #AEC7E8;
+    margin-right: 5px;
+    font-size: 15px !important;
+  }
+
+  .legend{
+    text-decoration: none !important;
+  }

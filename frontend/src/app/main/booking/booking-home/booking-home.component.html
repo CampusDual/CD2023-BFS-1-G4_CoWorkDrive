@@ -2,7 +2,7 @@
 columns="id_booking;origin_title;destination_title;date;time;driver;brand_name;model_name;car_registration;id_user;color_name;email"
 visible-columns="origin_title;destination_title;driver"
       title="{{ 'BOOKINGS' | oTranslate }}" insert-button="no" delete-button="yes" refresh-button="yes" pagination-controls="no" detail-mode="none" export-button="no"
-      query-rows="10" fixed-header="yes">
+      query-rows="10" fixed-header="yes" header-actions="R">
   <o-table-row-expandable>
     <ng-template let-row>
       <o-column title="BOOKING_INFORMATION" icon="info" class="vertical-margin-10" layout-gap="12px">

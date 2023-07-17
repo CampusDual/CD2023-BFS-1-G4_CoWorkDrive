@@ -91,6 +91,8 @@
   "rate": "Rate",
   "Wrong rate!":"Wrong rate!",
   "Rate cannot be 0": "Rate cannot be 0",
+  "This month": "This month",
+  "Last month": "Last month",
   "CAR REGISTRATION INVALID FORMAT (EXAMPLE: 1111ZZZ)": "Car registration invalid format (Example: 1111ZZZ)",
   "OUT OF SEATS RANGE": "Out of seats range",
   "¡Add a car!": "¡Add a car!",

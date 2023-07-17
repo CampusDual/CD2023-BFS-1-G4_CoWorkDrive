@@ -100,20 +100,20 @@ export class TripHomeComponent implements OnInit {
         {
           "index": 1.0,
           "size": 6.0,
-          "name": "This month",
+          "name": "Este mes",
           "children": [{
             "index": 1.0,
-            "name": "This month",
+            "name": "Este mes",
             "value": valueThisMonth,
             "size": 1.0
           }]
         }, {
           "index": 2.0,
           "size": 6.0,
-          "name": "Last month",
+          "name": "Mes pasado",
           "children": [{
             "index": 2.0,
-            "name": "Last month",
+            "name": "Mes pasado",
             "value": valueLastMonth,
             "size": 1.0
           }]
