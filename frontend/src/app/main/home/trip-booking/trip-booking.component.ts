@@ -38,28 +38,34 @@ export class TripBookingComponent implements OnInit {
     });
   }
 
-  freeSeatsValue(event){
+  freeSeatsValue(event) {
+    // Retrieve the value of "free_seats" field from the "formTrip" and assign it to "valor"
     this.valor = this.formTrip.getFieldValue("free_seats");
   }
   
-  isBooking(){
+  isBooking() {
+    // Retrieve the default configuration of the 'bookings' service and configure the 'bookingService'
     const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
     this.bookingService.configureService(conf);
-    // Get the number of available cars and show an alert if there are none
+  
+    // Retrieve the number of available cars and perform further actions
     this.bookingService.query({id_trip: this.formTrip.getFieldValue("id_trip")}, ['numberUserBooking'], 'userIsInBooking').subscribe(
       res => {
+        // Call the method getUserBookings and pass the number of user bookings as an argument
         this.getUserBookings(res.data[0].numberUserBooking);
       }
     );
-   
   }
+  
   getUserBookings(num: Number) {
+    // Store the number of user bookings in the variable "numBooking"
     this.numBooking = num;
   }
-
+  
   configureService() {
-    // Get the default configuration of the 'bookings' service and configure the 'bookingService'
+    // Retrieve the default configuration of the 'bookings' service and configure the 'bookingService'
     const conf = this.bookingService.getDefaultServiceConfiguration('bookings');
     this.bookingService.configureService(conf);
   }
+  
 }

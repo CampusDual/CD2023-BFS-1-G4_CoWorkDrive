@@ -36,7 +36,7 @@ export class TripDetailDoneComponent implements OnInit {
   
     }
 
-  
+    // Check if a trip has bookings
     hasBookings(){
       const conf = this.bookingService.getDefaultServiceConfiguration('trips');
       this.bookingService.configureService(conf);
@@ -52,6 +52,7 @@ export class TripDetailDoneComponent implements OnInit {
       this.bookingsNumber = bookingsNumber;
     }
 
+    // Reuse the trip by storing its details in local storage and navigating to the new trip page
     reuseTrip(){
       localStorage.setItem("origin_title",this.formTrip.getFieldValue("origin_title"));
       localStorage.setItem("origin_address",this.formTrip.getFieldValue("origin_address"));

@@ -4,7 +4,7 @@
   service="trips"
   entity="booking"
   keys="id_trip"
-  columns="origin_title;origin_address;destination_title;destination_address;date;time;free_seats;name;surnames;email;id_trip;brand_name;model_name;car_registration"
+  columns="origin_title;origin_address;destination_title;destination_address;date;time;free_seats;name;surnames;email;id_trip;brand_name;model_name;car_registration;color_name"
   id="idForm"
   show-header="no"
   class="formTripDetail"
@@ -127,12 +127,20 @@
         ></o-text-input>
 
         <o-text-input
-          class="input-padding"
+          class="input-padding carData-input"
           title="{{ 'car_registration' | oTranslate }}"
           attr="car_registration"
           id="car_registration"
           read-only="true"
         ></o-text-input>
+
+        <o-text-input
+        class="input-padding"
+        title="{{ 'color_name' | oTranslate }}"
+        attr="color_name"
+        id="color_name"
+        read-only="true"
+      ></o-text-input>
       </o-row>
     </o-column>
   </o-row>
