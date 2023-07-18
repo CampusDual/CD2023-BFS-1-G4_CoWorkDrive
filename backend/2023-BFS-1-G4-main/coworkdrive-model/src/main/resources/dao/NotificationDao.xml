@@ -30,6 +30,7 @@
                     JOIN booking b ON b.id_trip = t.id_trip
                     JOIN tuser tu ON tu.user_ = t.id_user
                     #WHERE#
+                        AND n.time_notification > b.time_booking
                     ORDER BY n.time_notification DESC
                 ]]>
             </Sentence>

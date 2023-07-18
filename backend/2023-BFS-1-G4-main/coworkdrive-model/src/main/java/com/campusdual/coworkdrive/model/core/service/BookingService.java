@@ -2,6 +2,7 @@ package com.campusdual.coworkdrive.model.core.service;
 
 import com.campusdual.coworkdrive.api.core.service.IBookingService;
 import com.campusdual.coworkdrive.model.core.dao.BookingDao;
+import com.campusdual.coworkdrive.model.core.dao.NotificationDao;
 import com.campusdual.coworkdrive.model.core.dao.UserDao;
 import com.ontimize.jee.common.dto.EntityResult;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
@@ -11,6 +12,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -94,6 +96,11 @@ public class BookingService implements IBookingService {
         } else {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             attrMap.put(PRIMARYUSERKEY, auth.getName());
+
+            long timestampActual = System.currentTimeMillis();
+            Timestamp timeNotification = new Timestamp(timestampActual);
+            attrMap.put(BookingDao.ATTR_TIME_BOOKING, timeNotification);
+
             EntityResult bookingInsertDone = this.daoHelper.insert(bookingDao, attrMap);
             if(bookingInsertDone.isWrong()){
                 return null;

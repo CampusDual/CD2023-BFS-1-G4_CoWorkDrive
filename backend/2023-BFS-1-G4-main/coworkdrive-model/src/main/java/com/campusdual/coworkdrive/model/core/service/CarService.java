@@ -45,15 +45,26 @@ public class CarService implements ICarService {
         return this.daoHelper.query(carDao, keyMap, attrList,CarDao.QUERY_CAR_DATA);
     }
 
+    /**
+     * Retrieves active cars based on the provided key map and attribute list.
+     *
+     * @param keyMap    The key map containing the filter parameters.
+     * @param attrList  The list of attributes to retrieve.
+     * @return          The resulting EntityResult containing the queried active cars.
+     */
     @Override
     public EntityResult carActiveQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         keyMap.put(PRIMARYUSERKEY, auth.getName());
+
+        // Convert the id_car value from String to Integer if necessary
         if (keyMap.get(CarDao.ATTR_ID_CAR) instanceof String) {
             keyMap.put(CarDao.ATTR_ID_CAR, Integer.parseInt((String) keyMap.get(CarDao.ATTR_ID_CAR)));
         }
-        return this.daoHelper.query(carDao, keyMap, attrList,CarDao.QUERY_CAR_DATA_ACTIVE);
+
+        return this.daoHelper.query(carDao, keyMap, attrList, CarDao.QUERY_CAR_DATA_ACTIVE);
     }
+
     
     /**
      * Inserts a new car based on the provided attribute map.

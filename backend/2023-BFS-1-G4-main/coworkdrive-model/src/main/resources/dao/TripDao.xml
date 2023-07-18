@@ -232,6 +232,7 @@
                     JOIN trip t ON b.id_trip = t.id_trip
                     JOIN tuser tu ON tu.user_ = b.id_user
                     #WHERE#
+                        AND t.active = true
                     GROUP BY b.id_user, tu.name
                     ORDER BY more_trips DESC
                     LIMIT 3
@@ -262,6 +263,7 @@
                                         THEN 1 ELSE 0 END), 0) AS trips_last_month
                     FROM trip t
                     #WHERE#
+                        AND t.active = true
                 ]]>
             </Sentence>
         </Query>

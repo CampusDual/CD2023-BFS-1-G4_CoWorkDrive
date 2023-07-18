@@ -23,6 +23,7 @@ export class CarNewComponent implements OnInit {
     // Custom validators are added to the validators array
     this.validatorCarRegistration.push(OValidators.patternValidator(/(([A-Z]{1}[A-Z]{0,1})(\d{4})([A-Z]{1}[A-Z]{0,1}))|((\d{4})([BCDFGHJKLMNPRSTVWXYZ]{3}))/, 'hasValidCarRegisitration'));
     this.validatorNumberSeats.push(OValidators.patternValidator(/^[1-9]$/, 'hasValidNumber'));
+    this.carService = this.injector.get(OntimizeService);
   }
 
   ngOnInit() {

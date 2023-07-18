@@ -21,7 +21,6 @@ export class TripNewComponent implements OnInit {
     protected dialogService: DialogService) { 
       this.tripService = this.injector.get(OntimizeService);
       this.headquarterService = this.injector.get(OntimizeService);
-
   }
 
   ngOnInit() {

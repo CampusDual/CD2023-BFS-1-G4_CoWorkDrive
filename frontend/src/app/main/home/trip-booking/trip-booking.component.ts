@@ -22,7 +22,6 @@ export class TripBookingComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.isBooking();
   }
 
   signUp(): void {

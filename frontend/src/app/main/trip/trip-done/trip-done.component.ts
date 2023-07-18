@@ -40,8 +40,6 @@ export class TripDoneComponent implements OnInit {
     }
   
     ngOnInit() {
-  
-      this.numberCarsQuery();
       this.tripsStatsQuery();
     
     }
@@ -56,22 +54,6 @@ export class TripDoneComponent implements OnInit {
     convertTime(hour: Date){
       const newTime = new Date(hour);
       return (newTime.toLocaleTimeString());
-    }
-  
-    numberCarsQuery() {
-      // Get the default configuration of the 'cars' service and configure the 'carService' accordingly
-      const conf = this.carService.getDefaultServiceConfiguration('cars');
-      this.carService.configureService(conf);
-  
-      // Get the number of available cars and show an alert if there are none
-      this.carService.query({}, ['number_cars'], 'numberCars').subscribe(
-        res => {
-          this.carsNumber = res.data[0].number_cars;
-          if (this.carsNumber == 0) {
-            this.dialogService.alert('Add a car!', 'You cannot insert trips without any car');
-          }
-        }
-      );
     }
   
     ngAfterViewInit() {
