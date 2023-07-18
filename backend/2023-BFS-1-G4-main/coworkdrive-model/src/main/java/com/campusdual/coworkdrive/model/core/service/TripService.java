@@ -121,6 +121,13 @@ public class TripService implements ITripService {
         return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_ALL_TRIPS);
     }
 
+    /**
+     * Executes the moreTripsQuery to retrieve a list of trips with additional information.
+     * It adds the primary user key to the keyMap and converts the trip ID to an integer if it is provided as a string.
+     * @param keyMap     The map containing the query parameters.
+     * @param attrList   The list of attributes to include in the result.
+     * @return           The resulting EntityResult containing the queried trips.
+     */
     @Override
     public EntityResult moreTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -131,6 +138,13 @@ public class TripService implements ITripService {
         return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_MORE_TRIPS);
     }
 
+    /**
+     * Executes the historicalTripsQuery to retrieve a list of historical trips for the authenticated user.
+     * It adds the primary user key to the keyMap and converts the trip ID to an integer if it is provided as a string.
+     * @param keyMap     The map containing the query parameters.
+     * @param attrList   The list of attributes to include in the result.
+     * @return           The resulting EntityResult containing the queried historical trips.
+     */
     @Override
     public EntityResult historicalTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -141,6 +155,13 @@ public class TripService implements ITripService {
         return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_HISTORICAL_TRIPS);
     }
 
+    /**
+     * Executes the scheduledTripsQuery to retrieve a list of scheduled trips based on the provided conditions.
+     * It converts the car ID to an integer if it is provided as a string.
+     * @param keyMap     The map containing the query parameters.
+     * @param attrList   The list of attributes to include in the result.
+     * @return           The resulting EntityResult containing the queried scheduled trips.
+     */
     @Override
     public EntityResult scheduledTripsQuery(Map<String, Object> keyMap, List<String> attrList) {
         if (keyMap.get(TripDao.ATTR_ID_CAR) instanceof String) {
@@ -149,12 +170,14 @@ public class TripService implements ITripService {
         return this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_SCHEDULED_TRIPS);
     }
 
+    /**
+     * Executes the numberTripsOnBookingQuery to retrieve the number of trips associated with a booking.
+     * @param keyMap     The map containing the query parameters.
+     * @param attrList   The list of attributes to include in the result.
+     * @return           The resulting EntityResult containing the number of trips on the booking.
+     */
     @Override
     public EntityResult numberTripsOnBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
-        //LinkedHashMap<String, Object> idTripLinked = new LinkedHashMap<>();
-        //idTripLinked.put("id_trip", keyMap.get("id_trip"));
-
-        //keyMap.put("id_trip", idTripLinked.get("id_trip"));
         return this.daoHelper.query(tripDao, keyMap, attrList, TripDao.QUERY_NUMBER_TRIPS_ON_BOOKING);
     }
     
@@ -253,6 +276,18 @@ public class TripService implements ITripService {
     public EntityResult tripDelete(Map<String, Object> keyMap) {
         return this.daoHelper.delete(this.tripDao, keyMap);
     }
+
+    /**
+     * Retrieves the date and time information for a trip based on the provided attributes.
+     * Executes the query to retrieve the data from the tripDao.
+     * @param attrMap   The map containing the attributes used for the query.
+     * @param attrList  The list of attributes to include in the result.
+     * @return          The resulting EntityResult containing the date and time information for the trip.
+     */
+    @Override
+    public EntityResult getDate(Map<String, Object> attrMap, List<String> attrList) {
+        return this.daoHelper.query(tripDao, attrMap, attrList,TripDao.QUERY_GET_DATE);
+    }
     
     /**
      * Creates a BasicExpression object for constructing a SQL expression.
@@ -265,17 +300,25 @@ public class TripService implements ITripService {
         return new BasicExpression(field, BasicOperator.NOT_EQUAL_OP, value);
     }
 
+    /**
+     * Formats the date provided in the attribute map to a Date object.
+     * Parses the date string using the specified date format pattern.
+     * @param attrMap   The map containing the attributes.
+     * @return          The formatted Date object.
+     */
     private Date formatDate(Map<String, Object> attrMap){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         LocalDate dateTime = LocalDate.parse((String) attrMap.get(TripDao.ATTR_DATE), formatter);
         return Date.from(dateTime.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
     }
 
-    @Override
-    public EntityResult getDate(Map<String, Object> attrMap, List<String> attrList) {
-        return this.daoHelper.query(tripDao, attrMap, attrList,TripDao.QUERY_GET_DATE);
-    }
-
+    /**
+     * Compares a received date and time with the current date and time.
+     * Returns true if the received date is before the previous day or if the received time is before the current time on the current day.
+     * @param dateReceived  The received date.
+     * @param timeReceived  The received time.
+     * @return              True if the received date and time are in the past, false otherwise.
+     */
     public boolean compareDateTime(Date dateReceived, Timestamp timeReceived){
         Date todayDate = new Date();
         Calendar calendar = Calendar.getInstance();
@@ -296,6 +339,14 @@ public class TripService implements ITripService {
         return false;
     }
 
+    /**
+     * Retrieves the booking users based on the provided attributes.
+     * Executes a query to obtain the booking users from the tripDao.
+     * Concatenates the booking users' names into a single string.
+     * @param keyMap        The map containing the attributes used for the query.
+     * @param attrList      The list of attributes to include in the result.
+     * @return              A string containing the concatenated names of the booking users.
+     */
     public String getBookingUsers(Map<String, Object> keyMap, List<String> attrList){
         EntityResult bookingUsers = this.daoHelper.query(tripDao, keyMap, attrList,TripDao.QUERY_BOOKING_USERS);
         StringBuilder usersConcat = new StringBuilder();
@@ -306,6 +357,13 @@ public class TripService implements ITripService {
         return usersConcat.toString();
     }
 
+    /**
+     * Sends email notifications based on the provided attributes and action.
+     * Executes a query to obtain passenger information from the tripDao.
+     * Constructs the necessary email data for each passenger and sends the emails using the MailServiceApi.
+     * @param keyMap    The map containing the attributes used for the query.
+     * @param action    The action to be performed in the email.
+     */
     public void emailData(Map<String, Object> keyMap, String action){
         List<String> attrListPassenger = new ArrayList<>();
         attrListPassenger.add("user_");
@@ -336,7 +394,7 @@ public class TripService implements ITripService {
             emailData.add(destinationTitle);
             emailData.add(action);
 
-            MailServiceApi.sendMails(emailData);
+            MailServiceApi.createMails(emailData);
             emailData.clear();
         }
     }

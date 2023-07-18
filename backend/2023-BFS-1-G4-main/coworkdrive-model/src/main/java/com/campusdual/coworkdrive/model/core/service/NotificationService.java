@@ -28,6 +28,14 @@ public class NotificationService implements INotificationService {
 
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
+
+    /**
+     * Executes a query to retrieve notification information based on the provided key attributes.
+     * Retrieves the current user's authentication information and adds it to the key attributes.
+     * @param keyMap    The map containing the key attributes used for the query.
+     * @param attrList  The list of attributes to include in the result.
+     * @return          An EntityResult containing the notification information.
+     */
     @Override
     public EntityResult notificationQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -35,6 +43,13 @@ public class NotificationService implements INotificationService {
         return this.daoHelper.query(notificationDao, keyMap, attrList, NotificationDao.QUERY_NOTIFICATION_DATA);
     }
 
+    /**
+     * Inserts a new notification entry into the database.
+     * If the ID trip attribute is a String, it is converted to an Integer.
+     * Sets the text notification to "has changed" and the current timestamp as the time notification.
+     * @param attrMap   The map containing the attributes to be inserted.
+     * @return          An EntityResult indicating the success of the insert operation.
+     */
     @Override
     public EntityResult notificationInsert(Map<String, Object> attrMap) {
         if (attrMap.get(NotificationDao.ATTR_ID_TRIP) instanceof String) {
@@ -47,6 +62,13 @@ public class NotificationService implements INotificationService {
         return this.daoHelper.insert(notificationDao, attrMap);
     }
 
+    /**
+     * Inserts a new notification entry into the database, indicating a cancellation.
+     * If the ID trip attribute is a String, it is converted to an Integer.
+     * Sets the text notification to "has canceled" and the current timestamp as the time notification.
+     * @param attrMap   The map containing the attributes to be inserted.
+     * @return          An EntityResult indicating the success of the insert operation.
+     */
     @Override
     public EntityResult notificationDeleteInsert(Map<String, Object> attrMap) {
         if (attrMap.get(NotificationDao.ATTR_ID_TRIP) instanceof String) {

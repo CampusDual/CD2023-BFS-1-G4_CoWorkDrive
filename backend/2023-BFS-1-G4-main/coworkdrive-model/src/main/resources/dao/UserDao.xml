@@ -13,11 +13,11 @@
     </UpdateKeys>
     <Queries>
         <Query id="default">
-            <!--
-                The query retrieves default user information from the TUSER table.
-                It selects the specified columns from the TUSER table.
-                The WHERE clause can be used to add additional conditions.
-            -->
+        <!--
+            Retrieves default user information from the TUSER table.
+            It selects the specified columns from the TUSER table.
+            The WHERE clause can be used to add additional conditions.
+        -->
             <ValidColumns>
                 <Column>USER_</Column>
                 <Column>PASSWORD</Column>
@@ -42,11 +42,11 @@
         </Query>
 
         <Query id="login">
-            <!--
-                The query retrieves user login information from the TUSER table.
-                It selects the specified columns from the TUSER table.
-                The WHERE clause can be used to add additional conditions.
-            -->
+        <!--
+            Retrieves user login information from the TUSER table.
+            It selects the specified columns from the TUSER table.
+            The WHERE clause can be used to add additional conditions.
+        -->
             <ValidColumns>
                 <Column>USER_</Column>
                 <Column>PASSWORD</Column>
@@ -71,6 +71,11 @@
         </Query>
 
         <Query id="get_user_name">
+        <!--
+            Retrieves user names from the TUSER table.
+            It selects the name column from the TUSER table.
+            The WHERE clause can be used to add additional conditions.
+        -->
             <ValidColumns>
                 <Column>user_</Column>
                 <Column>name</Column>
@@ -86,6 +91,11 @@
             </Sentence>
         </Query>
         <Query id="data_email_passenger">
+        <!--
+            Retrieves data (user, name, email) for passengers from the TUSER table.
+            It selects the specified columns from the TUSER table.
+            The WHERE clause can be used to add additional conditions.
+        -->
             <ValidColumns>
                 <Column>user_</Column>
                 <Column>name</Column>

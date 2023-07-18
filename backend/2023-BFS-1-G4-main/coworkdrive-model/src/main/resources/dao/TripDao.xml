@@ -81,9 +81,10 @@
 
         <Query id="trip_data_done">
             <!--
-                The query retrieves the user ID from the trip table based on the specified conditions.
-                It selects the id_user column from the trip table.
+                Retrieves completed trip data from the trip table when trips are completed.
+                It selects all columns from the trip table.
                 The WHERE clause filters the rows based on the provided conditions.
+                The query also includes a subquery to concatenate the names of the users who made bookings for the trip and ratings that they gave.
             -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_trip" prefix="t" />
@@ -116,8 +117,8 @@
                 <Column>booking_users</Column>
             </ValidColumns>
             <!--
-                The query retrieves the user ID from the trip table based on the specified conditions.
-                It selects the id_user column from the trip table.
+                Retrieves the names of users who made bookings for a trip based on the specified conditions.
+                It selects the name column from the tuser table.
                 The WHERE clause filters the rows based on the provided conditions.
             -->
             <Sentence>
@@ -133,7 +134,7 @@
 
         <Query id="booking_info">
             <!--
-                The query retrieves booking information for trips.
+                Retrieves booking information for trips.
                 It selects various columns from different tables, including origin, destination, date, time, name, surname1, surname2,
                 and calculates the remaining free seats using a left join with the booking table and a group by clause.
                 The WHERE clause filters the rows based on the provided conditions.
@@ -180,7 +181,7 @@
         </Query>
         <Query id="trip_detail">
             <!--
-                The query retrieves trip details along with the number of cars for each trip.
+                Retrieves trip details along with the number of cars for each trip.
                 It selects columns from the trip and car tables, calculates the number of cars using a right join,
                 and groups the results based on the trip ID and user ID.
                 The WHERE clause filters the rows based on the provided conditions.
@@ -212,10 +213,9 @@
         </Query>
         <Query id="more_trips">
             <!--
-                The query retrieves trip details along with the number of cars for each trip.
-                It selects columns from the trip and car tables, calculates the number of cars using a right join,
-                and groups the results based on the trip ID and user ID.
-                The WHERE clause filters the rows based on the provided conditions.
+                Retrieves trip details along with the number of trips for each user.
+                It selects columns from the booking and tuser tables, calculates the number of trips using a join and group by clause,
+                and filters the rows based on the provided conditions.
             -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_user" prefix="t" />
@@ -241,9 +241,8 @@
         </Query>
         <Query id="historical_trips">
             <!--
-                The query retrieves trip details along with the number of cars for each trip.
-                It selects columns from the trip and car tables, calculates the number of cars using a right join,
-                and groups the results based on the trip ID and user ID.
+                Retrieves the number of trips for the current month and the previous month.
+                It calculates the number of trips using date range conditions and aggregates the results.
                 The WHERE clause filters the rows based on the provided conditions.
             -->
             <ValidColumns>
@@ -268,6 +267,11 @@
             </Sentence>
         </Query>
         <Query id="scheduled_trips">
+        <!--
+            Retrieves the number of scheduled trips.
+            It counts the number of trips based on date conditions.
+            The WHERE clause filters the rows based on the provided conditions.
+        -->
             <ValidColumns>
                 <Column>id_car</Column>
                 <Column>date</Column>
@@ -283,6 +287,11 @@
             </Sentence>
         </Query>
         <Query id="number_trips_on_booking">
+        <!--
+            Retrieves the number of trips associated with each booking.
+            It selects the specified columns from the numberbookings table.
+            The WHERE clause filters the rows based on the provided conditions.
+        -->
             <ValidColumns>
                 <Column>id_trip</Column>
                 <Column>number_bookings</Column>
@@ -297,6 +306,11 @@
             </Sentence>
         </Query>
         <Query id="get_date">
+        <!--
+            Retrieves the date and time for a trip.
+            It selects the date and time columns from the trip table.
+            The WHERE clause filters the rows based on the provided conditions.
+        -->
             <ValidColumns>
                 <Column>id_trip</Column>
                 <Column>date</Column>
@@ -310,6 +324,11 @@
             </Sentence>
         </Query>
         <Query id="data_email_passenger">
+        <!--
+            Retrieves data (origin, destination, date, name, email) for a passenger on a trip.
+            It selects the specified columns from the booking, trip, and tuser tables.
+            The WHERE clause filters the rows based on the provided conditions.
+        -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_trip" prefix="b" />
             </AmbiguousColumns>

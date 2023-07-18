@@ -14,8 +14,11 @@
     <GeneratedKey>id_headquarter</GeneratedKey>
     <Queries>
         <Query id="headquarter_quantity">
+        <!--
+            Retrieves the total quantity of headquarter records in the database.
+            Counts the total number of rows in the headquarter table and returns the count as headquarter_quantity.
+        -->
             <Sentence>
-
                 <![CDATA[
                     SELECT count(*) as headquarter_quantity
                     FROM headquarter

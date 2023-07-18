@@ -168,7 +168,14 @@ public class BookingService implements IBookingService {
     public EntityResult getSeatsQuery(Map<String, Object> keyMap, List<String> attrList) {
         return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_SEATS_INFO);
     }
-    
+
+    /**
+     * Executes a query to check if the current user is included in a booking based on the provided key map and attribute list.
+     *
+     * @param keyMap   a map containing the query key-value pairs
+     * @param attrList a list of attributes to be included in the query result
+     * @return an EntityResult object containing the query result
+     */
     @Override
     public EntityResult userIsInBookingQuery(Map<String, Object> keyMap, List<String> attrList) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -176,6 +183,12 @@ public class BookingService implements IBookingService {
         return this.daoHelper.query(bookingDao, keyMap, attrList, BookingDao.QUERY_NUMBER_USER_IN_BOOKING);
     }
 
+    /**
+     * Sends email data based on the provided attribute map and action.
+     *
+     * @param attrMap an attribute map containing the necessary data for sending emails
+     * @param action  the action for which the email is being sent
+     */
     public void emailData(Map<String, Object> attrMap, String action){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         List<String> attrList = new ArrayList<>();
@@ -216,6 +229,6 @@ public class BookingService implements IBookingService {
         emailData.add(destinationTitle);
         emailData.add(action);
 
-        MailServiceApi.sendMails(emailData);
+        MailServiceApi.createMails(emailData);
     }
 }

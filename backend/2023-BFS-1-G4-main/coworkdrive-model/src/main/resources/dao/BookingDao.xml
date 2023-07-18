@@ -87,9 +87,9 @@
         </Query>
         <Query id="my_bookings_done">
             <!--
-                The query retrieves bookings of the authenticated user.
+                The query retrieves bookings of the authenticated user that are completed.
                 It joins the booking, trip, tuser, and car tables to gather relevant information.
-                The WHERE clause includes a condition to filter bookings with dates greater than or equal to the current date.
+                The WHERE clause includes a condition to filter bookings with dates less than the current date.
             -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_user" prefix="b" />
@@ -134,6 +134,10 @@
             </Sentence>
         </Query>
         <Query id="number_user_in_booking">
+        <!--
+            Retrieves the number of users in a booking and their corresponding trip IDs and user IDs.
+            Counts the total number of rows in the booking table and returns the count as numberUserBooking.
+        -->
             <ValidColumns>
                 <Column>numberUserBooking</Column>
                 <Column>id_trip</Column>
@@ -148,6 +152,11 @@
             </Sentence>
         </Query>
         <Query id="data_email_driver">
+        <!--
+            Retrieves data related to the email and driver information.
+            Selects origin_title, destination_title, date, name, email, and id_trip columns from the trip and tuser tables.
+            Joins the trip and tuser tables on the user_ column from tuser and the id_user column from trip.
+        -->
             <ValidColumns>
                 <Column>origin_title</Column>
                 <Column>destination_title</Column>

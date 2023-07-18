@@ -41,8 +41,7 @@
                 <Column>model_name</Column>
             </ValidColumns>
             <!--
-                The query retrieves the total number of cars in the system.
-                It counts the rows in the car table.
+                The query retrieves the info about cars in the system.
             -->
             <Sentence>
                 <![CDATA[
@@ -71,8 +70,7 @@
                 <Column>model_name</Column>
             </ValidColumns>
             <!--
-                The query retrieves the total number of cars in the system.
-                It counts the rows in the car table.
+                The query retrieves the info about cars in the system that are active.
             -->
             <Sentence>
                 <![CDATA[

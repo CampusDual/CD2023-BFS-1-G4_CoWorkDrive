@@ -14,6 +14,12 @@
     <GeneratedKey>id_notification</GeneratedKey>
     <Queries>
         <Query id="notification_data">
+        <!--
+            Retrieves notification data including details of the associated trip, car, driver, and booking.
+            Joins the notification, trip, car, car_brand, car_model, color, booking, and tuser tables to gather the required information.
+            The WHERE clause includes a condition to filter notifications with a time_notification greater than the time_booking of the associated booking.
+            The result is ordered by time_notification in descending order.
+        -->
             <AmbiguousColumns>
                 <AmbiguousColumn name="id_user" prefix="b"/>
             </AmbiguousColumns>

@@ -15,9 +15,9 @@
     <Queries>
         <Query id="is_rated">
             <!--
-                The query retrieves information about available seats in trips.
-                It calculates the number of free seats by subtracting the count of bookings from the total number of seats in a car.
-                The query involves the trip, tuser, car, and booking tables with appropriate joins and groupings.
+                Retrieves the rating information for a specific user to know if it's already rated.
+                It retrieves the 'rate' column from the 'rating' table.
+                The WHERE clause can be used to apply additional conditions.
             -->
             <ValidColumns>
                 <Column>id_user</Column>
@@ -29,7 +29,7 @@
                         SELECT rate
                         FROM rating r
                         #WHERE#
-                       ]]>
+                ]]>
             </Sentence>
         </Query>
     </Queries>

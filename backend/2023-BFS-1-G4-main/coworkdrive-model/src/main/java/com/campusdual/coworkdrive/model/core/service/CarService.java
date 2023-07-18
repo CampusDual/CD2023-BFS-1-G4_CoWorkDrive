@@ -65,7 +65,6 @@ public class CarService implements ICarService {
         return this.daoHelper.query(carDao, keyMap, attrList, CarDao.QUERY_CAR_DATA_ACTIVE);
     }
 
-    
     /**
      * Inserts a new car based on the provided attribute map.
      *

@@ -20,6 +20,13 @@ public class HeadquarterService implements IHeadquarterService {
     @Autowired
     private DefaultOntimizeDaoHelper daoHelper;
 
+    /**
+
+     * Executes a query to retrieve headquarter information based on the provided key map and attribute list.
+     * @param keyMap a map containing the query key-value pairs
+     * @param attrList a list of attributes to be included in the query result
+     * @return an EntityResult object containing the query result
+     */
     @Override
     public EntityResult headquarterQuery(Map<String, Object> keyMap, List<String> attrList) {
         if (keyMap.get(HeadquarterDao.ATTR_ID_HEADQUARTER) instanceof String) {
@@ -28,6 +35,12 @@ public class HeadquarterService implements IHeadquarterService {
         return this.daoHelper.query(headquarterDao, keyMap, attrList);
     }
 
+    /**
+     * Executes a query to retrieve the quantity of headquarter information based on the provided key map and attribute list.
+     * @param keyMap a map containing the query key-value pairs
+     * @param attrList a list of attributes to be included in the query result
+     * @return an EntityResult object containing the query result
+     */
     @Override
     public EntityResult headquarterQuantityQuery(Map<String, Object> keyMap, List<String> attrList) {
         if (keyMap.get(HeadquarterDao.ATTR_ID_HEADQUARTER) instanceof String) {
