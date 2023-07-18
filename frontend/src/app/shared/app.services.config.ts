@@ -28,5 +28,8 @@ export const SERVICE_CONFIG: Object = {
   },
   'notifications': {
     'path': '/notifications'
+  },
+  'users': {
+    'path': '/users'
   }
 };

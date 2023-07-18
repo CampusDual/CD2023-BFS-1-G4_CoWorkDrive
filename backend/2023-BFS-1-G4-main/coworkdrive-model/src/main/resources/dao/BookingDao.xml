@@ -82,6 +82,7 @@
                     JOIN car_model cm ON c.id_car_model = cm.id_car_model
                     #WHERE#
                         AND t.date >= CAST(now() as date) AND t.active = true
+                    ORDER BY t.date ASC, t.time DESC
                    ]]>
             </Sentence>
         </Query>
@@ -130,6 +131,7 @@
                     JOIN car_model cm ON c.id_car_model = cm.id_car_model
                     #WHERE#
                         AND t.date < CAST(now() as date)
+                    ORDER BY t.date DESC, t.time DESC
                    ]]>
             </Sentence>
         </Query>
