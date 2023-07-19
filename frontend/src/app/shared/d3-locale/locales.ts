@@ -7,7 +7,7 @@ export class D3Locales {
       currency: ['', '\u00a0€'],
       periods: ['AM', 'PM'],
       dateTime: '%a %b %e %X %Y',
-      date: '%d/%m/%Y',
+      date: '%m/%d/%Y',
       time: '%H:%M:%S',
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       shortDays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
