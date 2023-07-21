@@ -1,5 +1,6 @@
 import { formatDate } from '@angular/common';
 import { Component, Injector, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DialogService, OFormComponent, OSlideToggleComponent, OntimizeService } from 'ontimize-web-ngx';
 
 @Component({
@@ -18,7 +19,9 @@ export class TripNewComponent implements OnInit {
   public switchDestinationState: boolean = false;
 
   constructor(public injector: Injector,    
-    protected dialogService: DialogService) { 
+    protected dialogService: DialogService,
+    public router: Router,
+    private actRoute: ActivatedRoute) { 
       this.tripService = this.injector.get(OntimizeService);
       this.headquarterService = this.injector.get(OntimizeService);
   }
@@ -72,6 +75,7 @@ export class TripNewComponent implements OnInit {
               this.formTrip.setFieldValue("destination_image",res.data[0].image_headquarter_name);
               this.configureServiceTrip();
               this.formTrip.insert();
+              this.reloadComponent();
             }
           )
         }
@@ -104,4 +108,11 @@ export class TripNewComponent implements OnInit {
         this.formTrip.setFieldValue("destination_address",res.data[0].headquarter_destination_address);
       })
   }
+
+    // Reloads the component
+    reloadComponent() {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([this.router.url]);
+    }
 }

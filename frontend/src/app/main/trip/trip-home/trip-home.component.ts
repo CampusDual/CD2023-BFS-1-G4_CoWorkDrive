@@ -33,7 +33,8 @@ export class TripHomeComponent implements OnInit {
     protected dialog: MatDialog,
     public injector: Injector,
     public router: Router,
-    protected dialogService: DialogService
+    protected dialogService: DialogService,
+    private actRoute: ActivatedRoute
   ) {
     this.carService = this.injector.get(OntimizeService);
     this.tripService = this.injector.get(OntimizeService);

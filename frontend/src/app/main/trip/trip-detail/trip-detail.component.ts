@@ -77,6 +77,7 @@ export class TripDetailComponent implements OnInit {
               this.configureServiceTrip();
               this.formTrip.update();
               this.sendNotificationUpdate(this.formTrip.getFieldValue("id_trip"));
+              this.reloadComponent();
             }
           );
         }
@@ -156,6 +157,7 @@ export class TripDetailComponent implements OnInit {
         this.tripService.update({id_trip: this.formTrip.getFieldValue("id_trip")}, {active: false}, 'trip').subscribe(
           res => {
             this.dialogRef.close();
+            this.reloadComponent();
           });
       }
     });
@@ -179,7 +181,6 @@ export class TripDetailComponent implements OnInit {
     localStorage.setItem("time", this.formTrip.getFieldValue("time"));
     localStorage.setItem("id_car", this.formTrip.getFieldValue("id_car"));
     this.dialogRef.close();
-    this.router.navigate(['/main/trip/new'], { relativeTo: this.actRoute });
   }
 
   // Function to convert a date into a readable date format
@@ -227,4 +228,11 @@ export class TripDetailComponent implements OnInit {
         this.formTrip.setFieldValue("destination_address", res.data[0].headquarter_destination_address);
       });
   }
+
+    // Reloads the component
+    reloadComponent() {
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([this.router.url]);
+    }
 }
