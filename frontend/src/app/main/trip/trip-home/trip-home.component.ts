@@ -208,4 +208,5 @@ export class TripHomeComponent implements OnInit {
     public static isPercentage(column: string, oTableOptions: OTableOptions): boolean {
       return oTableOptions.columns.filter(oCol => oCol.type === "percentage" && oCol.attr === column).length == 1;
     }
+
   }

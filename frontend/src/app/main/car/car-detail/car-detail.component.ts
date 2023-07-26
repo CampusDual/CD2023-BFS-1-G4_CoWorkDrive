@@ -97,7 +97,7 @@ updateActiveCar(): void{
       ); */
       
       this.configureServiceTrip();
-      this.tripService.query({id_car: this.formCar.getFieldValue("id_car")},['number_trips'],'scheduledTrips').subscribe(
+      this.tripService.query({id_car: this.formCar.getFieldValue("id_car"), active: true},['number_trips'],'scheduledTrips').subscribe(
         res=>{
           if(res.data[0].number_trips == 0){
             this.configureServiceCar();

@@ -23,6 +23,7 @@
                     SELECT count(c.*) as number_cars
                     FROM car c
                     #WHERE#
+                        AND active = true
                 ]]>
             </Sentence>
         </Query>

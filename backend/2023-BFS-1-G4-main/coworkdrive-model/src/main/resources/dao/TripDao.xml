@@ -276,13 +276,14 @@
                 <Column>id_car</Column>
                 <Column>date</Column>
                 <Column>number_trips</Column>
+                <Column>active</Column>
             </ValidColumns>
             <Sentence>
                 <![CDATA[
                     SELECT count(id_trip) as number_trips
                     FROM trip t
                     #WHERE#
-                        AND t.date >= CAST(now() as date)
+                        AND t.date >= CAST(now() as date) AND active = true
                 ]]>
             </Sentence>
         </Query>
